@@ -748,10 +748,17 @@
   .hero-bridge { position:absolute; right:-5%; bottom:0; width:min(1180px,68%); height:auto; z-index:0; pointer-events:none; opacity:.62; filter:drop-shadow(0 0 12px rgba(249,115,22,.16));
     -webkit-mask-image:radial-gradient(125% 145% at 100% 96%, #000 26%, rgba(0,0,0,.5) 56%, transparent 82%);
     mask-image:radial-gradient(125% 145% at 100% 96%, #000 26%, rgba(0,0,0,.5) 56%, transparent 82%); }
-  /* A2Tech line-art: keep the right side (tower + STATE) crisp, only dissolve the left edge near the text */
-  .hero-bridge-a2 {
-    -webkit-mask-image:radial-gradient(105% 115% at 100% 68%, #000 22%, rgba(0,0,0,.4) 48%, transparent 76%);
-    mask-image:radial-gradient(105% 115% at 100% 68%, #000 22%, rgba(0,0,0,.4) 48%, transparent 76%); }
+  /* A2Tech line-art backdrop: fills the hero and cover-scales, so it holds the same
+     proportion of the screen on any aspect ratio; the fade is anchored to the
+     viewport's bottom-right corner (percentages of the layer = of the screen). */
+  .hero-a2bg { position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:url(/a2-lines.png) right bottom / cover no-repeat;
+    opacity:.55;
+    filter:drop-shadow(0 0 12px rgba(249,115,22,.14));
+    -webkit-mask-image:radial-gradient(115% 120% at 98% 82%, #000 34%, rgba(0,0,0,.42) 60%, transparent 88%);
+    mask-image:radial-gradient(115% 120% at 98% 82%, #000 34%, rgba(0,0,0,.42) 60%, transparent 88%); }
+  :root[data-theme="light"] .hero-a2bg { opacity:.4; }
+  @media (max-width:768px) { .hero-a2bg { opacity:.34; } }
   /* soft dark scrim so the title / countdown stay legible over the wireframe */
   .hero-scrim { position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(ellipse 50% 60% at 46% 52%, rgba(6,5,13,.8) 0%, rgba(6,5,13,.5) 42%, rgba(6,5,13,0) 74%); }
   :root[data-theme="light"] .hero-bridge { opacity:.42; }
