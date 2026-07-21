@@ -1,0 +1,772 @@
+---
+import '../styles/site.css';
+---
+
+<html lang="en">
+  <head>
+    <script is:inline>
+      try { var t = localStorage.getItem('theme'); if (t === 'light') document.documentElement.setAttribute('data-theme','light'); } catch(e){}
+    </script>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/jaseci-logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JacHacks SF · Hacker Guide</title>
+    <meta name="description" content="The JacHacks SF hacker guide: schedule, location, prizes, tracks, rules, submissions, and everything you need for July 26, 2026 at Founders, Inc., San Francisco." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://jachacks.org/sf-guide" />
+    <meta property="og:title" content="JacHacks SF · Hacker Guide" />
+    <meta property="og:description" content="Everything you need for JacHacks SF in one place: schedule, prizes, rules, and submissions. July 26, 2026, Founders, Inc., San Francisco." />
+    <meta property="og:image" content="https://jachacks.org/jaseci-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+
+    <!-- NAV -->
+    <nav id="main-nav">
+      <div class="nav-inner">
+        <a href="/" class="logo">
+          <img src="/jaseci-logo.png" alt="JacHacks" class="logo-img" />
+          <span class="logo-text">Jac<span class="logo-accent">Hacks</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">// HOME</a>
+          <a href="#schedule" class="nav-link">// SCHEDULE</a>
+          <a href="#prizes" class="nav-link">// PRIZES</a>
+          <a href="#submissions" class="nav-link">// SUBMIT</a>
+          <a href="#rules" class="nav-link">// RULES</a>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
+          <svg class="tt-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="tt-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://luma.com/9x1573sw" target="_blank" rel="noopener noreferrer" class="nav-cta">REGISTER NOW</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/">// HOME</a>
+      <a href="#schedule">// SCHEDULE</a>
+      <a href="#prizes">// PRIZES</a>
+      <a href="#submissions">// SUBMIT</a>
+      <a href="#rules">// RULES</a>
+      <a href="https://luma.com/9x1573sw" target="_blank" class="mobile-cta">REGISTER NOW</a>
+    </div>
+
+    <!-- GUIDE HERO -->
+    <section class="sfg-hero">
+      <div class="hero-grid-bg"></div>
+      <div class="hero-spotlight"></div>
+      <div class="sfg-hero-content">
+        <div class="hero-series-badge reveal">
+          <span class="series-dot"></span>
+          <span>JACHACKS SF 2026</span>
+          <span class="series-sep">·</span>
+          <span class="series-event">HACKER GUIDE</span>
+        </div>
+        <h1 class="title-main reveal">Hacker <span class="title-spring">Guide.</span></h1>
+        <p class="hero-sub reveal">Everything you need for the day in one place. A one-day AI hackathon hosted by Jaseci Labs with $10K+ in prizes.</p>
+        <div class="hero-meta-line reveal">
+          <span>SAT, JULY 26</span>
+          <span class="meta-dot">·</span>
+          <span>8:00 AM – 10:00 PM</span>
+          <span class="meta-dot">·</span>
+          <span>FOUNDERS, INC. · FORT MASON</span>
+        </div>
+        <div class="cta-group reveal">
+          <a href="#schedule" class="btn-primary">
+            VIEW SCHEDULE
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+          <a href="https://discord.gg/uGGKmKEFd" target="_blank" rel="noopener noreferrer" class="btn-accent">
+            JOIN DISCORD
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+          <a href="https://jachacks-sf.devpost.com/" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+            DEVPOST
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK INFO CARDS -->
+    <section class="section sfg-section-tight">
+      <div class="container">
+        <div class="sfg-info-grid reveal">
+          <div class="sfg-info-card">
+            <div class="sfg-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="sfg-info-label">LOCATION</div>
+            <div class="sfg-info-title">Founders, Inc.</div>
+            <p class="sfg-info-desc">Fort Mason Center, 2 Marina Blvd, Building B300, San Francisco, CA 94123. A 42,000 sq ft startup campus right on the Bay.</p>
+          </div>
+          <div class="sfg-info-card">
+            <div class="sfg-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div class="sfg-info-label">DISCORD</div>
+            <div class="sfg-info-title">Main comms channel</div>
+            <p class="sfg-info-desc">Announcements, schedule updates, mentor requests, and team matching. Post questions in <b>#ask-an-organizer</b>. <a class="sfg-link" href="https://discord.gg/uGGKmKEFd" target="_blank" rel="noopener noreferrer">Join before the event →</a></p>
+          </div>
+          <div class="sfg-info-card">
+            <div class="sfg-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+            </div>
+            <div class="sfg-info-label">PRIZES</div>
+            <div class="sfg-info-title">$10K+ across tracks</div>
+            <p class="sfg-info-desc">Agentic AI (up to $2K), Fintech / Open, Social Impact, plus the Best JacHammer special award. <a class="sfg-link" href="#prizes">See all prizes &amp; tracks →</a></p>
+          </div>
+          <div class="sfg-info-card">
+            <div class="sfg-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+            </div>
+            <div class="sfg-info-label">FOOD</div>
+            <div class="sfg-info-title">You're covered</div>
+            <p class="sfg-info-desc">Breakfast, lunch, dinner, and snacks all day. Dietary restrictions? Flag them on your Luma registration or ping us on Discord.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="section" id="schedule">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// THE SCHEDULE</div>
+          <h2 class="section-title">One Day. <span class="text-accent">Zero Wasted Minutes.</span></h2>
+          <p class="section-sub">Here's exactly how the day runs. Any day-of updates will be posted on Discord.</p>
+        </div>
+
+        <div class="sfg-timeline reveal">
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">8:00 – 10:00 AM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Check-In, Breakfast + Networking</div>
+              <div class="sfg-tl-desc">Grab your badge, eat, meet other builders, and start forming teams</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">10:00 – 10:30 AM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Opening + Keynote</div>
+              <div class="sfg-tl-desc">JacHacks welcome, followed by a keynote from Prof. Jason Mars</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">10:30 – 10:45 AM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Hackathon Briefing</div>
+              <div class="sfg-tl-desc">Rules, tracks, prizes, sponsor resources, judging criteria, and how to submit</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item sfg-tl-milestone sfg-tl-green">
+            <div class="sfg-tl-time">10:45 AM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">⭐ Hacking Begins</div>
+              <div class="sfg-tl-desc">Clocks start. Build.</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item sfg-tl-featured">
+            <div class="sfg-tl-time">11:00 AM – 12:00 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Jac Workshop <span class="sfg-tl-tag">DON'T SKIP THIS</span></div>
+              <div class="sfg-tl-desc">One hour, zero to shipping on Jac. All levels welcome.</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">11:00 AM – 1:00 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">First Build Block</div>
+              <div class="sfg-tl-desc">Finalize teams, lock in ideas, start building</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">1:00 – 2:15 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Lunch + Networking</div>
+              <div class="sfg-tl-desc">Lunch is served! Keep planning while you eat</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">2:15 – 3:30 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Second Build Block</div>
+              <div class="sfg-tl-desc">Mentor office hours and sponsor support continue</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">3:30 – 4:30 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Career AMA with Jeff Nguyen</div>
+              <div class="sfg-tl-desc">Founder of BobaTalks and University Recruiter at Tesla. Resume feedback, internship recruiting advice, and open Q&A. Teams can keep hacking if they prefer.</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">4:30 – 5:30 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">YC Application Workshop</div>
+              <div class="sfg-tl-desc">With Mehul from Koyal AI (YC F25) and Vatsal (Ex-YC): how to actually apply to YC</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">4:30 – 6:00 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Third Build Block</div>
+              <div class="sfg-tl-desc">Focused building, testing, and mentor support</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item sfg-tl-milestone sfg-tl-orange">
+            <div class="sfg-tl-time">5:50 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">⭐ Partial Submission Checkpoint</div>
+              <div class="sfg-tl-desc">Submit your draft on Devpost to be considered for judging. You can keep editing after, this just helps us organize judging.</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">6:00 – 6:45 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Dinner</div>
+              <div class="sfg-tl-desc">Dinner runs alongside hacking so you don't lose a build hour</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">6:45 – 7:15 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Final Build + Submission Period</div>
+              <div class="sfg-tl-desc">Finish your demo, submit, and prep your pitch</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item sfg-tl-milestone sfg-tl-red">
+            <div class="sfg-tl-time">7:15 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">🛑 Submissions Close <span class="sfg-tl-tag sfg-tag-red">HARD DEADLINE</span></div>
+              <div class="sfg-tl-desc">To keep the event running smoothly, late submissions are not accepted</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">7:15 – 7:30 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Judging Setup</div>
+              <div class="sfg-tl-desc">Teams move to assigned demo areas</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">7:30 – 8:15 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Project Demos + Judging</div>
+              <div class="sfg-tl-desc">4-minute demos, judged in parallel groups</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">8:15 – 8:45 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Judges Deliberate</div>
+              <div class="sfg-tl-desc">Network while scores are finalized</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item">
+            <div class="sfg-tl-time">8:45 – 9:15 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Second Round Demos</div>
+              <div class="sfg-tl-desc">Top teams demo again</div>
+            </div>
+          </div>
+          <div class="sfg-tl-item sfg-tl-milestone sfg-tl-cyan">
+            <div class="sfg-tl-time">9:30 PM</div>
+            <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+            <div class="sfg-tl-body">
+              <div class="sfg-tl-name">Closing Ceremony</div>
+              <div class="sfg-tl-desc">Winner announcements, prizes, sponsor and judge recognition, group photos, and final networking</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEADLINE CALLOUT -->
+        <div class="sfg-deadlines reveal">
+          <div class="sfg-deadline-card sfg-dl-orange">
+            <div class="sfg-dl-time">5:50 PM</div>
+            <div class="sfg-dl-label">PARTIAL SUBMISSION CHECKPOINT</div>
+            <p>Make your first partial submission on Devpost to be considered for judging. You can still edit after.</p>
+          </div>
+          <div class="sfg-deadline-card sfg-dl-red">
+            <div class="sfg-dl-time">7:15 PM</div>
+            <div class="sfg-dl-label">FINAL SUBMISSIONS · HARD DEADLINE</div>
+            <p>No late submissions will be accepted. Submit early, edit often.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIZES & TRACKS -->
+    <section class="section" id="prizes">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// PRIZES & TRACKS</div>
+          <h2 class="section-title">$10K+ on the <span class="text-accent">Table.</span></h2>
+          <p class="section-sub">All projects are eligible for track prizes. When you submit on Devpost, select the tracks that meaningfully fit your project.</p>
+        </div>
+
+        <div class="sfg-prize-grid reveal">
+          <div class="sfg-prize-card sfg-prize-featured">
+            <div class="sfg-prize-track">AGENTIC AI</div>
+            <div class="sfg-prize-rows">
+              <div class="sfg-prize-row"><span class="sfg-prize-place">1ST PLACE</span><span class="sfg-prize-amt">$2,000</span></div>
+              <div class="sfg-prize-row"><span class="sfg-prize-place">2ND PLACE</span><span class="sfg-prize-amt sfg-amt-dim">$1,000</span></div>
+            </div>
+            <p class="sfg-prize-note">Best agentic AI project built at JacHacks SF</p>
+          </div>
+          <div class="sfg-prize-card">
+            <div class="sfg-prize-track">FINTECH / OPEN</div>
+            <div class="sfg-prize-rows">
+              <div class="sfg-prize-row"><span class="sfg-prize-place">1ST PLACE</span><span class="sfg-prize-amt">$1,500</span></div>
+              <div class="sfg-prize-row"><span class="sfg-prize-place">2ND PLACE</span><span class="sfg-prize-amt sfg-amt-dim">$800</span></div>
+            </div>
+            <p class="sfg-prize-note">Best fintech project, or best project overall in the open track</p>
+          </div>
+          <div class="sfg-prize-card">
+            <div class="sfg-prize-track">SOCIAL IMPACT</div>
+            <div class="sfg-prize-rows">
+              <div class="sfg-prize-row"><span class="sfg-prize-place">1ST PLACE</span><span class="sfg-prize-amt">$1,500</span></div>
+              <div class="sfg-prize-row"><span class="sfg-prize-place">2ND PLACE</span><span class="sfg-prize-amt sfg-amt-dim">$800</span></div>
+            </div>
+            <p class="sfg-prize-note">Innovation with the most significant societal impact</p>
+          </div>
+          <div class="sfg-prize-card sfg-prize-special">
+            <div class="sfg-prize-track">BEST JACHAMMER</div>
+            <div class="sfg-prize-rows">
+              <div class="sfg-prize-row"><span class="sfg-prize-place">SPECIAL AWARD</span><span class="sfg-prize-amt">$500</span></div>
+            </div>
+            <p class="sfg-prize-note">The team that hammers hardest on Jac, the most impressive use of the Jac language</p>
+          </div>
+        </div>
+        <p class="sfg-fineprint reveal">Prize amounts and additional sponsor tracks will be finalized before the event. Watch Discord for updates.</p>
+      </div>
+    </section>
+
+    <!-- SUBMISSIONS -->
+    <section class="section" id="submissions">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// SUBMISSIONS</div>
+          <h2 class="section-title">Ship It on <span class="text-accent">Devpost.</span></h2>
+          <p class="section-sub">Submissions happen on Devpost. First partial submission at 5:50 PM, final at 7:15 PM sharp.</p>
+        </div>
+
+        <div class="sfg-submit-grid reveal">
+          <div class="sfg-checklist">
+            <div class="sfg-checklist-title">SUBMISSION CHECKLIST</div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>GitHub link</span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>Demo video</span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>Written description of your project, including how you used Jac or any Jaseci Labs products</span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>⭐ Star the Jac repo: <a class="sfg-link" href="https://github.com/jaseci-labs/jac" target="_blank" rel="noopener noreferrer">github.com/jaseci-labs/jac</a></span>
+            </div>
+            <a href="https://jachacks-sf.devpost.com/" target="_blank" rel="noopener noreferrer" class="btn-primary sfg-submit-btn">
+              OPEN DEVPOST
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <div class="sfg-judging-card">
+            <div class="sfg-checklist-title">HOW JUDGING WORKS</div>
+            <p>Judging happens in person after submissions close. You'll give a short live demo to a panel of judges. The detailed rubric will be shared on Discord, but broadly:</p>
+            <ul class="sfg-judge-list">
+              <li>Working demos beat slide decks</li>
+              <li>Clear problem-solution stories beat feature dumps</li>
+              <li>4-minute demos, judged in parallel groups</li>
+              <li>Top teams demo again in a second round</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section class="section" id="rules">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// RULES</div>
+          <h2 class="section-title">The Fine <span class="text-accent">Print.</span></h2>
+          <p class="section-sub">To be eligible for prizes, your team and project must follow all of the below.</p>
+        </div>
+
+        <div class="sfg-rules reveal">
+          <div class="sfg-rule"><span class="sfg-rule-num">01</span><p>All members of your team must have registered and checked in to JacHacks SF.</p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">02</span><p>At least one member of your team must be present to demo your project to judges.</p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">03</span><p>All hacking and building must take place during hacking hours (10:45 AM – 7:15 PM). Brainstorming beforehand is allowed and encouraged, but all coding must happen during the event. <b>We WILL check your GitHub repo.</b></p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">04</span><p>Your team cannot have more than 4 people.</p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">05</span><p>You cannot have more than 1 project.</p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">06</span><p>Submit your project on Devpost before the deadline. Late submissions are not eligible for prizes.</p></div>
+          <div class="sfg-rule sfg-rule-hot"><span class="sfg-rule-num">07</span><p>Must build a working software project using <b>Jac</b>, the AI-native programming language from Jaseci Labs. That's the one requirement: your project must meaningfully use Jac.</p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">08</span><p>Be kind, be respectful, and build in good faith. Misrepresenting what your project actually does is grounds for disqualification.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GETTING THERE + PACKING -->
+    <section class="section">
+      <div class="container">
+        <div class="sfg-two-col">
+          <div class="reveal">
+            <div class="section-eyebrow">// GETTING THERE</div>
+            <h2 class="sfg-h3">Fort Mason, on the Bay</h2>
+            <p class="sfg-body">Founders, Inc. sits right on the San Francisco Bay between Fisherman's Wharf and the Golden Gate Bridge. Look for the JacHacks signage when you arrive.</p>
+            <div class="sfg-transit">
+              <div class="sfg-transit-item">
+                <span class="sfg-transit-tag">MUNI</span>
+                <p>The 28, 30, 43, 47, and 49 lines all stop within a short walk of Fort Mason.</p>
+              </div>
+              <div class="sfg-transit-item">
+                <span class="sfg-transit-tag">BART</span>
+                <p>Take BART into downtown SF, then transfer to a Muni bus or grab a ~15-minute rideshare.</p>
+              </div>
+              <div class="sfg-transit-item">
+                <span class="sfg-transit-tag">DRIVING</span>
+                <p>Fort Mason has an on-site paid parking lot. Street parking in the Marina is limited, so budget extra time.</p>
+              </div>
+              <div class="sfg-transit-item">
+                <span class="sfg-transit-tag">RIDESHARE</span>
+                <p>Drop pin: "Founders Inc" or "Fort Mason Center, 2 Marina Blvd." Both work.</p>
+              </div>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="section-eyebrow">// PACKING LIST</div>
+            <h2 class="sfg-h3">It's One Day. Pack Light.</h2>
+            <div class="sfg-pack-list">
+              <div class="sfg-pack-item sfg-pack-hot">💻 Laptop + charger <span class="sfg-pack-note">(non-negotiable)</span></div>
+              <div class="sfg-pack-item">🔌 Phone charger</div>
+              <div class="sfg-pack-item">🪪 Government-issued ID or student ID for check-in</div>
+              <div class="sfg-pack-item">🧥 Layers! Fort Mason means wind and fog, especially in the evening. Bring a jacket even if the forecast looks warm.</div>
+              <div class="sfg-pack-item">🚰 Water bottle</div>
+              <div class="sfg-pack-item">🎧 Headphones for lock-in mode</div>
+              <div class="sfg-pack-item">🔧 Any hardware you want to hack with (nothing oversized, dangerous, or illegal)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ / WHAT TO EXPECT -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// WHAT TO EXPECT</div>
+          <h2 class="section-title">First Hackathon? <span class="text-accent">Perfect.</span></h2>
+        </div>
+        <div class="sfg-faq-grid reveal">
+          <div class="sfg-faq-card">
+            <div class="sfg-faq-q">What is a hackathon?</div>
+            <p>A short-timeframe building event. To "hack" means to create. Meet fellow builders, learn new tools, and ship a project in a single day with free food, swag, workshops, mentorship, and prizes along the way.</p>
+          </div>
+          <div class="sfg-faq-card">
+            <div class="sfg-faq-q">I've never been to one and I'm nervous.</div>
+            <p>Excellent! You'll find yourself right at home. Total beginners, students, professionals, and founders are all welcome.</p>
+          </div>
+          <div class="sfg-faq-card">
+            <div class="sfg-faq-q">Do I need to know how to code?</div>
+            <p>No programming experience is necessary. Workshops and mentors will help you throughout the day, including a Jac intro workshop that takes you from zero to shipping.</p>
+          </div>
+          <div class="sfg-faq-card">
+            <div class="sfg-faq-q">Do I need a team?</div>
+            <p>Nope. Come solo and we'll help you find a group at team formation. Teams max out at 4 people.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section sfg-final">
+      <div class="container">
+        <div class="sfg-final-card reveal">
+          <div class="section-eyebrow">// QUESTIONS?</div>
+          <h2 class="section-title">We've Got <span class="text-accent">You.</span></h2>
+          <p class="section-sub sfg-final-sub">Post in #ask-an-organizer on Discord, or find any organizer on-site. Happy hacking 🧡</p>
+          <div class="cta-group">
+            <a href="https://discord.gg/uGGKmKEFd" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              JOIN THE DISCORD
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="https://luma.com/9x1573sw" target="_blank" rel="noopener noreferrer" class="btn-accent">
+              REGISTER ON LUMA
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-logo">
+          <img src="/jaseci-logo.png" alt="Jaseci" class="logo-img" />
+          <span>Jac<span class="text-accent">Hacks</span></span>
+        </div>
+        <div class="footer-nav">
+          <a href="/spring">JacHacks Spring</a>
+          <a href="/winter">JacHacks Winter</a>
+          <a href="/paradise">Popup in Paradise</a>
+          <a href="/ohio">Popup in Ohio</a>
+          <a href="/gallery">Gallery</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://x.com/Jaseci_Org" class="social-btn" aria-label="Twitter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/jaseci.ai/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/jaseci-labs/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 JacHacks · Powered by <a href="https://jaseci.org" target="_blank" rel="noopener noreferrer">Jaseci</a> · A global hackathon series</p>
+      </div>
+    </footer>
+
+    <style is:global>
+      /* ── SF GUIDE PAGE ── */
+      .sfg-hero { position:relative; padding:9.5rem 2rem 4.5rem; display:flex; justify-content:center; text-align:center; overflow:hidden; }
+      .sfg-hero-content { position:relative; z-index:2; max-width:820px; display:flex; flex-direction:column; align-items:center; }
+      .sfg-hero .title-main { margin-bottom:1.1rem; }
+      .sfg-hero .hero-meta-line { font-size:.85rem; }
+      .sfg-section-tight { padding-top:1rem; }
+
+      /* info cards */
+      .sfg-info-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+      .sfg-info-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.5rem 1.4rem; transition:border-color .25s, transform .25s, box-shadow .25s; }
+      .sfg-info-card:hover { border-color:rgba(249,115,22,.4); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.35), 0 0 24px rgba(249,115,22,.07); }
+      .sfg-info-icon { width:36px; height:36px; border-radius:9px; display:flex; align-items:center; justify-content:center; color:var(--primary); background:rgba(249,115,22,.1); border:1px solid rgba(249,115,22,.25); margin-bottom:1rem; }
+      .sfg-info-label { font-family:var(--mono); font-size:.58rem; letter-spacing:.22em; color:var(--primary); margin-bottom:.4rem; }
+      .sfg-info-title { font-family:var(--display); font-weight:700; font-size:1.1rem; color:#fff; margin-bottom:.45rem; }
+      .sfg-info-desc { font-size:.82rem; line-height:1.6; color:var(--light); }
+      .sfg-link { color:var(--primary); font-weight:600; }
+      .sfg-link:hover { color:var(--pl); }
+
+      /* timeline */
+      .sfg-timeline { max-width:820px; }
+      .sfg-tl-item { display:grid; grid-template-columns:150px 34px 1fr; gap:.75rem; align-items:stretch; }
+      .sfg-tl-time { font-family:var(--mono); font-size:.68rem; letter-spacing:.06em; color:var(--cyan); text-align:right; padding:1.05rem 0; white-space:nowrap; }
+      .sfg-tl-rail { position:relative; display:flex; justify-content:center; }
+      .sfg-tl-rail::before { content:''; position:absolute; top:0; bottom:0; width:1px; background:linear-gradient(180deg, rgba(249,115,22,.28), rgba(249,115,22,.12)); }
+      .sfg-tl-item:first-child .sfg-tl-rail::before { top:1.4rem; }
+      .sfg-tl-item:last-child .sfg-tl-rail::before { bottom:auto; height:1.4rem; }
+      .sfg-tl-dot { position:relative; z-index:1; width:9px; height:9px; border-radius:50%; background:var(--card); border:2px solid rgba(249,115,22,.55); margin-top:1.3rem; flex-shrink:0; }
+      .sfg-tl-body { padding:.95rem 0 1.15rem; border-bottom:1px solid rgba(255,255,255,.04); }
+      .sfg-tl-item:last-child .sfg-tl-body { border-bottom:none; }
+      .sfg-tl-name { font-family:var(--display); font-weight:700; font-size:1.05rem; color:#fff; letter-spacing:.02em; display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
+      .sfg-tl-desc { font-size:.83rem; line-height:1.6; color:var(--light); margin-top:.25rem; max-width:560px; }
+      .sfg-tl-tag { font-family:var(--mono); font-size:.55rem; letter-spacing:.16em; color:var(--primary); background:rgba(249,115,22,.1); border:1px solid rgba(249,115,22,.35); padding:.18rem .55rem; border-radius:100px; }
+      .sfg-tag-red { color:#f87171; background:rgba(239,68,68,.1); border-color:rgba(239,68,68,.4); }
+      .sfg-tl-featured .sfg-tl-dot { border-color:var(--primary); box-shadow:0 0 10px rgba(249,115,22,.5); }
+      .sfg-tl-milestone .sfg-tl-body { border-bottom:none; margin:.35rem 0; padding:.9rem 1.1rem 1rem; border-radius:12px; }
+      .sfg-tl-green .sfg-tl-body { background:rgba(34,197,94,.06); border:1px solid rgba(34,197,94,.28); }
+      .sfg-tl-green .sfg-tl-dot { border-color:var(--green); box-shadow:0 0 10px rgba(34,197,94,.55); }
+      .sfg-tl-green .sfg-tl-name { color:var(--green); }
+      .sfg-tl-orange .sfg-tl-body { background:rgba(249,115,22,.07); border:1px solid rgba(249,115,22,.32); }
+      .sfg-tl-orange .sfg-tl-dot { border-color:var(--primary); box-shadow:0 0 10px rgba(249,115,22,.55); }
+      .sfg-tl-orange .sfg-tl-name { color:var(--pl); }
+      .sfg-tl-red .sfg-tl-body { background:rgba(239,68,68,.07); border:1px solid rgba(239,68,68,.32); }
+      .sfg-tl-red .sfg-tl-dot { border-color:#ef4444; box-shadow:0 0 10px rgba(239,68,68,.55); }
+      .sfg-tl-red .sfg-tl-name { color:#f87171; }
+      .sfg-tl-cyan .sfg-tl-body { background:rgba(0,212,255,.05); border:1px solid rgba(0,212,255,.25); }
+      .sfg-tl-cyan .sfg-tl-dot { border-color:var(--cyan); box-shadow:0 0 10px rgba(0,212,255,.5); }
+      .sfg-tl-cyan .sfg-tl-name { color:var(--cyan); }
+
+      /* deadline callout */
+      .sfg-deadlines { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.5rem; max-width:820px; }
+      .sfg-deadline-card { border-radius:14px; padding:1.5rem 1.6rem; }
+      .sfg-dl-orange { background:rgba(249,115,22,.07); border:1px solid rgba(249,115,22,.35); }
+      .sfg-dl-red { background:rgba(239,68,68,.06); border:1px solid rgba(239,68,68,.35); }
+      .sfg-dl-time { font-family:var(--display); font-weight:700; font-size:2rem; line-height:1; color:#fff; margin-bottom:.4rem; }
+      .sfg-dl-orange .sfg-dl-time { color:var(--pl); text-shadow:0 0 18px rgba(249,115,22,.35); }
+      .sfg-dl-red .sfg-dl-time { color:#f87171; text-shadow:0 0 18px rgba(239,68,68,.3); }
+      .sfg-dl-label { font-family:var(--mono); font-size:.6rem; letter-spacing:.2em; color:var(--text); margin-bottom:.55rem; }
+      .sfg-deadline-card p { font-size:.83rem; line-height:1.6; color:var(--light); }
+
+      /* prizes */
+      .sfg-prize-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+      .sfg-prize-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.6rem 1.5rem; display:flex; flex-direction:column; transition:border-color .25s, transform .25s, box-shadow .25s; }
+      .sfg-prize-card:hover { border-color:rgba(249,115,22,.45); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.35), 0 0 24px rgba(249,115,22,.08); }
+      .sfg-prize-featured { border-color:rgba(249,115,22,.5); background:linear-gradient(160deg, rgba(249,115,22,.09), var(--card) 55%); box-shadow:0 0 32px rgba(249,115,22,.08); }
+      .sfg-prize-special { border-color:rgba(0,212,255,.35); background:linear-gradient(160deg, rgba(0,212,255,.06), var(--card) 55%); }
+      .sfg-prize-track { font-family:var(--mono); font-size:.62rem; letter-spacing:.2em; color:var(--primary); margin-bottom:1.1rem; }
+      .sfg-prize-special .sfg-prize-track { color:var(--cyan); }
+      .sfg-prize-rows { display:flex; flex-direction:column; gap:.55rem; margin-bottom:1rem; }
+      .sfg-prize-row { display:flex; align-items:baseline; justify-content:space-between; gap:.75rem; }
+      .sfg-prize-place { font-family:var(--mono); font-size:.58rem; letter-spacing:.16em; color:var(--light); }
+      .sfg-prize-amt { font-family:var(--display); font-weight:700; font-size:1.7rem; line-height:1; color:#fff; text-shadow:0 0 16px rgba(249,115,22,.3); }
+      .sfg-amt-dim { font-size:1.25rem; color:var(--light); text-shadow:none; }
+      .sfg-prize-note { font-size:.78rem; line-height:1.55; color:var(--light); margin-top:auto; }
+      .sfg-fineprint { font-family:var(--mono); font-size:.63rem; letter-spacing:.08em; color:var(--muted); margin-top:1.5rem; }
+
+      /* submissions */
+      .sfg-submit-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:1rem; }
+      .sfg-checklist, .sfg-judging-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.8rem 1.7rem; }
+      .sfg-checklist-title { font-family:var(--mono); font-size:.62rem; letter-spacing:.22em; color:var(--primary); margin-bottom:1.2rem; }
+      .sfg-check-item { display:flex; align-items:flex-start; gap:.8rem; padding:.55rem 0; font-size:.9rem; line-height:1.55; color:var(--text); border-bottom:1px solid rgba(255,255,255,.04); }
+      .sfg-check-box { width:16px; height:16px; border:1.5px solid rgba(249,115,22,.55); border-radius:4px; flex-shrink:0; margin-top:.2rem; }
+      .sfg-submit-btn { margin-top:1.4rem; font-size:.9rem; padding:.75rem 1.8rem; }
+      .sfg-judging-card p { font-size:.88rem; line-height:1.65; color:var(--light); margin-bottom:1rem; }
+      .sfg-judge-list { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+      .sfg-judge-list li { position:relative; padding-left:1.2rem; font-size:.86rem; line-height:1.5; color:var(--text); }
+      .sfg-judge-list li::before { content:'▸'; position:absolute; left:0; color:var(--primary); }
+
+      /* rules */
+      .sfg-rules { display:grid; grid-template-columns:1fr 1fr; gap:.85rem; }
+      .sfg-rule { display:flex; gap:1rem; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.15rem 1.3rem; }
+      .sfg-rule p { font-size:.86rem; line-height:1.6; color:var(--light); }
+      .sfg-rule b { color:var(--text); }
+      .sfg-rule-num { font-family:var(--mono); font-size:.7rem; font-weight:600; color:var(--primary); background:rgba(249,115,22,.08); border:1px solid rgba(249,115,22,.25); border-radius:6px; padding:.25rem .5rem; flex-shrink:0; }
+      .sfg-rule-hot { border-color:rgba(249,115,22,.5); background:linear-gradient(160deg, rgba(249,115,22,.08), var(--card) 60%); }
+      .sfg-rule-hot p { color:var(--text); }
+
+      /* getting there + packing */
+      .sfg-two-col { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; }
+      .sfg-h3 { font-family:var(--display); font-weight:700; font-size:clamp(1.5rem,3.2vw,2.1rem); color:#fff; margin-bottom:.8rem; }
+      .sfg-body { font-size:.92rem; line-height:1.7; color:var(--light); margin-bottom:1.5rem; }
+      .sfg-transit { display:flex; flex-direction:column; gap:.85rem; }
+      .sfg-transit-item { display:flex; gap:1rem; align-items:flex-start; }
+      .sfg-transit-tag { font-family:var(--mono); font-size:.58rem; letter-spacing:.14em; color:var(--cyan); background:rgba(0,212,255,.07); border:1px solid rgba(0,212,255,.25); border-radius:6px; padding:.28rem .55rem; flex-shrink:0; min-width:78px; text-align:center; }
+      .sfg-transit-item p { font-size:.85rem; line-height:1.6; color:var(--light); }
+      .sfg-pack-list { display:flex; flex-direction:column; gap:.55rem; }
+      .sfg-pack-item { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:.75rem 1rem; font-size:.86rem; line-height:1.55; color:var(--text); }
+      .sfg-pack-hot { border-color:rgba(249,115,22,.45); background:linear-gradient(160deg, rgba(249,115,22,.07), var(--card) 60%); font-weight:600; }
+      .sfg-pack-note { font-family:var(--mono); font-size:.62rem; color:var(--primary); letter-spacing:.06em; }
+
+      /* faq */
+      .sfg-faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+      .sfg-faq-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.6rem 1.6rem; }
+      .sfg-faq-q { font-family:var(--display); font-weight:700; font-size:1.1rem; color:#fff; margin-bottom:.55rem; }
+      .sfg-faq-card p { font-size:.86rem; line-height:1.65; color:var(--light); }
+
+      /* final cta */
+      .sfg-final { padding-top:2rem; }
+      .sfg-final-card { text-align:center; background:linear-gradient(160deg, rgba(249,115,22,.08), var(--card) 60%); border:1px solid rgba(249,115,22,.3); border-radius:20px; padding:4rem 2rem; display:flex; flex-direction:column; align-items:center; }
+      .sfg-final-sub { margin:0 auto 2rem; }
+
+      /* light theme */
+      :root[data-theme="light"] .sfg-info-card,
+      :root[data-theme="light"] .sfg-prize-card,
+      :root[data-theme="light"] .sfg-checklist,
+      :root[data-theme="light"] .sfg-judging-card,
+      :root[data-theme="light"] .sfg-rule,
+      :root[data-theme="light"] .sfg-pack-item,
+      :root[data-theme="light"] .sfg-faq-card { background:#fff; border-color:rgba(0,0,0,.09); }
+      :root[data-theme="light"] .sfg-info-title,
+      :root[data-theme="light"] .sfg-tl-name,
+      :root[data-theme="light"] .sfg-prize-amt,
+      :root[data-theme="light"] .sfg-h3,
+      :root[data-theme="light"] .sfg-faq-q,
+      :root[data-theme="light"] .sfg-dl-time { color:#1a1828; }
+      :root[data-theme="light"] .sfg-prize-amt { text-shadow:none; }
+      :root[data-theme="light"] .sfg-tl-body { border-bottom-color:rgba(0,0,0,.06); }
+      :root[data-theme="light"] .sfg-tl-dot { background:#fff; }
+      :root[data-theme="light"] .sfg-check-item { color:#3d3c45; border-bottom-color:rgba(0,0,0,.06); }
+      :root[data-theme="light"] .sfg-judge-list li,
+      :root[data-theme="light"] .sfg-pack-item { color:#3d3c45; }
+      :root[data-theme="light"] .sfg-rule-hot p { color:#3d3c45; }
+      :root[data-theme="light"] .sfg-tl-green .sfg-tl-name { color:#15803d; }
+      :root[data-theme="light"] .sfg-tl-orange .sfg-tl-name { color:#ea580c; }
+      :root[data-theme="light"] .sfg-tl-red .sfg-tl-name { color:#dc2626; }
+      :root[data-theme="light"] .sfg-tl-cyan .sfg-tl-name { color:#0e7490; }
+      :root[data-theme="light"] .sfg-tl-time { color:#0e7490; }
+      :root[data-theme="light"] .sfg-transit-tag { color:#0e7490; }
+      :root[data-theme="light"] .sfg-dl-label { color:#3d3c45; }
+      :root[data-theme="light"] .sfg-prize-featured,
+      :root[data-theme="light"] .sfg-rule-hot,
+      :root[data-theme="light"] .sfg-pack-hot,
+      :root[data-theme="light"] .sfg-final-card { background:linear-gradient(160deg, rgba(249,115,22,.07), #fff 60%); }
+      :root[data-theme="light"] .sfg-prize-special { background:linear-gradient(160deg, rgba(0,212,255,.06), #fff 55%); }
+      :root[data-theme="light"] .sfg-prize-special .sfg-prize-track { color:#0e7490; }
+
+      /* responsive */
+      @media (max-width:1000px) {
+        .sfg-info-grid, .sfg-prize-grid { grid-template-columns:1fr 1fr; }
+      }
+      @media (max-width:768px) {
+        .sfg-hero { padding:8rem 1.25rem 3.5rem; }
+        .sfg-submit-grid, .sfg-rules, .sfg-faq-grid, .sfg-deadlines { grid-template-columns:1fr; }
+        .sfg-two-col { grid-template-columns:1fr; gap:3rem; }
+        .sfg-tl-item { grid-template-columns:auto 1fr; grid-template-rows:auto auto; gap:0 .75rem; }
+        .sfg-tl-time { grid-column:2; text-align:left; padding:.9rem 0 0; }
+        .sfg-tl-rail { grid-column:1; grid-row:1 / span 2; width:34px; }
+        .sfg-tl-body { grid-column:2; padding-top:.2rem; }
+        .sfg-tl-dot { margin-top:1.15rem; }
+      }
+      @media (max-width:520px) {
+        .sfg-info-grid, .sfg-prize-grid { grid-template-columns:1fr; }
+      }
+    </style>
+
+    <script>
+      // ===== REVEAL =====
+      const obs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } }); }, { threshold:.08, rootMargin:'0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+      // ===== NAV =====
+      const nav = document.getElementById('main-nav')!;
+      window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+      // ===== HAMBURGER =====
+      const hbg = document.getElementById('hamburger')!, mm = document.getElementById('mobile-menu')!;
+      hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mm.classList.toggle('open'); });
+      mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mm.classList.remove('open'); }));
+
+      // ===== THEME TOGGLE =====
+      const themeBtn = document.getElementById('theme-toggle')!;
+      themeBtn.addEventListener('click', () => {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        if (isLight) {
+          document.documentElement.removeAttribute('data-theme');
+          try { localStorage.setItem('theme','dark'); } catch(e){}
+        } else {
+          document.documentElement.setAttribute('data-theme','light');
+          try { localStorage.setItem('theme','light'); } catch(e){}
+        }
+      });
+    </script>
+  </body>
+</html>
