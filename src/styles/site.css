@@ -262,8 +262,13 @@
   /* ── PLATINUM SPONSOR ── */
   .platinum-sponsor { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; padding: 5rem 2rem; background: radial-gradient(circle at center, rgba(249,115,22,.07) 0%, transparent 70%); position: relative; z-index: 1; }
   .platinum-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.4em; color: var(--primary); opacity: 0.75; }
-  .platinum-logo { height: 90px; width: auto; filter: drop-shadow(0 0 28px rgba(249,115,22,.35)); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease; }
+  .platinum-logo { height: 90px; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 28px rgba(249,115,22,.35)); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease; }
   .platinum-link:hover .platinum-logo { transform: scale(1.08); filter: drop-shadow(0 0 45px rgba(249,115,22,.55)); }
+  /* the wordmark is white, so the light theme gets a dark-ink variant of the same art */
+  .platinum-logo-light { display: none; }
+  :root[data-theme="light"] .platinum-logo-dark { display: none; }
+  :root[data-theme="light"] .platinum-logo-light { display: block; }
+  :root[data-theme="light"] .platinum-logo { filter: drop-shadow(0 0 24px rgba(249,115,22,.28)); }
   .platinum-desc { font-family: var(--display); font-weight: 500; font-size: 1.15rem; color: var(--light); letter-spacing: 0.05em; opacity: 0.8; max-width: 400px; text-align: center; line-height: 1.4; }
 
   /* ── SPONSOR STRIP ── */
