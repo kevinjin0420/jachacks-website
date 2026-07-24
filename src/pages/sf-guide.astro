@@ -436,7 +436,7 @@ import '../styles/site.css';
           <div class="sfg-rule"><span class="sfg-rule-num">04</span><p>Your team cannot have more than 4 people.</p></div>
           <div class="sfg-rule"><span class="sfg-rule-num">05</span><p>You cannot have more than 1 project.</p></div>
           <div class="sfg-rule"><span class="sfg-rule-num">06</span><p>Submit your project on Devpost before the deadline. Late submissions are not eligible for prizes.</p></div>
-          <div class="sfg-rule sfg-rule-hot"><span class="sfg-rule-num">07</span><p>Must build a working software project using <b>Jac</b>, the AI-native programming language from Jaseci Labs. That's the one requirement: your project must meaningfully use Jac.</p></div>
+          <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" class="sfg-rule sfg-rule-hot"><span class="sfg-rule-hot-shine"></span><span class="sfg-rule-num">07</span><div class="sfg-rule-hot-body"><span class="sfg-rule-tag">★ BUILD WITH JAC</span><p>Must build a working software project using <b>Jac</b>, the AI-native programming language from the Jaseci ecosystem. Your project must meaningfully use Jac. <span class="sfg-rule-link">Explore Jac at jaclang.org →</span></p></div></a>
           <div class="sfg-rule"><span class="sfg-rule-num">08</span><p>Be kind, be respectful, and build in good faith. Misrepresenting what your project actually does is grounds for disqualification.</p></div>
         </div>
       </div>
@@ -562,7 +562,7 @@ import '../styles/site.css';
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 JacHacks · Powered by <a href="https://jaseci.org" target="_blank" rel="noopener noreferrer">Jaseci</a> · A global hackathon series</p>
+        <p>© 2026 JacHacks · Powered by <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer">Jaseci</a> · A global hackathon series</p>
       </div>
     </footer>
 
@@ -660,8 +660,18 @@ import '../styles/site.css';
       .sfg-rule p { font-size:.86rem; line-height:1.6; color:var(--light); }
       .sfg-rule b { color:var(--text); }
       .sfg-rule-num { font-family:var(--mono); font-size:.7rem; font-weight:600; color:var(--primary); background:rgba(249,115,22,.08); border:1px solid rgba(249,115,22,.25); border-radius:6px; padding:.25rem .5rem; flex-shrink:0; }
-      .sfg-rule-hot { border-color:rgba(249,115,22,.5); background:linear-gradient(160deg, rgba(249,115,22,.08), var(--card) 60%); }
-      .sfg-rule-hot p { color:var(--text); }
+      .sfg-rule-hot { grid-column:1 / -1; position:relative; overflow:hidden; align-items:center; gap:1.15rem; border-color:rgba(249,115,22,.7); background:linear-gradient(135deg, rgba(249,115,22,.2), rgba(13,12,24,.9) 62%); box-shadow:0 10px 40px rgba(0,0,0,.35), 0 0 26px rgba(249,115,22,.16); padding:1.5rem 1.6rem; transition:transform .25s, box-shadow .25s, border-color .25s; animation:ruleGlow 3s ease-in-out infinite; }
+      .sfg-rule-hot:hover { transform:translateY(-2px); border-color:rgba(249,115,22,1); box-shadow:0 14px 48px rgba(0,0,0,.45), 0 0 40px rgba(249,115,22,.35); animation-play-state:paused; }
+      @keyframes ruleGlow { 0%,100%{box-shadow:0 10px 40px rgba(0,0,0,.35), 0 0 18px rgba(249,115,22,.14);} 50%{box-shadow:0 10px 40px rgba(0,0,0,.35), 0 0 34px rgba(249,115,22,.36);} }
+      .sfg-rule-hot-shine { position:absolute; top:0; left:-60%; width:40%; height:100%; background:linear-gradient(100deg, transparent, rgba(255,255,255,.16), transparent); transform:skewX(-18deg); animation:ruleShine 5s ease-in-out infinite; pointer-events:none; }
+      @keyframes ruleShine { 0%{left:-60%;} 40%,100%{left:160%;} }
+      .sfg-rule-hot .sfg-rule-num { align-self:flex-start; font-size:.85rem; color:#000; background:var(--primary); border-color:var(--primary); box-shadow:0 0 16px rgba(249,115,22,.5); padding:.35rem .6rem; }
+      .sfg-rule-hot-body { display:flex; flex-direction:column; gap:.45rem; }
+      .sfg-rule-tag { font-family:var(--mono); font-size:.58rem; font-weight:600; letter-spacing:.18em; color:var(--pl); }
+      .sfg-rule-hot p { color:var(--text); font-size:.95rem; }
+      .sfg-rule-hot b { color:#fff; }
+      .sfg-rule-link { display:inline-block; margin-top:.15rem; font-family:var(--display); font-weight:600; font-size:.9rem; letter-spacing:.02em; color:var(--primary); transition:color .2s; }
+      .sfg-rule-hot:hover .sfg-rule-link { color:var(--pl); }
 
       /* getting there + packing */
       .sfg-two-col { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; }
@@ -708,6 +718,7 @@ import '../styles/site.css';
       :root[data-theme="light"] .sfg-judge-list li,
       :root[data-theme="light"] .sfg-pack-item { color:#3d3c45; }
       :root[data-theme="light"] .sfg-rule-hot p { color:#3d3c45; }
+      :root[data-theme="light"] .sfg-rule-hot b { color:#1a1828; }
       :root[data-theme="light"] .sfg-tl-green .sfg-tl-name { color:#15803d; }
       :root[data-theme="light"] .sfg-tl-orange .sfg-tl-name { color:#ea580c; }
       :root[data-theme="light"] .sfg-tl-red .sfg-tl-name { color:#dc2626; }
