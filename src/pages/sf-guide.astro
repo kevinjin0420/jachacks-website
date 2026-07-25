@@ -40,6 +40,7 @@ import '../styles/site.css';
           <a href="#schedule" class="nav-link">// SCHEDULE</a>
           <a href="#prizes" class="nav-link">// PRIZES</a>
           <a href="#submissions" class="nav-link">// SUBMIT</a>
+          <a href="#resources" class="nav-link">// RESOURCES</a>
           <a href="#rules" class="nav-link">// RULES</a>
         </div>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
@@ -58,6 +59,7 @@ import '../styles/site.css';
       <a href="#schedule">// SCHEDULE</a>
       <a href="#prizes">// PRIZES</a>
       <a href="#submissions">// SUBMIT</a>
+      <a href="#resources">// RESOURCES</a>
       <a href="#rules">// RULES</a>
       <a href="https://luma.com/9x1573sw" target="_blank" class="mobile-cta">REGISTER NOW</a>
     </div>
@@ -449,6 +451,48 @@ import '../styles/site.css';
       </div>
     </section>
 
+    <!-- RESOURCES -->
+    <section class="section" id="resources">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// RESOURCES</div>
+          <h2 class="section-title">Start <span class="text-accent">Here.</span></h2>
+          <p class="section-sub">Everything you need to go from zero to shipping in Jac. Bookmark these before you start building.</p>
+        </div>
+
+        <div class="sfg-res reveal">
+          <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" class="sfg-res-card sfg-res-hero">
+            <span class="sfg-res-tag">★ YOUR FIRST STOP</span>
+            <span class="sfg-res-name">Jac Language</span>
+            <span class="sfg-res-url">jaclang.org</span>
+            <p class="sfg-res-desc">Docs, tutorials, and everything you need to go from zero to shipping in Jac.</p>
+            <span class="sfg-res-go">Open the docs →</span>
+          </a>
+
+          <div class="sfg-res-row">
+            <a href="https://github.com/jaseci-labs/jaseci" target="_blank" rel="noopener noreferrer" class="sfg-res-card">
+              <span class="sfg-res-tag">SOURCE</span>
+              <span class="sfg-res-name">Jaseci on GitHub</span>
+              <span class="sfg-res-url">github.com/jaseci-labs/jaseci</span>
+              <p class="sfg-res-desc">Browse the source. Star the repo.</p>
+            </a>
+            <a href="https://jac-gpt.jaseci.org/" target="_blank" rel="noopener noreferrer" class="sfg-res-card">
+              <span class="sfg-res-tag">AI HELPER</span>
+              <span class="sfg-res-name">Jac-GPT</span>
+              <span class="sfg-res-url">jac-gpt.jaseci.org</span>
+              <p class="sfg-res-desc">An assistant that actually knows Jac.</p>
+            </a>
+            <a href="https://discord.com/invite/6j3QNdtcN6" target="_blank" rel="noopener noreferrer" class="sfg-res-card sfg-res-chat">
+              <span class="sfg-res-tag">JAC Q&amp;A BOT</span>
+              <span class="sfg-res-name">Jaseci World Discord</span>
+              <span class="sfg-res-chan">#ninjaclaw-yap-room</span>
+              <p class="sfg-res-desc">Drop any Jac question in the channel. The bot answers.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- GETTING THERE + PACKING -->
     <section class="section">
       <div class="container">
@@ -680,6 +724,37 @@ import '../styles/site.css';
       .sfg-rule-link { display:inline-block; margin-top:.15rem; font-family:var(--display); font-weight:600; font-size:.9rem; letter-spacing:.02em; color:var(--primary); transition:color .2s; }
       .sfg-rule-hot:hover .sfg-rule-link { color:var(--pl); }
 
+      /* resources */
+      .sfg-res { display:flex; flex-direction:column; gap:1rem; }
+      .sfg-res-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+      .sfg-res-card { display:flex; flex-direction:column; gap:.4rem; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.5rem 1.5rem; transition:border-color .25s, transform .25s, box-shadow .25s; }
+      .sfg-res-card:hover { border-color:rgba(249,115,22,.45); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.35), 0 0 24px rgba(249,115,22,.08); }
+      .sfg-res-tag { font-family:var(--mono); font-size:.58rem; letter-spacing:.22em; color:var(--primary); }
+      .sfg-res-name { font-family:var(--display); font-weight:700; font-size:1.15rem; color:#fff; letter-spacing:.01em; }
+      .sfg-res-url { font-family:var(--mono); font-size:.76rem; color:var(--cyan); word-break:break-all; }
+      .sfg-res-desc { font-size:.84rem; line-height:1.6; color:var(--light); }
+      .sfg-res-go { font-family:var(--display); font-weight:600; font-size:.92rem; color:var(--primary); margin-top:.35rem; transition:color .2s; }
+      .sfg-res-card:hover .sfg-res-go { color:var(--pl); }
+
+      .sfg-res-hero { border-color:rgba(249,115,22,.5); background:linear-gradient(160deg, rgba(249,115,22,.1), var(--card) 58%); box-shadow:0 0 32px rgba(249,115,22,.08); padding:2.2rem 2rem; }
+      .sfg-res-hero .sfg-res-tag { color:var(--pl); font-size:.62rem; }
+      .sfg-res-hero .sfg-res-name { font-family:var(--serif); font-weight:800; font-size:clamp(1.7rem,3.4vw,2.4rem); letter-spacing:-.01em; }
+      .sfg-res-hero .sfg-res-url { font-size:1rem; }
+      .sfg-res-hero .sfg-res-desc { font-size:.94rem; max-width:60ch; }
+
+      .sfg-res-chat { border-color:rgba(88,101,242,.4); background:linear-gradient(160deg, rgba(88,101,242,.09), var(--card) 58%); }
+      .sfg-res-chat:hover { border-color:rgba(88,101,242,.75); box-shadow:0 12px 32px rgba(0,0,0,.35), 0 0 24px rgba(88,101,242,.14); }
+      .sfg-res-chat .sfg-res-tag { color:#8b93f8; }
+      .sfg-res-chan { align-self:flex-start; font-family:var(--mono); font-weight:600; font-size:.76rem; color:#fff; background:rgba(88,101,242,.22); border:1px solid rgba(88,101,242,.45); border-radius:6px; padding:.22em .55em; }
+
+      :root[data-theme="light"] .sfg-res-card { background:#fff; border-color:rgba(0,0,0,.09); }
+      :root[data-theme="light"] .sfg-res-name { color:#1a1828; }
+      :root[data-theme="light"] .sfg-res-url { color:#0e7490; }
+      :root[data-theme="light"] .sfg-res-desc { color:#3d3c45; }
+      :root[data-theme="light"] .sfg-res-hero { background:linear-gradient(160deg, rgba(249,115,22,.07), #fff 58%); }
+      :root[data-theme="light"] .sfg-res-chat { background:linear-gradient(160deg, rgba(88,101,242,.07), #fff 58%); }
+      :root[data-theme="light"] .sfg-res-chan { color:#1a1828; background:rgba(88,101,242,.14); }
+
       /* getting there + packing */
       .sfg-two-col { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; }
       .sfg-h3 { font-family:var(--display); font-weight:700; font-size:clamp(1.5rem,3.2vw,2.1rem); color:#fff; margin-bottom:.8rem; }
@@ -744,7 +819,11 @@ import '../styles/site.css';
       @media (max-width:1000px) {
         .sfg-info-grid, .sfg-prize-grid { grid-template-columns:1fr 1fr; }
       }
+      @media (max-width:1000px) {
+        .sfg-res-row { grid-template-columns:1fr 1fr; }
+      }
       @media (max-width:768px) {
+        .sfg-res-row { grid-template-columns:1fr; }
         .sfg-hero { padding:8rem 1.25rem 3.5rem; }
         .sfg-submit-grid, .sfg-rules, .sfg-faq-grid, .sfg-deadlines { grid-template-columns:1fr; }
         .sfg-two-col { grid-template-columns:1fr; gap:3rem; }
