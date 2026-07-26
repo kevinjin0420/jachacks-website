@@ -39,7 +39,9 @@ node Config {
         current_group: int = 0,
         current_round: int = 0,
         total_groups: int = 0,
-        group_size: int = 10;
+        group_size: int = 10,
+        finals_selected: bool = False,
+        finalists_per_track: int = 2;
 }
 
 node Project {
@@ -54,7 +56,9 @@ node Project {
         submitted_by: str = "",
         submitted_at: str = "",
         group_num: int = 0,
-        table_num: int = 0;
+        table_num: int = 0,
+        is_finalist: bool = False,
+        finalist_rank: int = 0;
 }
 
 node UserProfile {
@@ -167,8 +171,128 @@ def project_to_dict(p: Project) -> dict {
         "submitted_by": p.submitted_by,
         "submitted_at": p.submitted_at,
         "group_num": p.group_num,
-        "table_num": p.table_num
+        "table_num": p.table_num,
+        "is_finalist": p.is_finalist,
+        "finalist_rank": p.finalist_rank
     };
+}
+
+"""Weighted score for one judge on one project, or None if they have no final score."""
+def judge_weighted_for(proj: Project, judge_id: str, round_num: int) -> float | None {
+    for s in [proj -->](?:Score) {
+        if s.judge_id == judge_id and s.round_num == round_num and s.is_final {
+            return compute_weighted_score(s);
+        }
+    }
+    return None;
+}
+
+"""
+Per-judge z-score normalization for one round.
+
+Round 1 splits ~60 projects across ~10 judge pairs, so a project's raw average
+depends heavily on which pair happened to score it. Converting each judge's
+scores to z-scores against their own mean/spread removes that bias before we
+compare projects across groups. Returns {judge_id: {project_id: z}}.
+"""
+def build_normalized_scores(round_num: int) -> dict {
+    import math;
+    projects = [root -->](?:Project);
+    by_judge: dict = {};
+    for proj in projects {
+        for s in [proj -->](?:Score) {
+            if s.round_num != round_num or not s.is_final {
+                continue;
+            }
+            if s.judge_id not in by_judge {
+                by_judge[s.judge_id] = {};
+            }
+            by_judge[s.judge_id][s.project_id] = compute_weighted_score(s);
+        }
+    }
+    normalized: dict = {};
+    for (judge_id, scores) in by_judge.items() {
+        values = list(scores.values());
+        n = len(values);
+        mean = sum(values) / n;
+        variance = sum([(v - mean) ** 2 for v in values]) / n;
+        sd = math.sqrt(variance);
+        normalized[judge_id] = {};
+        for (pid, v) in scores.items() {
+            # A judge with one score, or who gave everyone the same marks, carries
+            # no comparative signal — treat them as exactly average rather than
+            # dividing by zero.
+            normalized[judge_id][pid] = 0.0 if n < 2 or sd == 0.0 else (v - mean) / sd;
+        }
+    }
+    return normalized;
+}
+
+"""Ranked entries per track for a round. Each entry carries raw + normalized scores."""
+def build_rankings(round_num: int, finalists_only: bool, sort_by: str) -> list {
+    normalized = build_normalized_scores(round_num);
+    projects = [root -->](?:Project);
+    if finalists_only {
+        projects = [p for p in projects if p.is_finalist];
+    }
+    tracks_data: dict = {};
+    for proj in projects {
+        scores = [
+            s for s in [proj -->](?:Score)
+            if s.is_final and s.round_num == round_num
+        ];
+        raw = 0.0;
+        norm = 0.0;
+        if len(scores) > 0 {
+            raw = sum([compute_weighted_score(s) for s in scores]) / len(scores);
+            zs = [
+                normalized[s.judge_id][proj.project_id]
+                for s in scores
+                if s.judge_id in normalized
+                and proj.project_id in normalized[s.judge_id]
+            ];
+            norm = sum(zs) / len(zs) if len(zs) > 0 else 0.0;
+        }
+        t = proj.track;
+        if t not in tracks_data {
+            tracks_data[t] = [];
+        }
+        tracks_data[t].append({
+            "project_id": proj.project_id,
+            "name": proj.name,
+            "team_name": proj.team_name,
+            "group_num": proj.group_num,
+            "table_num": proj.table_num,
+            "is_finalist": proj.is_finalist,
+            "avg_score": round(raw, 2),
+            "norm_score": round(norm, 3),
+            "num_judges": len(scores),
+            "tie_alert": False
+        });
+    }
+    key = "avg_score" if sort_by == "raw" else "norm_score";
+    result = [];
+    for (t, entries) in tracks_data.items() {
+        # Unscored projects all normalize to 0.0, which would otherwise sort them
+        # above genuinely below-average teams. Sink them to the bottom.
+        entries.sort(
+            key=lambda e: dict: (1 if e["num_judges"] > 0 else 0, e[key]),
+            reverse=True
+        );
+        for (i, e) in enumerate(entries) {
+            e["rank"] = i + 1;
+        }
+        if len(entries) >= 2 {
+            diff = entries[0][key] - entries[1][key];
+            if diff <= TIE_THRESHOLD {
+                entries[0]["tie_alert"] = True;
+                entries[1]["tie_alert"] = True;
+            }
+        }
+        result.append({"track": t, "rankings": entries});
+    }
+    result.sort(key=lambda x: dict: x["track"]);
+    return result;
 }
 
 def score_to_dict(s: Score) -> dict {
@@ -232,7 +356,9 @@ walker:pub get_config {
             "current_group": c.current_group,
             "current_round": c.current_round,
             "total_groups": c.total_groups,
-            "group_size": c.group_size
+            "group_size": c.group_size,
+            "finals_selected": c.finals_selected,
+            "finalists_per_track": c.finalists_per_track
         };
     }
 }
@@ -407,8 +533,14 @@ walker:pub auto_assign_judges {
 
 # ── Get Assigned Projects (for Judge) ──
 
+"""
+Everything this judge must score right now, in table order, with their own
+progress on each. Assignments are swapped wholesale when the final is built, so
+whatever is attached to the judge is always the active round's worklist.
+"""
 walker:pub get_assigned_projects {
     has email: str = "";
+    has round_num: int = 0;
 
     can fetch with Root entry {
         profile = find_profile_by_email(self.email);
@@ -416,29 +548,41 @@ walker:pub get_assigned_projects {
             report {"error": "Profile not found"};
             disengage;
         }
+        config = get_config_node();
+        rnd = self.round_num if self.round_num > 0 else max(config.current_round, 1);
+
         assigned = [profile -->](?:Project);
+        assigned.sort(key=lambda p: Project: (p.group_num, p.table_num));
         result = [];
+        submitted = 0;
         for proj in assigned {
-            scores = [proj -->](?:Score);
             my_score = None;
-            for s in scores {
-                if s.judge_id == profile.user_id {
+            for s in [proj -->](?:Score) {
+                if s.judge_id == profile.user_id and s.round_num == rnd {
                     my_score = s;
                 }
             }
             status = "not_started";
             if my_score != None {
-                if my_score.is_final {
-                    status = "submitted";
-                } else {
-                    status = "in_progress";
-                }
+                status = "submitted" if my_score.is_final else "in_progress";
+            }
+            if status == "submitted" {
+                submitted += 1;
             }
             entry = project_to_dict(proj);
             entry["status"] = status;
+            entry["round_num"] = rnd;
+            entry["my_score"] = score_to_dict(my_score) if my_score != None else None;
             result.append(entry);
         }
-        report result;
+        report {
+            "round_num": rnd,
+            "group_num": assigned[0].group_num if len(assigned) > 0 else 0,
+            "scoring_locked": config.scoring_locked,
+            "total": len(result),
+            "submitted": submitted,
+            "projects": result
+        };
     }
 }
 
@@ -447,6 +591,7 @@ walker:pub get_assigned_projects {
 walker:pub get_project_detail {
     has project_id: str = "";
     has email: str = "";
+    has round_num: int = 0;
 
     can fetch with Root entry {
         proj = find_project_by_id(self.project_id);
@@ -454,18 +599,25 @@ walker:pub get_project_detail {
             report {"error": "Project not found"};
             disengage;
         }
+        config = get_config_node();
+        rnd = self.round_num if self.round_num > 0 else max(config.current_round, 1);
         profile = find_profile_by_email(self.email);
         result = project_to_dict(proj);
-        result["scoring_locked"] = get_config_node().scoring_locked;
+        result["scoring_locked"] = config.scoring_locked;
+        result["round_num"] = rnd;
         scores = [proj -->](?:Score);
+        # Scope to the active round so a submitted round-1 score never blocks or
+        # pre-fills the judge's round-2 form.
         if profile != None {
             for s in scores {
-                if s.judge_id == profile.user_id {
+                if s.judge_id == profile.user_id and s.round_num == rnd {
                     result["my_score"] = score_to_dict(s);
                 }
             }
         }
-        result["total_scores"] = len([s for s in scores if s.is_final]);
+        result["total_scores"] = len([
+            s for s in scores if s.is_final and s.round_num == rnd
+        ]);
         report result;
     }
 }
@@ -481,13 +633,18 @@ walker:pub save_score {
     has presentation: int = 0;
     has notes: str = "";
     has is_final: bool = False;
-    has round_num: int = 1;
+    has round_num: int = 0;
 
     can save with Root entry {
         config = get_config_node();
         if config.scoring_locked {
             report {"error": "Scoring is locked"};
             disengage;
+        }
+        # Fall back to the active round so a stale client can never write a
+        # round-2 score onto the round-1 record.
+        if self.round_num <= 0 {
+            self.round_num = max(config.current_round, 1);
         }
         profile = find_profile_by_email(self.email);
         if profile == None {
@@ -567,69 +724,174 @@ walker:pub get_my_scores {
 
 walker:pub get_leaderboard {
     has track: str = "";
+    has round_num: int = 1;
+    has sort_by: str = "normalized";
 
     can compute with Root entry {
-        projects = [root -->](?:Project);
+        # Round 2 has every judge scoring every finalist, so raw averages are
+        # already comparable and normalization only adds noise.
+        finalists_only = self.round_num == 2;
+        sort_by = "raw" if self.round_num == 2 else self.sort_by;
+        result = build_rankings(self.round_num, finalists_only, sort_by);
         if self.track {
-            projects = [p for p in projects if p.track == self.track];
-        }
-        tracks_data: dict = {};
-        for proj in projects {
-            scores = [s for s in [proj -->](?:Score) if s.is_final];
-            if len(scores) == 0 {
-                avg = 0.0;
-            } else {
-                total = sum([compute_weighted_score(s) for s in scores]);
-                avg = total / len(scores);
-            }
-            t = proj.track;
-            if t not in tracks_data {
-                tracks_data[t] = [];
-            }
-            tracks_data[t].append({
-                "project_id": proj.project_id,
-                "name": proj.name,
-                "team_name": proj.team_name,
-                "avg_score": round(avg, 2),
-                "num_judges": len(scores),
-                "tie_alert": False
-            });
-        }
-        result = [];
-        for (t, entries) in tracks_data.items() {
-            entries.sort(key=lambda x: dict: x["avg_score"], reverse=True);
-            for (i, e) in enumerate(entries) {
-                e["rank"] = i + 1;
-            }
-            if len(entries) >= 2 {
-                diff = entries[0]["avg_score"] - entries[1]["avg_score"];
-                if diff <= TIE_THRESHOLD {
-                    entries[0]["tie_alert"] = True;
-                    entries[1]["tie_alert"] = True;
-                }
-            }
-            result.append({"track": t, "rankings": entries});
+            result = [r for r in result if r["track"] == self.track];
         }
         report result;
+    }
+}
+
+# ── Finalist Selection (Round 1 → Round 2) ──
+
+"""
+Close round 1 and build the final: take the top `per_track` projects in each
+track, flag them as finalists, and assign EVERY judge to score all of them in
+round 2. Because all judges see all finalists, round-2 scores need no
+normalization and rank directly.
+"""
+walker:pub select_finalists {
+    has per_track: int = 2;
+    has sort_by: str = "normalized";
+
+    can run with Root entry {
+        judges = [p for p in [root -->](?:UserProfile) if p.role == "judge"];
+        if len(judges) == 0 {
+            report {"error": "No judges available"};
+            disengage;
+        }
+        if self.per_track < 1 {
+            self.per_track = 1;
+        }
+
+        ranked = build_rankings(1, False, self.sort_by);
+        chosen = [];
+        for entry in ranked {
+            for e in entry["rankings"] {
+                if e["rank"] <= self.per_track and e["num_judges"] > 0 {
+                    chosen.append(e);
+                }
+            }
+        }
+        if len(chosen) == 0 {
+            report {"error": "No scored projects in round 1 yet"};
+            disengage;
+        }
+
+        # Reset any previous selection, then flag the new finalists.
+        for p in [root -->](?:Project) {
+            p.is_finalist = False;
+            p.finalist_rank = 0;
+        }
+        chosen_ids = [];
+        for e in chosen {
+            proj = find_project_by_id(e["project_id"]);
+            if proj != None {
+                proj.is_finalist = True;
+                proj.finalist_rank = e["rank"];
+                chosen_ids.append(proj.project_id);
+            }
+        }
+
+        # Rebuild assignments: every judge scores every finalist in round 2.
+        finalists = [p for p in [root -->](?:Project) if p.is_finalist];
+        finalists.sort(key=lambda p: Project: (p.track, p.finalist_rank));
+        assignments = 0;
+        for judge in judges {
+            for proj in [judge -->](?:Project) {
+                judge del --> proj;
+            }
+            for proj in finalists {
+                judge +>:AssignedTo(round_num=2):+> proj;
+                assignments += 1;
+            }
+        }
+
+        config = get_config_node();
+        config.finals_selected = True;
+        config.finalists_per_track = self.per_track;
+        config.current_round = 2;
+        config.current_group = 0;
+
+        report {
+            "per_track": self.per_track,
+            "finalists": [
+                {
+                    "project_id": p.project_id,
+                    "name": p.name,
+                    "team_name": p.team_name,
+                    "track": p.track,
+                    "round1_rank": p.finalist_rank
+                }
+                for p in finalists
+            ],
+            "total_finalists": len(finalists),
+            "judges_assigned": len(judges),
+            "assignments": assignments
+        };
+    }
+}
+
+"""Current finalists plus how many judges have submitted a round-2 score."""
+walker:pub get_finalists {
+    can fetch with Root entry {
+        config = get_config_node();
+        judges = [p for p in [root -->](?:UserProfile) if p.role == "judge"];
+        finalists = [p for p in [root -->](?:Project) if p.is_finalist];
+        finalists.sort(key=lambda p: Project: (p.track, p.finalist_rank));
+        out = [];
+        for p in finalists {
+            scored = len([
+                s for s in [p -->](?:Score)
+                if s.round_num == 2 and s.is_final
+            ]);
+            entry = project_to_dict(p);
+            entry["round2_scored_by"] = scored;
+            entry["round2_pending"] = len(judges) - scored;
+            out.append(entry);
+        }
+        report {
+            "finals_selected": config.finals_selected,
+            "per_track": config.finalists_per_track,
+            "total_judges": len(judges),
+            "finalists": out
+        };
+    }
+}
+
+"""Undo finalist selection and restore round-1 group assignments."""
+walker:pub reset_finalists {
+    can run with Root entry {
+        for p in [root -->](?:Project) {
+            p.is_finalist = False;
+            p.finalist_rank = 0;
+        }
+        config = get_config_node();
+        config.finals_selected = False;
+        config.current_round = 1;
+        report {"reset": True, "note": "Re-run Assign Judges to restore round 1"};
     }
 }
 
 # ── Get Progress ──
 
 walker:pub get_progress {
+    has round_num: int = 0;
+
     can compute with Root entry {
+        config = get_config_node();
+        rnd = self.round_num if self.round_num > 0 else max(config.current_round, 1);
         judges = [p for p in [root -->](?:UserProfile) if p.role == "judge"];
         projects = [root -->](?:Project);
-        total_projects = len(projects);
         progress = [];
+        total_expected = 0;
+        total_submitted = 0;
         for judge in judges {
             assigned = [judge -->](?:Project);
-            num_assigned = len(assigned);
             scored = 0;
             final_count = 0;
+            group_num = assigned[0].group_num if len(assigned) > 0 else 0;
             for proj in assigned {
                 for s in [proj -->](?:Score) {
-                    if s.judge_id == judge.user_id {
+                    if s.judge_id == judge.user_id and s.round_num == rnd {
                         scored += 1;
                         if s.is_final {
                             final_count += 1;
@@ -637,18 +899,48 @@ walker:pub get_progress {
                     }
                 }
             }
+            total_expected += len(assigned);
+            total_submitted += final_count;
             progress.append({
                 "judge_name": judge.name,
                 "judge_email": judge.email,
-                "assigned": num_assigned,
+                "group_num": group_num,
+                "assigned": len(assigned),
                 "scored": scored,
                 "submitted": final_count,
-                "remaining": num_assigned - final_count
+                "remaining": len(assigned) - final_count,
+                "done": final_count >= len(assigned) and len(assigned) > 0
             });
         }
+        progress.sort(key=lambda j: dict: (j["group_num"], j["judge_name"]));
+        # Projects nobody has finalised yet — the list the organizer chases.
+        unscored = [];
+        for p in projects {
+            if rnd == 2 and not p.is_finalist {
+                continue;
+            }
+            if p.group_num == 0 and rnd == 1 {
+                continue;
+            }
+            n = len([s for s in [p -->](?:Score) if s.is_final and s.round_num == rnd]);
+            if n == 0 {
+                unscored.append({
+                    "project_id": p.project_id,
+                    "name": p.name,
+                    "team_name": p.team_name,
+                    "group_num": p.group_num,
+                    "table_num": p.table_num
+                });
+            }
+        }
         report {
-            "total_projects": total_projects,
+            "round_num": rnd,
+            "total_projects": len(projects),
             "total_judges": len(judges),
+            "expected_scores": total_expected,
+            "submitted_scores": total_submitted,
+            "percent_complete": round(100.0 * total_submitted / total_expected, 1) if total_expected > 0 else 0.0,
+            "unscored_projects": unscored,
             "judges": progress
         };
     }
@@ -670,76 +962,74 @@ walker:pub lock_scoring {
 
 walker:pub export_results {
     has track: str = "";
+    has round_num: int = 1;
+    has sort_by: str = "normalized";
 
     can export with Root entry {
-        projects = [root -->](?:Project);
+        finalists_only = self.round_num == 2;
+        sort_by = "raw" if self.round_num == 2 else self.sort_by;
+        ranked = build_rankings(self.round_num, finalists_only, sort_by);
         if self.track {
-            projects = [p for p in projects if p.track == self.track];
+            ranked = [r for r in ranked if r["track"] == self.track];
         }
-        tracks_data: dict = {};
-        for proj in projects {
-            scores = [s for s in [proj -->](?:Score) if s.is_final];
-            if len(scores) == 0 {
-                avg = 0.0;
-            } else {
-                total = sum([compute_weighted_score(s) for s in scores]);
-                avg = total / len(scores);
-            }
-            t = proj.track;
-            if t not in tracks_data {
-                tracks_data[t] = [];
-            }
-            judge_scores = [];
-            for s in scores {
-                judge_profile = None;
-                for jp in [root -->](?:UserProfile) {
-                    if jp.user_id == s.judge_id {
-                        judge_profile = jp;
+
+        prize_map = {
+            "agentic_ai": ["$2,000", "$1,000"],
+            "fintech_open": ["$1,500", "$800"],
+            "social_impact": ["$1,500", "$800"]
+        };
+        result = [];
+        for entry in ranked {
+            t = entry["track"];
+            prizes = prize_map.get(t, []);
+            enriched = [];
+            winners = [];
+            for e in entry["rankings"] {
+                proj = find_project_by_id(e["project_id"]);
+                judge_scores = [];
+                if proj != None {
+                    for s in [proj -->](?:Score) {
+                        if not s.is_final or s.round_num != self.round_num {
+                            continue;
+                        }
+                        judge_profile = None;
+                        for jp in [root -->](?:UserProfile) {
+                            if jp.user_id == s.judge_id {
+                                judge_profile = jp;
+                            }
+                        }
+                        judge_scores.append({
+                            "judge_name": judge_profile.name if judge_profile else "Unknown",
+                            "judge_email": judge_profile.email if judge_profile else "",
+                            "technical_execution": s.technical_execution,
+                            "jac_usage": s.jac_usage,
+                            "creativity": s.creativity,
+                            "presentation": s.presentation,
+                            "weighted": round(compute_weighted_score(s), 2),
+                            "notes": s.notes
+                        });
                     }
                 }
-                judge_scores.append({
-                    "judge_name": judge_profile.name if judge_profile else "Unknown",
-                    "judge_email": judge_profile.email if judge_profile else "",
-                    "technical_execution": s.technical_execution,
-                    "jac_usage": s.jac_usage,
-                    "creativity": s.creativity,
-                    "presentation": s.presentation,
-                    "weighted": round(compute_weighted_score(s), 2),
-                    "notes": s.notes
-                });
-            }
-            tracks_data[t].append({
-                "project_id": proj.project_id,
-                "name": proj.name,
-                "team_name": proj.team_name,
-                "avg_score": round(avg, 2),
-                "num_judges": len(scores),
-                "judge_scores": judge_scores
-            });
-        }
-        result = [];
-        prize_map = {
-            "agentic_ai": ["$750", "$400"],
-            "fintech_open": ["$750", "$400"],
-            "social_impact": ["$750", "$400"]
-        };
-        for (t, entries) in tracks_data.items() {
-            entries.sort(key=lambda x: dict: x["avg_score"], reverse=True);
-            prizes = prize_map.get(t, []);
-            winners = [];
-            for (i, e) in enumerate(entries) {
-                prize = prizes[i] if i < len(prizes) else "";
+                row = dict(e);
+                row["judge_scores"] = judge_scores;
+                # Prizes only mean anything once the final has been scored.
+                row["prize"] = prizes[e["rank"] - 1] if (
+                    self.round_num == 2 and e["rank"] <= len(prizes)
+                ) else "";
+                enriched.append(row);
                 winners.append({
-                    "rank": i + 1,
+                    "rank": e["rank"],
                     "project": e["name"],
                     "team": e["team_name"],
                     "score": e["avg_score"],
+                    "norm_score": e["norm_score"],
                     "num_judges": e["num_judges"],
-                    "prize": prize,
-                    "judge_scores": e["judge_scores"]
+                    "prize": row["prize"],
+                    "judge_scores": judge_scores
                 });
             }
-            result.append({"track": t, "winners": winners});
+            # `rankings` for the UI table, `winners` kept for existing consumers.
+            result.append({"track": t, "rankings": enriched, "winners": winners});
         }
         # Awards
         awards_result = [];
@@ -759,7 +1049,11 @@ walker:pub export_results {
                 "winner_project_id": a.winner_project_id
             });
         }
-        report {"tracks": result, "special_awards": awards_result};
+        report {
+            "round_num": self.round_num,
+            "tracks": result,
+            "special_awards": awards_result
+        };
     }
 }
 
@@ -1099,57 +1393,151 @@ walker:pub register_participant {
 
 # ── Create Groups (split projects into groups of N) ──
 
-walker:pub create_groups {
-    has group_size: int = 10;
+"""
+Split `num_groups` between tracks so the LARGEST group is as small as possible.
 
-    can create with Root entry {
-        projects = [root -->](?:Project);
-        import random;
-        random.shuffle(projects);
-        group_num = 1;
-        table_in_group = 1;
-        for (i, proj) in enumerate(projects) {
-            proj.group_num = group_num;
-            proj.table_num = table_in_group;
-            table_in_group += 1;
-            if (i + 1) % self.group_size == 0 {
-                group_num += 1;
-                table_in_group = 1;
+Every group is demoed back to back inside one fixed window, so the slot length
+is dictated by the biggest group. Allocating proportionally to submission count
+does not minimise that, so instead we hand each spare group to whichever track
+currently has the worst largest-group, which does. Each track starts at
+`min_per_track` groups so it can always field enough finalists.
+Returns {track: group_count}.
+"""
+def allocate_groups_by_track(counts: dict, num_groups: int, min_per_track: int) -> dict {
+    tracks = [t for t in counts.keys() if counts[t] > 0];
+    tracks.sort();
+    if len(tracks) == 0 {
+        return {};
+    }
+    alloc: dict = {};
+    floor_each = min_per_track;
+    # If the floor cannot fit, back it off until it does (at least 1 each).
+    while len(tracks) * floor_each > num_groups and floor_each > 1 {
+        floor_each -= 1;
+    }
+    for t in tracks {
+        alloc[t] = min(floor_each, counts[t]);
+        if alloc[t] < 1 {
+            alloc[t] = 1;
+        }
+    }
+    # Hand each remaining group to the track whose largest group is worst,
+    # which is exactly the greedy step that minimises the global maximum.
+    used = sum([alloc[t] for t in tracks]);
+    for _ in range(num_groups - used) {
+        worst = None;
+        worst_size = 0;
+        for t in tracks {
+            if alloc[t] >= counts[t] {
+                continue;  # already one project per group, cannot improve
+            }
+            largest = -(-counts[t] // alloc[t]);  # ceil division
+            if largest > worst_size {
+                worst_size = largest;
+                worst = t;
             }
         }
-        total_groups = group_num;
-        if len(projects) % self.group_size == 0 and len(projects) > 0 {
-            total_groups = group_num - 1;
+        if worst == None {
+            break;
         }
+        alloc[worst] += 1;
+    }
+    return alloc;
+}
+
+walker:pub create_groups {
+    has num_groups: int = 10;
+    has min_groups_per_track: int = 2;
+
+    can create with Root entry {
+        import random;
+        projects = [root -->](?:Project);
+        if len(projects) == 0 {
+            report {"error": "No projects imported yet"};
+            disengage;
+        }
+        if self.num_groups < 1 {
+            self.num_groups = 1;
+        }
+
+        # Bucket by track. Groups are track-pure: a judge pair only ever compares
+        # projects within one track, and every track is guaranteed its own
+        # groups, so the finalist pool covers all three tracks by construction.
+        by_track: dict = {};
+        for p in projects {
+            t = p.track if p.track else "fintech_open";
+            if t not in by_track {
+                by_track[t] = [];
+            }
+            by_track[t].append(p);
+        }
+        counts: dict = {};
+        for (t, plist) in by_track.items() {
+            counts[t] = len(plist);
+        }
+        alloc = allocate_groups_by_track(counts, self.num_groups, self.min_groups_per_track);
+
+        # Clear any previous grouping so re-running is safe.
+        for p in projects {
+            p.group_num = 0;
+            p.table_num = 0;
+        }
+
+        group_num = 0;
+        groups_detail = [];
+        track_summary = [];
+        for t in sorted(alloc.keys()) {
+            plist = by_track[t];
+            random.shuffle(plist);
+            n_groups = alloc[t];
+            buckets = [[] for _ in range(n_groups)];
+            # Deal round-robin so group sizes differ by at most one.
+            for (i, p) in enumerate(plist) {
+                buckets[i % n_groups].append(p);
+            }
+            track_summary.append({
+                "track": t,
+                "projects": len(plist),
+                "groups": n_groups
+            });
+            for bucket in buckets {
+                group_num += 1;
+                entries = [];
+                for (idx, p) in enumerate(bucket) {
+                    p.group_num = group_num;
+                    p.table_num = idx + 1;
+                    entries.append({
+                        "project_id": p.project_id,
+                        "name": p.name,
+                        "team_name": p.team_name,
+                        "table_num": p.table_num
+                    });
+                }
+                groups_detail.append({
+                    "group_num": group_num,
+                    "track": t,
+                    "count": len(bucket),
+                    "projects": entries
+                });
+            }
+        }
+
         config = get_config_node();
-        config.total_groups = total_groups;
-        config.group_size = self.group_size;
+        config.total_groups = group_num;
+        config.group_size = self.num_groups;
         config.current_group = 0;
         config.current_round = 0;
 
-        # Report group summary with table numbers
-        groups_detail = [];
-        current_g = {};
-        for proj in projects {
-            g = proj.group_num;
-            if str(g) not in current_g {
-                current_g[str(g)] = [];
-            }
-            current_g[str(g)].append({
-                "name": proj.name,
-                "team_name": proj.team_name,
-                "table_num": proj.table_num,
-                "project_id": proj.project_id
-            });
-        }
-        for (g, projs) in current_g.items() {
-            groups_detail.append({
-                "group_num": int(g),
-                "projects": projs
-            });
-        }
-        groups_detail.sort(key=lambda x: dict: x["group_num"]);
-        report {"total_groups": total_groups, "group_size": self.group_size, "groups": groups_detail};
+        sizes = [grp["count"] for grp in groups_detail];
+        report {
+            "total_groups": group_num,
+            "total_projects": len(projects),
+            # The biggest group sets the demo slot length for the whole room.
+            "max_group_size": max(sizes) if len(sizes) > 0 else 0,
+            "min_group_size": min(sizes) if len(sizes) > 0 else 0,
+            "by_track": track_summary,
+            "groups": groups_detail
+        };
     }
 }
 
@@ -1219,58 +1607,104 @@ walker:pub get_groups {
 
 # ── Rotation Assignment (assign each judge 2 projects per group) ──
 
+"""
+Pin each judge to exactly one group for round 1 and assign them every project in
+it. Judges are dealt round-robin across groups, so with 20 judges and 10 groups
+each group gets a pair; with fewer judges the groups differ by at most one.
+Judges whose profile lists tracks are seated on a matching group where possible.
+"""
 walker:pub assign_rotation {
     can assign with Root entry {
         judges = [p for p in [root -->](?:UserProfile) if p.role == "judge"];
         projects = [root -->](?:Project);
-        config = get_config_node();
 
-        # Clear existing assignments
+        if len(judges) == 0 {
+            report {"error": "No judges added yet"};
+            disengage;
+        }
+
+        # Clear every existing assignment so re-running is safe.
         for judge in judges {
             for proj in [judge -->](?:Project) {
                 judge del --> proj;
             }
         }
 
-        # Group projects by group_num
         groups: dict = {};
         for proj in projects {
-            g = proj.group_num;
-            if g not in groups {
-                groups[g] = [];
+            if proj.group_num == 0 {
+                continue;
             }
-            groups[g].append(proj);
+            if proj.group_num not in groups {
+                groups[proj.group_num] = [];
+            }
+            groups[proj.group_num].append(proj);
+        }
+        group_keys = sorted(groups.keys());
+        if len(group_keys) == 0 {
+            report {"error": "Run Create Groups first"};
+            disengage;
         }
 
-        num_judges = len(judges);
-        total_assignments = 0;
+        group_track: dict = {};
+        for g in group_keys {
+            group_track[g] = groups[g][0].track;
+        }
 
-        group_keys = [g for g in groups.keys() if g != 0];
-        group_keys.sort();
-        for (gi, g) in enumerate(group_keys) {
+        # Seat track-specialist judges first so they land on a matching group,
+        # then fill the rest, each time picking the emptiest eligible group so
+        # sizes stay even.
+        per_group: dict = {};
+        for g in group_keys {
+            per_group[g] = [];
+        }
+        ordered = [j for j in judges if len(j.assigned_tracks) > 0];
+        ordered += [j for j in judges if len(j.assigned_tracks) == 0];
+
+        for judge in ordered {
+            candidates = group_keys;
+            if len(judge.assigned_tracks) > 0 {
+                matching = [g for g in group_keys if group_track[g] in judge.assigned_tracks];
+                if len(matching) > 0 {
+                    candidates = matching;
+                }
+            }
+            target = candidates[0];
+            for g in candidates {
+                if len(per_group[g]) < len(per_group[target]) {
+                    target = g;
+                }
+            }
+            per_group[target].append(judge);
+        }
+
+        total_assignments = 0;
+        detail = [];
+        for g in group_keys {
             group_projects = groups[g];
             group_projects.sort(key=lambda p: Project: p.table_num);
-            n_proj = len(group_projects);
-            # Offset by group index, but step by 2 (since each judge takes 2 consecutive tables)
-            # Ensure offset doesn't exceed group size
-            offset = (gi * 2) % n_proj if n_proj > 2 else 0;
-            for (i, judge) in enumerate(judges) {
-                r1_idx = (i + offset) % n_proj;
-                r2_idx = (r1_idx + 1) % n_proj;
-                judge +>:AssignedTo(round_num=1):+> group_projects[r1_idx];
-                total_assignments += 1;
-                if n_proj > 1 {
-                    judge +>:AssignedTo(round_num=2):+> group_projects[r2_idx];
+            for judge in per_group[g] {
+                for proj in group_projects {
+                    judge +>:AssignedTo(round_num=1):+> proj;
                     total_assignments += 1;
                 }
             }
+            detail.append({
+                "group_num": g,
+                "track": group_track[g],
+                "projects": len(group_projects),
+                "judges": [{"name": j.name, "email": j.email} for j in per_group[g]]
+            });
         }
 
+        unstaffed = [g for g in group_keys if len(per_group[g]) == 0];
         report {
             "total_assignments": total_assignments,
-            "judges": num_judges,
-            "groups": len(groups),
-            "projects_per_judge": total_assignments / num_judges if num_judges > 0 else 0
+            "judges": len(judges),
+            "groups": len(group_keys),
+            "projects_per_judge": round(total_assignments / len(judges), 1),
+            "unstaffed_groups": unstaffed,
+            "assignments": detail
         };
     }
 }

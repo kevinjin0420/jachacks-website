@@ -91,17 +91,33 @@ export default function ScoreProject() {
   const [success, setSuccess] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [round, setRound] = useState(0);
+  const draftKey = `draft:${email}:${id}:${round || 1}`;
 
   useEffect(() => {
     loadProject();
   }, [id]);
 
+  // Mirror every keystroke to this device so a refresh, a dead battery or a
+  // dropped request never costs a judge their marks.
+  useEffect(() => {
+    if (loading || isSubmitted) return;
+    localStorage.setItem(draftKey, JSON.stringify({ scores, notes }));
+  }, [scores, notes, draftKey, loading, isSubmitted]);
+
   async function loadProject() {
     try {
+      // Resolve the active round first: a project scored in round 1 must show a
+      // blank form in round 2, and the score must be written to that round.
+      const cfg = extractFirst(await walkerRequest("get_config", {}));
+      const activeRound = Math.max(cfg?.current_round ?? 1, 1);
+      setRound(activeRound);
+
       const res = extractFirst(
         await walkerRequest("get_project_detail", {
           project_id: id,
           email,
+          round_num: activeRound,
         })
       );
       if (res) {
@@ -116,6 +132,18 @@ export default function ScoreProject() {
           });
           setNotes(s.notes || "");
           setIsSubmitted(!!s.is_final);
+        } else {
+          // Nothing on the server for this round — recover an unsent local draft.
+          const local = localStorage.getItem(
+            `draft:${email}:${id}:${activeRound}`
+          );
+          if (local) {
+            try {
+              const d = JSON.parse(local);
+              if (d.scores) setScores(d.scores);
+              if (d.notes) setNotes(d.notes);
+            } catch {}
+          }
         }
       }
     } catch (err: any) {
@@ -138,25 +166,43 @@ export default function ScoreProject() {
     setError("");
     setSuccess("");
     setSaving(true);
-    try {
-      await walkerRequest("save_score", {
-        email,
-        project_id: id,
-        technical_execution: scores.technical_execution,
-        jac_usage: scores.jac_usage,
-        creativity: scores.creativity,
-        presentation: scores.presentation,
-        notes,
-        is_final: isFinal,
-        round_num: 1,
-      });
-      setSuccess(isFinal ? "Score submitted!" : "Draft saved!");
-      setIsSubmitted(isFinal);
-    } catch (err: any) {
-      setError(err.message || "Failed to save");
-    } finally {
-      setSaving(false);
+    const payload = {
+      email,
+      project_id: id,
+      technical_execution: scores.technical_execution,
+      jac_usage: scores.jac_usage,
+      creativity: scores.creativity,
+      presentation: scores.presentation,
+      notes,
+      is_final: isFinal,
+      round_num: round || 1,
+    };
+    // Venue wifi drops. Retry a couple of times before making the judge redo
+    // the whole form, and keep a local copy either way.
+    let lastErr: any = null;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const res = await walkerRequest("save_score", payload);
+        const data = extractFirst(res);
+        if (data?.error) {
+          setError(data.error);
+          setSaving(false);
+          return;
+        }
+        localStorage.removeItem(draftKey);
+        setSuccess(isFinal ? "Score submitted!" : "Draft saved!");
+        setIsSubmitted(isFinal);
+        setSaving(false);
+        return;
+      } catch (err: any) {
+        lastErr = err;
+        await new Promise((r) => setTimeout(r, 600 * (attempt + 1)));
+      }
     }
+    setError(
+      `${lastErr?.message || "Failed to save"} — your marks are saved on this device, press Submit again.`
+    );
+    setSaving(false);
   }
 
   if (loading) {
@@ -223,6 +269,23 @@ export default function ScoreProject() {
               }}>
                 TABLE {project.table_num}
               </span>
+            </div>
+          )}
+          {round === 2 && (
+            <div style={{
+              display: "inline-block",
+              marginBottom: 10,
+              padding: "4px 12px",
+              borderRadius: 6,
+              background: "rgba(244, 98, 42, 0.15)",
+              border: "1px solid var(--accent)",
+              color: "var(--accent)",
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.05em",
+            }}>
+              ROUND 2 &middot; FINALS
             </div>
           )}
           <h2
