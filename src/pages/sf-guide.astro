@@ -42,6 +42,7 @@ import '../styles/site.css';
           <a href="#submissions" class="nav-link">// SUBMIT</a>
           <a href="#resources" class="nav-link">// RESOURCES</a>
           <a href="#rules" class="nav-link">// RULES</a>
+          <a href="#judges" class="nav-link">// JUDGES</a>
         </div>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
           <svg class="tt-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -61,6 +62,7 @@ import '../styles/site.css';
       <a href="#submissions">// SUBMIT</a>
       <a href="#resources">// RESOURCES</a>
       <a href="#rules">// RULES</a>
+      <a href="#judges">// JUDGES</a>
       <a href="https://luma.com/9x1573sw" target="_blank" class="mobile-cta">REGISTER NOW</a>
     </div>
 
@@ -137,6 +139,40 @@ import '../styles/site.css';
             <div class="sfg-info-title">You're covered</div>
             <p class="sfg-info-desc">Breakfast, lunch, dinner, and snacks all day. Dietary restrictions? Flag them on your Luma registration or ping us on Discord.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JUDGES -->
+    <section class="section" id="judges">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// OUR JUDGES</div>
+          <h2 class="section-title">The Judging <span class="text-accent">Panel.</span></h2>
+          <p class="section-sub">JacHacks SF 2026 is judged by the following panel. We're grateful to every one of them for supporting the event and giving their time to review projects.</p>
+        </div>
+
+        <div class="sfg-judges reveal">
+          <div class="sfg-judge">Dheeraj Pailla</div>
+          <div class="sfg-judge">Nicole Grossmann</div>
+          <div class="sfg-judge">Ivan</div>
+          <div class="sfg-judge">Joey</div>
+          <div class="sfg-judge">Ponita Ty</div>
+          <div class="sfg-judge">Vatsal Shah</div>
+          <div class="sfg-judge">Sacchit Mittal</div>
+          <div class="sfg-judge">Shivang Raisurana</div>
+          <div class="sfg-judge">Aditya Jain</div>
+          <div class="sfg-judge">Adit Srivastava</div>
+          <div class="sfg-judge">Nahom Seyoum</div>
+          <div class="sfg-judge">Ashesh Kapasi</div>
+          <div class="sfg-judge">Shashank Sharma</div>
+          <div class="sfg-judge">Shmeelok Chakraborty</div>
+          <div class="sfg-judge">Antonio Coppe</div>
+          <div class="sfg-judge">David Kupyn</div>
+          <div class="sfg-judge">Conrad Scheibye</div>
+          <div class="sfg-judge">Kunj Raval</div>
+          <div class="sfg-judge">Kumar Saurabh</div>
+          <div class="sfg-judge">Aaryan Khanna</div>
         </div>
       </div>
     </section>
@@ -636,6 +672,12 @@ import '../styles/site.css';
       .sfg-link { color:var(--primary); font-weight:600; }
       .sfg-link:hover { color:var(--pl); }
 
+      /* judges */
+      .sfg-judges { display:grid; grid-template-columns:repeat(4,1fr); gap:.85rem; }
+      .sfg-judge { display:flex; align-items:center; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1rem 1.2rem; font-family:var(--display); font-weight:600; font-size:1rem; letter-spacing:.01em; color:#fff; transition:border-color .25s, transform .25s, box-shadow .25s; }
+      .sfg-judge:hover { border-color:rgba(249,115,22,.45); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.35), 0 0 24px rgba(249,115,22,.08); }
+      :root[data-theme="light"] .sfg-judge { background:#fff; border-color:rgba(0,0,0,.09); color:#1a1828; }
+
       /* timeline */
       .sfg-timeline { max-width:820px; }
       .sfg-tl-item { display:grid; grid-template-columns:150px 34px 1fr; gap:.75rem; align-items:stretch; }
@@ -817,7 +859,7 @@ import '../styles/site.css';
 
       /* responsive */
       @media (max-width:1000px) {
-        .sfg-info-grid, .sfg-prize-grid { grid-template-columns:1fr 1fr; }
+        .sfg-info-grid, .sfg-prize-grid, .sfg-judges { grid-template-columns:1fr 1fr; }
       }
       @media (max-width:1000px) {
         .sfg-res-row { grid-template-columns:1fr 1fr; }
@@ -834,7 +876,7 @@ import '../styles/site.css';
         .sfg-tl-dot { margin-top:1.15rem; }
       }
       @media (max-width:520px) {
-        .sfg-info-grid, .sfg-prize-grid { grid-template-columns:1fr; }
+        .sfg-info-grid, .sfg-prize-grid, .sfg-judges { grid-template-columns:1fr; }
       }
     </style>
 
