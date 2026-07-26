@@ -78,7 +78,7 @@ import '../styles/site.css';
           <span class="series-event">HACKER GUIDE</span>
         </div>
         <h1 class="title-main reveal">Hacker <span class="title-spring">Guide.</span></h1>
-        <p class="hero-sub reveal">Everything you need for the day in one place. A one-day AI hackathon hosted by Jaseci Labs with $10K+ in prizes.</p>
+        <p class="hero-sub reveal">Everything you need for the day in one place. A one-day AI hackathon hosted by Jaseci Labs with $9K in prizes.</p>
         <div class="hero-meta-line reveal">
           <span>SUN, JULY 26</span>
           <span class="meta-dot">·</span>
@@ -128,8 +128,8 @@ import '../styles/site.css';
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
             </div>
             <div class="sfg-info-label">PRIZES</div>
-            <div class="sfg-info-title">Around $10K in prizes</div>
-            <p class="sfg-info-desc">Agentic AI (up to $2K), Fintech / Open, Social Impact, the Best JacHammer award, plus more sponsor tracks to come. <a class="sfg-link" href="#prizes">See all prizes &amp; tracks →</a></p>
+            <div class="sfg-info-title">$9K in prizes</div>
+            <p class="sfg-info-desc">Agentic AI (up to $2K), Fintech / Open, Social Impact, plus Best JacHammer, Best Use of Jac, and AI for Defense special awards. <a class="sfg-link" href="#prizes">See all prizes &amp; tracks →</a></p>
           </div>
           <div class="sfg-info-card">
             <div class="sfg-info-icon">
@@ -336,11 +336,12 @@ import '../styles/site.css';
       <div class="container">
         <div class="section-header reveal">
           <div class="section-eyebrow">// PRIZES & TRACKS</div>
-          <h2 class="section-title">$10K+ on the <span class="text-accent">Table.</span></h2>
-          <p class="section-sub">All projects are eligible for track prizes. When you submit on Devpost, select the tracks that meaningfully fit your project.</p>
+          <h2 class="section-title">$9K on the <span class="text-accent">Table.</span></h2>
+          <p class="section-sub">Pick <b>one main track</b> when you submit on Devpost, then select any special awards your project also fits. Special awards are judged separately, so you can win both.</p>
         </div>
 
-        <div class="sfg-prize-grid reveal">
+        <div class="sfg-prize-tier reveal">MAIN TRACKS <span class="sfg-tier-hint">· pick one</span></div>
+        <div class="sfg-prize-grid sfg-prize-grid-3 reveal">
           <div class="sfg-prize-card sfg-prize-featured">
             <div class="sfg-prize-track">AGENTIC AI</div>
             <div class="sfg-prize-rows">
@@ -365,12 +366,23 @@ import '../styles/site.css';
             </div>
             <p class="sfg-prize-note">Innovation with the most significant societal impact</p>
           </div>
+        </div>
+
+        <div class="sfg-prize-tier reveal">SPECIAL AWARDS <span class="sfg-tier-hint">· select separately</span></div>
+        <div class="sfg-prize-grid sfg-prize-grid-3 reveal">
           <div class="sfg-prize-card sfg-prize-special">
             <div class="sfg-prize-track">BEST JACHAMMER</div>
             <div class="sfg-prize-rows">
               <div class="sfg-prize-row"><span class="sfg-prize-place">SPECIAL AWARD</span><span class="sfg-prize-amt">$500</span></div>
             </div>
-            <p class="sfg-prize-note">The team that hammers hardest on Jac, the most impressive use of the Jac language</p>
+            <p class="sfg-prize-note">Deploy the Jac program you built using <a class="sfg-link" href="https://jachammer.ai" target="_blank" rel="noopener noreferrer">jachammer.ai</a> and have a working app to show for it.</p>
+          </div>
+          <div class="sfg-prize-card sfg-prize-special">
+            <div class="sfg-prize-track">BEST USE OF JAC</div>
+            <div class="sfg-prize-rows">
+              <div class="sfg-prize-row"><span class="sfg-prize-place">SPECIAL AWARD</span><span class="sfg-prize-amt">$400</span></div>
+            </div>
+            <p class="sfg-prize-note">The team that hammers hardest on Jac, the most impressive use of the language</p>
           </div>
           <div class="sfg-prize-card sfg-prize-special">
             <div class="sfg-prize-track">AI FOR DEFENSE</div>
@@ -398,15 +410,19 @@ import '../styles/site.css';
             <div class="sfg-checklist-title">SUBMISSION CHECKLIST</div>
             <div class="sfg-check-item">
               <span class="sfg-check-box"></span>
-              <span>GitHub link <b>(code must be at least 40% Jac)</b></span>
+              <span>Project name and description: what it does, the problem it solves, and how it uses Jac</span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>Public GitHub repo link <b>(code must be at least 40% Jac)</b></span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span><b>Track selection:</b> one main track, plus any special awards your project genuinely fits</span>
             </div>
             <div class="sfg-check-item">
               <span class="sfg-check-box"></span>
               <span>Demo video</span>
-            </div>
-            <div class="sfg-check-item">
-              <span class="sfg-check-box"></span>
-              <span>Written description of your project, including how you used Jac or any Jaseci Labs products</span>
             </div>
             <div class="sfg-check-item">
               <span class="sfg-check-box"></span>
@@ -721,11 +737,15 @@ import '../styles/site.css';
 
       /* prizes */
       .sfg-prize-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+      .sfg-prize-grid-3 { grid-template-columns:repeat(3,1fr); }
+      .sfg-prize-tier { font-family:var(--mono); font-size:.62rem; letter-spacing:.24em; color:var(--light); text-transform:uppercase; margin:1.6rem 0 .8rem; display:flex; align-items:center; gap:.6rem; }
+      .sfg-prize-tier:first-of-type { margin-top:0; }
+      .sfg-tier-hint { color:var(--primary); }
       .sfg-prize-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.6rem 1.5rem; display:flex; flex-direction:column; transition:border-color .25s, transform .25s, box-shadow .25s; }
       .sfg-prize-card:hover { border-color:rgba(249,115,22,.45); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.35), 0 0 24px rgba(249,115,22,.08); }
       .sfg-prize-featured { border-color:rgba(249,115,22,.5); background:linear-gradient(160deg, rgba(249,115,22,.09), var(--card) 55%); box-shadow:0 0 32px rgba(249,115,22,.08); }
       .sfg-prize-special { border-color:rgba(0,212,255,.35); background:linear-gradient(160deg, rgba(0,212,255,.06), var(--card) 55%); }
-      .sfg-prize-track { font-family:var(--mono); font-size:.62rem; letter-spacing:.2em; color:var(--primary); margin-bottom:1.1rem; }
+      .sfg-prize-track { font-family:var(--mono); font-weight:600; font-size:.95rem; letter-spacing:.16em; color:var(--primary); margin-bottom:1.1rem; }
       .sfg-prize-special .sfg-prize-track { color:var(--cyan); }
       .sfg-prize-rows { display:flex; flex-direction:column; gap:.55rem; margin-bottom:1rem; }
       .sfg-prize-row { display:flex; align-items:baseline; justify-content:space-between; gap:.75rem; }
