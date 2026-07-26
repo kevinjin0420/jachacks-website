@@ -763,16 +763,17 @@ export default function Import() {
                 marginBottom: 16,
               }}
             >
-              Split projects into groups for rotation-based judging. Each group enters a room,
-              judges score 2 projects each (round 1 + round 2), then the next group comes in.
+              Splits projects into track-pure groups, then pins a pair of judges to each
+              group for round 1. Set the number of groups to half your judge count so
+              every group gets a pair (20 judges &rarr; 10 groups).
             </p>
 
             <div style={{ display: "flex", gap: 12, alignItems: "end", marginBottom: 16 }}>
-              <div className="form-group" style={{ marginBottom: 0, width: 120 }}>
-                <label>Group Size</label>
+              <div className="form-group" style={{ marginBottom: 0, width: 130 }}>
+                <label>Number of groups</label>
                 <input
                   type="number"
-                  min={2}
+                  min={1}
                   max={50}
                   value={groupSize}
                   onChange={(e) => setGroupSize(parseInt(e.target.value) || 10)}
@@ -785,20 +786,28 @@ export default function Import() {
                   setGroupMsg("");
                   setGroupSummary("");
                   try {
-                    const res = await walkerRequest("create_groups", { group_size: groupSize });
-                    const data = extractFirst(res);
-                    if (data) {
-                      const totalGroups = data.total_groups || 0;
-                      const groups = data.groups || [];
-                      let summary = `${totalGroups} group(s) created`;
-                      if (groups.length > 0) {
-                        summary += ": " + groups.map((g: any) =>
-                          `Group ${g.group_num} (${g.count || g.project_count || "?"} projects)`
-                        ).join(", ");
-                      }
-                      setGroupSummary(summary);
+                    const data = extractFirst(
+                      await walkerRequest("create_groups", {
+                        num_groups: groupSize,
+                        min_groups_per_track: 2,
+                      })
+                    );
+                    if (data?.error) {
+                      setGroupMsg(`Error: ${data.error}`);
+                    } else if (data) {
+                      const byTrack = (data.by_track || [])
+                        .map((t: any) => `${t.track}: ${t.projects} projects in ${t.groups} groups`)
+                        .join(" · ");
+                      setGroupSummary(
+                        `${data.total_groups} groups for ${data.total_projects} projects. ` +
+                        `Largest group: ${data.max_group_size}, smallest: ${data.min_group_size}. ` +
+                        `${byTrack}`
+                      );
+                      setGroupMsg(
+                        `Groups created. Budget your demo slot off the largest group ` +
+                        `(${data.max_group_size} teams).`
+                      );
                     }
-                    setGroupMsg("Groups created successfully!");
                   } catch (err: any) {
                     setGroupMsg(`Error: ${err.message}`);
                   } finally {
@@ -808,7 +817,7 @@ export default function Import() {
                 disabled={loading.createGroups}
                 style={{ height: 42 }}
               >
-                {loading.createGroups ? "Creating..." : "Create Groups"}
+                {loading.createGroups ? "Creating..." : "1. Create Groups"}
               </button>
               <button
                 className="btn-secondary"
@@ -816,8 +825,19 @@ export default function Import() {
                   setLoading((l) => ({ ...l, assignRotation: true }));
                   setGroupMsg("");
                   try {
-                    await walkerRequest("assign_rotation", {});
-                    setGroupMsg("Rotation assigned — each judge gets 2 projects per group");
+                    const data = extractFirst(await walkerRequest("assign_rotation", {}));
+                    if (data?.error) {
+                      setGroupMsg(`Error: ${data.error}`);
+                    } else if (data) {
+                      const unstaffed = data.unstaffed_groups || [];
+                      setGroupMsg(
+                        `${data.judges} judges pinned across ${data.groups} groups ` +
+                        `(${data.projects_per_judge} projects each).` +
+                        (unstaffed.length
+                          ? ` WARNING: groups ${unstaffed.join(", ")} have no judge — add more judges.`
+                          : "")
+                      );
+                    }
                   } catch (err: any) {
                     setGroupMsg(`Error: ${err.message}`);
                   } finally {
@@ -827,7 +847,7 @@ export default function Import() {
                 disabled={loading.assignRotation}
                 style={{ height: 42 }}
               >
-                {loading.assignRotation ? "Assigning..." : "Assign Rotation"}
+                {loading.assignRotation ? "Assigning..." : "2. Assign Judges"}
               </button>
             </div>
 
