@@ -109,10 +109,14 @@ import '../styles/site.css';
       <div class="hero-scrim"></div>
 
       <div class="hero-content">
-        <div class="hero-series-badge" style="margin-bottom:.7rem; border-color:rgba(249,115,22,.35); background:rgba(249,115,22,.1);">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 19.3 7.2 21.7l.9-5.4L4.2 8.5l5.4-.8z"/></svg>
-          <span style="color:var(--primary); font-weight:600;">OFFICIAL a2Tech360 HACKATHON PARTNER</span>
+        <div class="a2-lockup">
+          <span class="a2-lockup-label">OFFICIAL HACKATHON PARTNER OF</span>
+          <a href="https://a2tech360.com" target="_blank" rel="noopener noreferrer" class="a2-lockup-link" aria-label="a2Tech360, powered by Ann Arbor SPARK">
+            <img src="/a2tech360-logo-white.webp" alt="a2Tech360, powered by Ann Arbor SPARK" class="a2-lockup-logo a2-logo-dark" />
+            <img src="/a2tech360-logo-color.webp" alt="" aria-hidden="true" class="a2-lockup-logo a2-logo-light" />
+          </a>
         </div>
+
         <div class="hero-series-badge">
           <span class="series-dot"></span>
           <span>JACHACKS SERIES</span>
@@ -133,7 +137,9 @@ import '../styles/site.css';
         </div>
 
         <div class="hero-title">
-          <img src="/jaseci-logo.png" alt="" class="hero-j-logo" />
+          <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" class="hero-j-logo-link" aria-label="Jac language">
+            <img src="/jaseci-logo.png" alt="" class="hero-j-logo" />
+          </a>
           <h1 class="title-main">JacHacks <span class="title-spring">A2Tech</span></h1>
         </div>
 
@@ -166,8 +172,6 @@ import '../styles/site.css';
             <span class="cd-label">SEC</span>
           </div>
         </div>
-
-        <p class="sf-note"><span class="sf-note-dot"></span> Registration is now open. Secure your spot for JacHacks A2Tech.</p>
 
         <div class="cta-group">
           <a href="https://luma.com/jlpxupsw" target="_blank" rel="noopener noreferrer" class="btn-primary btn-register">
@@ -328,6 +332,55 @@ import '../styles/site.css';
         <p>© 2026 JacHacks · Powered by <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer">Jaseci</a> · A global hackathon series</p>
       </div>
     </footer>
+
+  <style is:global>
+    /* the note between the countdown and the buttons is gone, so restore that breathing room */
+    .hero-content .cta-group { margin-top: 2rem; }
+
+    /* the hero Jac mark links out to jaclang.org */
+    .hero-j-logo-link { display: block; line-height: 0; transition: transform .3s ease, filter .3s ease; }
+    .hero-j-logo-link:hover { transform: translateY(-3px); }
+    .hero-j-logo-link:hover .hero-j-logo { filter: drop-shadow(0 0 28px rgba(249,115,22,.8)) drop-shadow(0 0 70px rgba(249,115,22,.3)); }
+    .hero-j-logo { transition: filter .3s ease; }
+
+    /* a2Tech360 partner lockup, sits at the very top of the hero */
+    .a2-lockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1.6rem;
+    }
+    .a2-lockup-label {
+      font-family: var(--mono);
+      font-size: .58rem;
+      letter-spacing: .28em;
+      color: rgba(242,234,214,.4);
+    }
+    .a2-lockup-link { display: block; line-height: 0; transition: transform .3s ease, filter .3s ease; }
+    .a2-lockup-link:hover { transform: translateY(-2px); }
+    .a2-lockup-link:hover .a2-lockup-logo { opacity: 1; }
+    .a2-lockup-logo {
+      height: 2.7rem;
+      width: auto;
+      object-fit: contain;
+      opacity: .88;
+      transition: opacity .3s ease;
+    }
+
+    /* full-colour mark on the light theme, white knockout on the dark theme */
+    .a2-logo-light { display: none; }
+    :root[data-theme="light"] .a2-logo-dark { display: none; }
+    :root[data-theme="light"] .a2-logo-light { display: block; }
+    :root[data-theme="light"] .a2-lockup-label { color: rgba(26,24,40,.5); }
+    :root[data-theme="light"] .a2-lockup-logo { opacity: .95; }
+
+    @media (max-width: 560px) {
+      .a2-lockup { gap: .5rem; margin-bottom: 1.1rem; }
+      .a2-lockup-label { font-size: .52rem; letter-spacing: .22em; }
+      .a2-lockup-logo { height: 2.05rem; }
+    }
+  </style>
 
   <script>
     // ===== CANVAS =====
