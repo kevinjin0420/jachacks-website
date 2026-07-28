@@ -143,46 +143,32 @@ import '../styles/site.css';
           <span>FOUNDERS, INC. · SAN FRANCISCO</span>
         </div>
 
-        <div class="countdown" id="countdown">
-          <div class="cd-block">
-            <span class="cd-val" id="cd-days">00</span>
-            <span class="cd-label">DAYS</span>
+        <div class="wrap-panel" id="wrap-panel">
+          <span class="wrap-sheen"></span>
+          <div class="wrap-eyebrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            THAT'S A WRAP
+            <span class="wrap-eyebrow-sep">·</span>
+            <span class="wrap-eyebrow-alt">JULY 26, 2026</span>
           </div>
-          <span class="cd-sep">:</span>
-          <div class="cd-block">
-            <span class="cd-val" id="cd-hours">00</span>
-            <span class="cd-label">HRS</span>
-          </div>
-          <span class="cd-sep">:</span>
-          <div class="cd-block">
-            <span class="cd-val" id="cd-mins">00</span>
-            <span class="cd-label">MIN</span>
-          </div>
-          <span class="cd-sep">:</span>
-          <div class="cd-block">
-            <span class="cd-val" id="cd-secs">00</span>
-            <span class="cd-label">SEC</span>
+
+          <div class="wrap-stats">
+            <div class="wrap-stat">
+              <span class="wrap-num" data-count="200" data-suffix="+">200+</span>
+              <span class="wrap-stat-label">BUILDERS</span>
+            </div>
+            <span class="wrap-divider"></span>
+            <div class="wrap-stat">
+              <span class="wrap-num" data-count="77">77</span>
+              <span class="wrap-stat-label">PROJECTS SHIPPED</span>
+            </div>
           </div>
         </div>
 
-        <a href="/sf-guide" class="guide-highlight">
-          <span class="guide-highlight-shine"></span>
-          <span class="guide-highlight-icon">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          </span>
-          <span class="guide-highlight-text">
-            <span class="guide-highlight-main">Hacker Guide <span class="guide-highlight-new">NEW</span></span>
-            <span class="guide-highlight-eyebrow">Everything for the day: schedule, prizes, rules &amp; more</span>
-          </span>
-          <span class="guide-highlight-arrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </span>
-        </a>
-
         <div class="cta-group">
-          <a href="https://luma.com/9x1573sw" target="_blank" rel="noopener noreferrer" class="btn-primary btn-register">
+          <a href="https://jachacks-sf.devpost.com/project-gallery" target="_blank" rel="noopener noreferrer" class="btn-primary btn-register">
             <span class="cs-dot"></span>
-            REGISTER NOW
+            VIEW THE PROJECTS
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a href="#editions" class="btn-ghost">
@@ -485,26 +471,26 @@ import '../styles/site.css';
     }
     draw();
 
-    // ===== COUNTDOWN (JacHacks SF) =====
+    // ===== RECAP COUNT-UP (JacHacks SF) =====
     (function() {
-      // 8:00 AM PT (PDT, UTC-7) on Sun, Jul 26, 2026
-      const target = new Date('2026-07-26T15:00:00Z').getTime();
-      const days = document.getElementById('cd-days');
-      const hours = document.getElementById('cd-hours');
-      const mins = document.getElementById('cd-mins');
-      const secs = document.getElementById('cd-secs');
-      if (!days || !hours || !mins || !secs) return;
-      const pad = (n: number) => String(n).padStart(2, '0');
-      function tick() {
-        const diff = target - Date.now();
-        if (diff <= 0) { days!.textContent = '0'; hours!.textContent = mins!.textContent = secs!.textContent = '00'; return; }
-        days!.textContent  = String(Math.floor(diff / 86400000));
-        hours!.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-        mins!.textContent  = pad(Math.floor((diff % 3600000) / 60000));
-        secs!.textContent  = pad(Math.floor((diff % 60000) / 1000));
-      }
-      tick();
-      setInterval(tick, 1000);
+      const nums = document.querySelectorAll<HTMLElement>('.wrap-num[data-count]');
+      if (!nums.length) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      nums.forEach(el => {
+        const end = Number(el.dataset.count || 0);
+        const suffix = el.dataset.suffix || '';
+        const dur = 1400;
+        let start = 0;
+        el.textContent = '0' + suffix;
+        function step(ts: number) {
+          if (!start) start = ts;
+          const p = Math.min((ts - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(end * eased) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
     })();
 
     // ===== REVEAL =====
