@@ -329,6 +329,15 @@
       mask-image:radial-gradient(circle at center, #000 0%, transparent 78%); }
   .v1-banner-bg-spring::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 72% 82% at 50% 46%, rgba(6,5,13,.62) 0%, rgba(6,5,13,.28) 50%, transparent 80%), linear-gradient(to bottom, rgba(6,5,13,.4) 0%, transparent 34%, transparent 66%, rgba(6,5,13,.92) 100%); }
   .v1-banner-overlay { position:absolute; inset:0; background: linear-gradient(to bottom, rgba(6,5,13,.55) 0%, rgba(6,5,13,.3) 40%, rgba(6,5,13,.8) 85%, rgba(6,5,13,1) 100%), linear-gradient(to right, rgba(6,5,13,.6) 0%, transparent 40%, transparent 60%, rgba(6,5,13,.6) 100%); }
+  /* SF banner sits on a busy group photo, so the copy needs its own scrim to stay legible */
+  .v1-banner-sf .v1-banner-overlay { background:
+      radial-gradient(ellipse 56% 62% at 50% 50%, rgba(6,5,13,.58) 0%, rgba(6,5,13,.34) 48%, rgba(6,5,13,.1) 78%, transparent 100%),
+      linear-gradient(to bottom, rgba(6,5,13,.45) 0%, rgba(6,5,13,.2) 35%, rgba(6,5,13,.72) 86%, rgba(6,5,13,1) 100%),
+      linear-gradient(to right, rgba(6,5,13,.45) 0%, transparent 40%, transparent 60%, rgba(6,5,13,.45) 100%); }
+  .v1-banner-sf .v1-banner-tag { color:rgba(242,234,214,.92); background:rgba(6,5,13,.6); border-color:rgba(255,255,255,.26); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+  .v1-banner-sf .v1-banner-eyebrow { color:#FFBE7A; text-shadow:0 1px 2px rgba(6,5,13,1), 0 1px 10px rgba(6,5,13,1), 0 2px 20px rgba(6,5,13,.95); }
+  .v1-banner-sf .v1-banner-title { text-shadow:0 2px 6px rgba(6,5,13,.7), 0 6px 34px rgba(6,5,13,.95); }
+  .v1-banner-sf .v1-banner-sub { color:rgba(242,234,214,.88); text-shadow:0 1px 4px rgba(6,5,13,1), 0 3px 18px rgba(6,5,13,.9); }
   .v1-banner-content { position:relative; z-index:2; text-align:center; padding:5rem 2rem; display:flex; flex-direction:column; align-items:center; gap:1rem; }
   .v1-banner-eyebrow { font-family:var(--mono); font-size:.65rem; letter-spacing:.3em; color:rgba(249,115,22,.8); }
   .v1-banner-title { font-family:var(--serif); font-weight:800; font-size:clamp(3rem,8vw,6.5rem); color:#F3EBD7; letter-spacing:-.025em; line-height:1; }
@@ -674,6 +683,10 @@
 
   /* V1 banner - keep image dark-styled, just lighten the surrounding section */
   :root[data-theme="light"] .v1-banner-overlay { background:linear-gradient(to bottom, rgba(6,5,13,.55) 0%, rgba(6,5,13,.3) 40%, rgba(246,243,236,.85) 92%, rgba(246,243,236,1) 100%), linear-gradient(to right, rgba(6,5,13,.5) 0%, transparent 40%, transparent 60%, rgba(6,5,13,.5) 100%); }
+  :root[data-theme="light"] .v1-banner-sf .v1-banner-overlay { background:
+      radial-gradient(ellipse 56% 62% at 50% 50%, rgba(6,5,13,.55) 0%, rgba(6,5,13,.32) 48%, rgba(6,5,13,.1) 78%, transparent 100%),
+      linear-gradient(to bottom, rgba(6,5,13,.4) 0%, rgba(6,5,13,.18) 38%, rgba(246,243,236,.8) 92%, rgba(246,243,236,1) 100%),
+      linear-gradient(to right, rgba(6,5,13,.4) 0%, transparent 40%, transparent 60%, rgba(6,5,13,.4) 100%); }
   /* ARCHIVED - light variant for the Spring banner (see src/snippets/spring-banner.astro) */
   :root[data-theme="light"] .v1-banner-bg-spring::after { background:linear-gradient(to bottom, rgba(6,5,13,.2) 0%, transparent 30%, transparent 62%, rgba(246,243,236,.95) 94%, #F6F3EC 100%); }
 
@@ -730,6 +743,8 @@
   .editions-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
   .edition-card { position:relative; display:block; min-height:340px; border-radius:18px; overflow:hidden; border:1px solid var(--border); background:#0d0c18; transition:transform .3s, border-color .3s, box-shadow .3s; }
   .edition-card-bg { position:absolute; inset:0; background-size:cover; background-position:center 30%; transition:transform .55s ease; }
+  .edition-card-featured { grid-column:span 2; }
+  .edition-card-featured, .edition-card-featured .edition-card-inner { min-height:420px; }
   .edition-card-spring .edition-card-bg { background:url(/spring-cover.png) center/cover no-repeat, radial-gradient(circle at 24% 26%, rgba(249,115,22,.30), transparent 55%), radial-gradient(circle at 82% 80%, rgba(0,212,255,.18), transparent 55%), linear-gradient(160deg,#130d1c 0%, #06050d 72%); }
   .edition-card::after { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(to top, rgba(6,5,13,.96) 0%, rgba(6,5,13,.6) 45%, rgba(6,5,13,.2) 100%); }
   .edition-card-inner { position:relative; z-index:2; min-height:340px; height:100%; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:2.25rem; gap:.45rem; }
@@ -754,6 +769,8 @@
 
   @media (max-width:768px) {
     .editions-grid { grid-template-columns:1fr; }
+    .edition-card-featured { grid-column:auto; }
+    .edition-card-featured, .edition-card-featured .edition-card-inner { min-height:340px; }
     .editions-gallery { grid-template-columns:1fr; }
   }
 
