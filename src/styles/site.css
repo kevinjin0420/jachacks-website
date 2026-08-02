@@ -379,6 +379,11 @@
   .reveal.revealed { opacity:1; transform:translateY(0); }
 
   /* ── SF GUIDE BANNER (homepage) ── */
+  /* ═══ ARCHIVED - SF HACKER-GUIDE BANNER STYLES ═══
+     Not used by any live markup right now. These back the saved snippet:
+       src/snippets/sf-guide-banner.astro  (.sfg-banner-section, .sfg-banner*)
+     Kept in place so that snippet renders as-is when restored for a future hackathon.
+     Responsive variants live in the shared @media blocks below (search ".sfg-banner").  ═══ */
   .sfg-banner-section { padding-top:2rem; padding-bottom:2rem; }
   .sfg-banner-section::before { display:none; }
   .sfg-banner { position:relative; display:flex; align-items:center; justify-content:space-between; gap:2.5rem; overflow:hidden; background:linear-gradient(135deg, rgba(249,115,22,.14) 0%, rgba(13,12,24,.9) 55%); border:1px solid rgba(249,115,22,.45); border-radius:20px; padding:2.75rem 3rem; box-shadow:0 20px 60px rgba(0,0,0,.4), 0 0 40px rgba(249,115,22,.08); transition:border-color .3s, transform .3s, box-shadow .3s; }

@@ -1,0 +1,46 @@
+{/*
+  SAVED FOR FUTURE USE - JacHacks SF "Hacker Guide is live" banner.
+  Removed from src/pages/index.astro on request, after the event wrapped and the
+  winners section went up (kept for future hackathons).
+
+  To restore: paste this <section> back into src/pages/index.astro, immediately
+  BEFORE the "<!-- EXPLORE PAST EDITIONS -->" block (it used to sit between the
+  winners section and the editions grid). Update the badge date, the chips, and
+  the href if it is pointing at a new edition's guide page.
+
+  The page it links to, src/pages/sf-guide.astro, is still live at /sf-guide, and
+  the mobile menu in index.astro still links to it.
+
+  Supporting CSS (.sfg-banner-section, .sfg-banner, .sfg-banner-glow,
+  .sfg-banner-left, .sfg-banner-badge, .sfg-banner-dot, .sfg-banner-title,
+  .sfg-banner-sub, .sfg-banner-chips, .sfg-banner-chip, .sfg-banner-cta) still
+  lives in src/styles/site.css, so this markup renders as-is.
+
+  This file is NOT imported anywhere - it is a reference snippet only.
+*/}
+
+<section class="section sfg-banner-section">
+  <div class="container">
+    <a href="/sf-guide" class="sfg-banner reveal">
+      <div class="sfg-banner-glow"></div>
+      <div class="sfg-banner-left">
+        <div class="sfg-banner-badge">
+          <span class="sfg-banner-dot"></span>
+          JACHACKS SF · JULY 26, 2026
+        </div>
+        <h2 class="sfg-banner-title">The Hacker <span class="text-accent">Guide</span> is live.</h2>
+        <p class="sfg-banner-sub">Schedule, prizes, tracks, rules, submissions, and everything you need for the day. Read it once, build something unforgettable.</p>
+        <div class="sfg-banner-chips">
+          <span class="sfg-banner-chip">Full Schedule</span>
+          <span class="sfg-banner-chip">$10K+ Prizes</span>
+          <span class="sfg-banner-chip">Submission Rules</span>
+          <span class="sfg-banner-chip">Packing List</span>
+        </div>
+      </div>
+      <div class="sfg-banner-cta">
+        OPEN THE GUIDE
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+  </div>
+</section>
