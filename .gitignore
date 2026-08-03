@@ -24,3 +24,5 @@ pnpm-debug.log*
 .idea/
 
 poster.png
+# local photo originals (not deployed)
+photos-src/
