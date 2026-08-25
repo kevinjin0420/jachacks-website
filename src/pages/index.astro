@@ -1,5 +1,140 @@
 ---
 import '../styles/site.css';
+
+// Builder testimonials from the JacHacks post-event surveys.
+//   cat 'event' -> the hackathon itself   ·   cat 'build' -> building with the Jac stack
+//   highlight   -> exact substring of the quote, marker-highlighted so the wall stays scannable
+// Ordered so the same person never lands twice in the same row of the grid.
+const testimonials = [
+  {
+    cat: 'event',
+    quote: "JacHacks x Founders Inc brought the most ambitious minds in tech and put them under one roof. The event was ran extremely well and the hosts were very organized. If you want to code a basic project, this hackathon isn't for you. But if you're willing to push yourself, grow, and set your mind to shipping something in one afternoon, this comp is perfect for you.",
+    highlight: 'the most ambitious minds in tech',
+    name: 'Jacob Aral Quion',
+    exp: '3–5 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'build',
+    quote: 'The graph-based part and the walkers allowed us to come up with a really unique solution for finding multi drug synergies which I found interesting.',
+    highlight: 'a really unique solution for finding multi drug synergies',
+    name: 'Zorawar Brar',
+    exp: '3–5 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'event',
+    quote: 'Building with the Jac stack and engaging with the community made JacHacks SF an incredible, hands-on experience!',
+    highlight: 'an incredible, hands-on experience',
+    name: 'Rafael Lopez',
+    exp: '10+ yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'build',
+    quote: 'I particularly liked the unified full-stack experience, graph-based programming model, and the byLLM keyword for native AI integration. Together, they reduced boilerplate, accelerated development, and made it easier to focus on building intelligent applications rather than managing multiple tools and frameworks.',
+    highlight: 'the byLLM keyword for native AI integration',
+    name: 'Sarath Kothapalli',
+    exp: '1–2 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'event',
+    quote: 'Had a great experience overall. The hackathon was fun, collaborative, and a great opportunity to explore new technologies while building something meaningful.',
+    highlight: 'fun, collaborative',
+    name: 'Kamrul Hassan',
+    exp: '1–2 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'build',
+    quote: 'It was really seamless, the agent understood the language and architecture much easily and wrote better more streamlined code overall.',
+    highlight: 'It was really seamless',
+    name: 'Aditya Das',
+    exp: '5–10 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'build',
+    quote: 'I just like the different approach of byLLM instead of prompt engineering. It also meant having a more clean and understandable codebase which is a huge plus.',
+    highlight: 'byLLM instead of prompt engineering',
+    name: 'Yousef Al-Wahami',
+    exp: '3–5 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'event',
+    quote: 'Great experience with my first large hackathon and had a great opportunity networking with recruiters and founders.',
+    highlight: 'networking with recruiters and founders',
+    name: 'Rohit Vaishali Motdhare',
+    exp: '3–5 yrs building software',
+    tags: [{ label: 'First big hackathon', kind: 'star' }],
+  },
+  {
+    cat: 'build',
+    quote: "I liked how I could do everything in one language and didn't have to move between frameworks.",
+    highlight: 'everything in one language',
+    name: 'Vachan Bhogi',
+    exp: '5–10 yrs building software',
+    tags: [{ label: 'Python, JS/TS, Java, C/C++, Rust', kind: '' }],
+  },
+  {
+    cat: 'event',
+    quote: 'Wonderful time meeting all the different members of the Jac team and Jason as well. It was a fun and enriching experience.',
+    highlight: 'a fun and enriching experience',
+    name: 'Aditya Das',
+    exp: '5–10 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'build',
+    quote: 'The unified programming paradigm and the graph-based model make structuring full-stack AI workflows cleaner and more intuitive.',
+    highlight: 'cleaner and more intuitive',
+    name: 'Rafael Lopez',
+    exp: '10+ yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'build',
+    quote: 'Graph-based programming also felt very natural for this problem. Since the system is inherently graph-structured, modeling it directly as nodes and edges made the logic easier to reason about.',
+    highlight: 'felt very natural for this problem',
+    name: 'Yanshengtian Dong',
+    exp: '1–2 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'event',
+    quote: 'It was a refreshing learning opportunity, and I enjoyed experimenting with Jac and actually a new way of thinking about software and AI development!',
+    highlight: 'a refreshing learning opportunity',
+    name: 'Sarath Kothapalli',
+    exp: '1–2 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'build',
+    quote: 'The one language end to end development was great because it made it really easy to build using the language and change ideas with the AI understanding everything it was doing from the start.',
+    highlight: 'The one language end to end development',
+    name: 'Aditya Das',
+    exp: '5–10 yrs building software',
+    tags: [{ label: 'Brand new to Jac', kind: 'new' }],
+  },
+  {
+    cat: 'build',
+    quote: 'I really like the graph based memory and AI native design. Smooth interaction with other tech stack. Clean agent building.',
+    highlight: 'graph based memory and AI native design',
+    name: 'Nitish Kumar Singh',
+    exp: '3–5 yrs building software',
+    tags: [
+      { label: 'Built with Jac before', kind: '' },
+      { label: '10/10 would keep using Jac', kind: 'star' },
+    ],
+  },
+];
+
+function initials(name: string) {
+  const parts = name.trim().split(/\s+/);
+  return (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
+}
 ---
 
 <html lang="en">
@@ -39,6 +174,7 @@ import '../styles/site.css';
           <a href="/sf" class="nav-link">// SF</a>
           <a href="/spring" class="nav-link">// SPRING</a>
           <a href="/winter" class="nav-link">// WINTER</a>
+          <a href="#voices" class="nav-link">// VOICES</a>
           <a href="#popups" class="nav-link">// POPUPS</a>
           <a href="/gallery" class="nav-link">// GALLERY</a>
         </div>
@@ -60,6 +196,7 @@ import '../styles/site.css';
       <a href="/winter">// JACHACKS WINTER</a>
       <a href="/paradise">// VELRIC</a>
       <a href="/ohio">// ROCKETHACKS</a>
+      <a href="#voices">// TESTIMONIALS</a>
       <a href="/gallery">// GALLERY</a>
       <a href="https://github.com/jaseci-labs/jaseci" target="_blank" class="mobile-cta">STAR ON GITHUB</a>
     </div>
@@ -304,6 +441,53 @@ import '../styles/site.css';
       </div>
     </section>
 
+    <!-- VOICES / WHAT BUILDERS SAY -->
+    <section class="section" id="voices">
+      <div class="container">
+        <div class="voices-head reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">// FROM THE HACKERS</div>
+            <h2 class="section-title">What Builders <span class="text-accent">Say</span></h2>
+            <p class="section-sub">Straight from the post-event surveys. What the room felt like, and what it felt like to ship on Jac for the very first time.</p>
+          </div>
+          <div class="vfilters" role="group" aria-label="Filter testimonials">
+            <button class="vfilter active" data-filter="all" type="button" aria-pressed="true"><i class="vdot"></i>ALL</button>
+            <button class="vfilter" data-filter="event" type="button" aria-pressed="false"><i class="vdot"></i>THE EVENT</button>
+            <button class="vfilter" data-filter="build" type="button" aria-pressed="false"><i class="vdot"></i>BUILDING WITH JAC</button>
+          </div>
+        </div>
+
+        <div class="vwall reveal" id="vwall">
+          {testimonials.map((t) => {
+            const [before, after] = t.quote.split(t.highlight);
+            return (
+              <figure class={`vcard cat-${t.cat}`} data-cat={t.cat}>
+                <blockquote class="vcard-quote">“{before}<span class="vhl">{t.highlight}</span>{after}”</blockquote>
+                <button class="vread" type="button" aria-expanded="false" hidden>READ MORE</button>
+                <figcaption class="vcard-who">
+                  <span class="vcard-avatar" aria-hidden="true">{initials(t.name)}</span>
+                  <span class="vcard-id">
+                    <span class="vcard-name">{t.name}</span>
+                    <span class="vcard-exp">{t.exp}</span>
+                  </span>
+                </figcaption>
+                <div class="vcard-tags">
+                  {t.tags.map((tag) => <span class={`vchip${tag.kind ? ' vchip-' + tag.kind : ''}`}>{tag.label}</span>)}
+                </div>
+              </figure>
+            );
+          })}
+        </div>
+
+        <div class="vmore-wrap" id="vmore-wrap">
+          <button class="vmore" id="vmore" type="button" aria-controls="vwall" aria-expanded="false">
+            <span>SHOW ALL</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- JACHACKS ON THE ROAD / POPUPS -->
     <section class="section" id="popups">
       <div class="container">
@@ -365,6 +549,7 @@ import '../styles/site.css';
           <a href="/paradise">Popup in Paradise</a>
           <a href="/ohio">Popup in Ohio</a>
           <a href="/gallery">Gallery</a>
+          <a href="#voices">Testimonials</a>
         </div>
         <div class="footer-socials">
           <a href="https://x.com/Jaseci_Org" class="social-btn" aria-label="Twitter">
@@ -481,6 +666,82 @@ import '../styles/site.css';
         }
         requestAnimationFrame(step);
       });
+    })();
+
+    // ===== TESTIMONIAL WALL (filter · show all · read more) =====
+    (function() {
+      const wall = document.getElementById('vwall');
+      const moreWrap = document.getElementById('vmore-wrap');
+      const more = document.getElementById('vmore');
+      if (!wall || !more || !moreWrap) return;
+      const label = more.querySelector('span')!;
+      const cards = Array.from(wall.querySelectorAll<HTMLElement>('.vcard'));
+      const narrow = window.matchMedia('(max-width:720px)');
+      const mid = window.matchMedia('(max-width:1024px)');
+      let filter = 'all';
+      let expanded = false;
+
+      // keep the grid rectangular: one full row of cards per breakpoint
+      function limit() { return narrow.matches ? 4 : mid.matches ? 8 : 9; }
+
+      // a quote only earns a "read more" when the clamp actually cuts it off
+      function syncClamps() {
+        cards.forEach(c => {
+          const q = c.querySelector<HTMLElement>('.vcard-quote');
+          const btn = c.querySelector<HTMLButtonElement>('.vread');
+          if (!q || !btn) return;
+          btn.hidden = c.classList.contains('open') ? false : q.scrollHeight <= q.clientHeight + 1;
+        });
+      }
+
+      function apply() {
+        const max = limit();
+        let shown = 0, total = 0;
+        cards.forEach(c => {
+          if (filter !== 'all' && c.dataset.cat !== filter) { c.style.display = 'none'; return; }
+          total++;
+          if (expanded || shown < max) { c.style.display = ''; shown++; }
+          else { c.style.display = 'none'; }
+        });
+        moreWrap.classList.toggle('show', total > max);
+        label.textContent = expanded ? 'SHOW LESS' : 'SHOW ALL';
+        more.setAttribute('aria-expanded', String(expanded));
+        syncClamps();
+      }
+
+      document.querySelectorAll<HTMLButtonElement>('.vfilter').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.vfilter').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          filter = btn.dataset.filter || 'all';
+          expanded = false;
+          apply();
+        });
+      });
+
+      more.addEventListener('click', () => { expanded = !expanded; apply(); });
+      narrow.addEventListener('change', apply);
+      mid.addEventListener('change', apply);
+
+      wall.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('.vread');
+        if (!btn) return;
+        const open = btn.closest('.vcard')!.classList.toggle('open');
+        btn.textContent = open ? 'SHOW LESS' : 'READ MORE';
+        btn.setAttribute('aria-expanded', String(open));
+        wall.classList.toggle('has-open', !!wall.querySelector('.vcard.open'));
+      });
+
+      let rz = 0;
+      window.addEventListener('resize', () => { cancelAnimationFrame(rz); rz = requestAnimationFrame(syncClamps); });
+      // web fonts land after first paint and change the line count
+      if (document.fonts) document.fonts.ready.then(syncClamps);
+
+      apply();
     })();
 
     // ===== REVEAL =====
