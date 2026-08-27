@@ -544,6 +544,52 @@
     .gallery-teaser-content { border-left: none; border-top: 1px solid rgba(249,115,22,.12); padding: 2.5rem 1.75rem; }
   }
 
+  /* ── YOUTUBE PLAYLIST CARD (sf / spring / winter) ── */
+  .plist-section { padding-top:5rem; padding-bottom:5rem; }
+  .plist-card { display:grid; grid-template-columns:minmax(280px,380px) 1fr; align-items:center; gap:3rem; padding:2.25rem; border-radius:16px; border:1px solid rgba(249,115,22,.15); background:linear-gradient(135deg, rgba(255,0,0,.05) 0%, rgba(249,115,22,.05) 35%, transparent 70%), var(--card); transition:border-color .3s, box-shadow .3s, transform .3s; }
+  .plist-card:hover { border-color:rgba(249,115,22,.42); box-shadow:0 22px 60px rgba(0,0,0,.5), 0 0 40px rgba(249,115,22,.1); transform:translateY(-4px); }
+
+  /* left: stacked playlist thumbnails */
+  .plist-media { position:relative; }
+  .plist-stack { position:absolute; left:50%; transform:translateX(-50%); border-radius:10px 10px 0 0; background:var(--card-b); border:1px solid rgba(255,255,255,.07); border-bottom:0; }
+  .plist-stack-1 { top:-7px; width:95%; height:12px; }
+  .plist-stack-2 { top:-13px; width:88%; height:12px; opacity:.55; }
+  .plist-hero { position:relative; aspect-ratio:16/9; border-radius:10px; overflow:hidden; background:#000; border:1px solid rgba(255,255,255,.09); }
+  .plist-hero img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+  .plist-card:hover .plist-hero img { transform:scale(1.05); }
+  .plist-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.05) 40%, rgba(0,0,0,.5) 100%); pointer-events:none; }
+  .plist-play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:54px; color:#FF0000; filter:drop-shadow(0 6px 20px rgba(0,0,0,.7)); transition:transform .25s ease; }
+  .plist-play svg { width:100%; height:auto; display:block; }
+  .plist-card:hover .plist-play { transform:translate(-50%,-50%) scale(1.1); }
+  .plist-badge { position:absolute; left:.7rem; bottom:.7rem; display:inline-flex; align-items:center; gap:.45rem; padding:.38rem .7rem; border-radius:6px; background:rgba(0,0,0,.75); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.16); color:#fff; font-family:var(--mono); font-size:.58rem; letter-spacing:.18em; }
+  .plist-badge svg { flex-shrink:0; }
+  .plist-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; margin-top:.5rem; }
+  .plist-thumb { position:relative; aspect-ratio:16/9; border-radius:6px; overflow:hidden; background:var(--card-b); border:1px solid rgba(255,255,255,.07); }
+  .plist-thumb img { width:100%; height:100%; object-fit:cover; display:block; opacity:.72; transition:opacity .3s ease; }
+  .plist-card:hover .plist-thumb img { opacity:1; }
+  .plist-more { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.05rem; font-family:var(--display); font-weight:700; font-size:1.05rem; line-height:1; color:var(--primary); background:rgba(249,115,22,.07); border-color:rgba(249,115,22,.2); }
+  .plist-more small { font-family:var(--mono); font-weight:400; font-size:.48rem; letter-spacing:.2em; color:var(--muted); }
+
+  /* right: copy + CTA */
+  .plist-body { display:flex; flex-direction:column; gap:.7rem; min-width:0; }
+  .plist-eyebrow { display:inline-flex; align-items:center; gap:.6rem; font-family:var(--mono); font-size:.62rem; letter-spacing:.24em; color:var(--primary); }
+  .plist-yt { width:19px; height:auto; color:#FF0000; flex-shrink:0; }
+  .plist-title { font-family:var(--display); font-weight:700; font-size:1.9rem; letter-spacing:.01em; color:var(--text); line-height:1.12; }
+  .plist-desc { font-size:.93rem; color:var(--light); line-height:1.7; max-width:60ch; }
+  .plist-chips { display:flex; flex-wrap:wrap; gap:.45rem; list-style:none; margin:.3rem 0 .5rem; padding:0; }
+  .plist-chips li { font-family:var(--mono); font-size:.55rem; letter-spacing:.18em; color:var(--light); border:1px solid var(--card-b); background:rgba(255,255,255,.02); border-radius:100px; padding:.36rem .78rem; }
+  .plist-btn { align-self:flex-start; display:inline-flex; align-items:center; gap:.6rem; font-family:var(--display); font-weight:700; font-size:1rem; letter-spacing:.1em; color:var(--primary); border:1px solid rgba(249,115,22,.35); background:rgba(249,115,22,.06); padding:.8rem 1.7rem; clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%); transition:color .2s, background .2s, border-color .2s; }
+  .plist-card:hover .plist-btn { color:#fff; background:rgba(249,115,22,.22); border-color:var(--primary); }
+
+  @media (max-width:900px) {
+    .plist-section { padding-top:3.5rem; padding-bottom:3.5rem; }
+    .plist-card { grid-template-columns:1fr; gap:1.75rem; padding:1.5rem; }
+    .plist-title { font-size:1.5rem; }
+    .plist-play { width:52px; }
+    .plist-btn { font-size:.92rem; padding:.72rem 1.4rem; }
+    .plist-eyebrow { align-items:flex-start; font-size:.57rem; letter-spacing:.17em; }
+  }
+
   /* ── FOOTER ── */
   footer { padding:3rem 2rem 2rem; position:relative; z-index:1; }
   footer::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(249,115,22,.25) 30%,rgba(249,115,22,.25) 70%,transparent); }
@@ -722,6 +768,14 @@
   /* Gallery teaser */
   :root[data-theme="light"] .gallery-teaser { background:#fff; border-color:rgba(0,0,0,.08); }
   :root[data-theme="light"] .gallery-teaser-content { background:linear-gradient(135deg, rgba(249,115,22,.06) 0%, transparent 60%); border-left-color:rgba(0,0,0,.06); }
+
+  /* YouTube playlist card */
+  :root[data-theme="light"] .plist-card { background:linear-gradient(135deg, rgba(255,0,0,.04) 0%, rgba(249,115,22,.06) 35%, transparent 70%), #fff; border-color:rgba(0,0,0,.08); }
+  :root[data-theme="light"] .plist-card:hover { border-color:rgba(249,115,22,.42); box-shadow:0 18px 44px rgba(0,0,0,.1), 0 0 30px rgba(249,115,22,.14); }
+  :root[data-theme="light"] .plist-card:hover .plist-btn { color:#1a1828; }
+  :root[data-theme="light"] .plist-stack { background:#e8e4da; border-color:rgba(0,0,0,.09); }
+  :root[data-theme="light"] .plist-hero, :root[data-theme="light"] .plist-thumb { border-color:rgba(0,0,0,.1); }
+  :root[data-theme="light"] .plist-chips li { border-color:rgba(0,0,0,.1); background:rgba(0,0,0,.02); }
 
   /* Footer */
   :root[data-theme="light"] footer { background:#f0ede4; }
