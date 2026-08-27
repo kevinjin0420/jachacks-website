@@ -145,12 +145,12 @@ function initials(name: string) {
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/jaseci-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>JacHacks · Hackathon Series</title>
-    <meta name="description" content="JacHacks SF: a one-day, in-person hackathon for the Bay Area tech community. July 26, 2026, Founders, Inc., San Francisco." />
+    <title>JacHacks A2Tech 360 · Register · Sep 26–27, 2026</title>
+    <meta name="description" content="Registration is open for JacHacks A2Tech 360. Jaseci is the official hackathon partner of a2Tech360 in Ann Arbor, September 26–27, 2026. Two days to build the future with Jac." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://jachacks.org/" />
-    <meta property="og:title" content="JacHacks SF · In-Person Hackathon" />
-    <meta property="og:description" content="One day. In person. Build the future with Jac. July 26, 2026, Founders, Inc., San Francisco." />
+    <meta property="og:title" content="JacHacks A2Tech 360 · Registration Open" />
+    <meta property="og:description" content="Official hackathon partner of a2Tech360. Two days in Ann Arbor, September 26–27, 2026. Register now." />
     <meta property="og:image" content="https://jachacks.org/jaseci-logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -171,6 +171,7 @@ function initials(name: string) {
           <span class="logo-text">Jac<span class="logo-accent">Hacks</span></span>
         </a>
         <div class="nav-links">
+          <a href="/a2tech" class="nav-link nav-link-live">// A2TECH</a>
           <a href="/sf" class="nav-link">// SF</a>
           <a href="/spring" class="nav-link">// SPRING</a>
           <a href="/winter" class="nav-link">// WINTER</a>
@@ -190,6 +191,7 @@ function initials(name: string) {
     </nav>
 
     <div class="mobile-menu" id="mobile-menu">
+      <a href="/a2tech">// JACHACKS A2TECH</a>
       <a href="/sf">// JACHACKS SF</a>
       <a href="/sf-guide" class="mobile-cta">// JACHACKS SF GUIDE</a>
       <a href="/spring">// JACHACKS SPRING</a>
@@ -207,16 +209,16 @@ function initials(name: string) {
       <canvas id="bg-canvas"></canvas>
 
       <div class="hud-tl">
-        <span class="hud-label">SYS://SAN_FRANCISCO</span>
+        <span class="hud-label">SYS://ANN_ARBOR</span>
       </div>
       <div class="hud-tr">
-        <span class="hud-label hud-label-white">EVENT://JUL_26_2026</span>
+        <span class="hud-label hud-label-white">EVENT://SEP_26_2026</span>
       </div>
       <div class="hud-bl">
-        <span class="hud-label">DURATION: <span class="hud-count">01DAY</span></span>
+        <span class="hud-label">DURATION: <span class="hud-count">02DAY</span></span>
       </div>
       <div class="hud-br">
-        <span class="hud-label hud-label-accent">REGION://BAY_AREA</span>
+        <span class="hud-label hud-label-accent">REGION://MICHIGAN</span>
       </div>
 
       <div class="float-el fe-hex-1">
@@ -243,8 +245,8 @@ function initials(name: string) {
 
       <div class="hero-spotlight"></div>
 
-      <!-- Golden Gate Bridge wireframe backdrop -->
-      <img class="hero-bridge" src="/ggb-wireframe.svg" alt="" aria-hidden="true" />
+      <!-- Downtown Ann Arbor line-art backdrop -->
+      <img class="hero-bridge hero-bridge-a2" src="/a2-lines.png" alt="" aria-hidden="true" style="opacity:.58;" />
       <div class="hero-scrim"></div>
 
       <div class="hero-content">
@@ -252,60 +254,72 @@ function initials(name: string) {
           <span class="series-dot"></span>
           <span>JACHACKS SERIES</span>
           <span class="series-sep">·</span>
-          <span class="series-event">SAN FRANCISCO</span>
+          <span class="series-event">ANN ARBOR</span>
+        </div>
+
+        <div class="hero-status">
+          <span class="hero-status-done">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            REGISTRATION OPEN
+          </span>
+          <span class="hero-status-sep"></span>
+          <span class="hero-status-next">
+            <span class="next-dot"></span>
+            SEP 26–27 · ANN ARBOR
+          </span>
+        </div>
+
+        <div class="a2-lockup">
+          <span class="a2-lockup-label">OFFICIAL HACKATHON PARTNER OF</span>
+          <a href="https://a2tech360.com" target="_blank" rel="noopener noreferrer" class="a2-lockup-link" aria-label="a2Tech360, powered by Ann Arbor SPARK">
+            <img src="/a2tech360-logo-white.webp" alt="a2Tech360, powered by Ann Arbor SPARK" class="a2-lockup-logo a2-logo-dark" />
+            <img src="/a2tech360-logo-color.webp" alt="" aria-hidden="true" class="a2-lockup-logo a2-logo-light" />
+          </a>
         </div>
 
         <div class="hero-title">
-          <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" aria-label="Jaseci"><img src="/jaseci-logo.png" alt="" class="hero-j-logo" /></a>
-          <h1 class="title-main">JacHacks <span class="title-spring">SF</span></h1>
+          <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" class="hero-j-logo-link" aria-label="Jac language">
+            <img src="/jaseci-logo.png" alt="" class="hero-j-logo" />
+          </a>
+          <h1 class="title-main">JacHacks <span class="title-spring">A2Tech</span></h1>
         </div>
 
-        <p class="hero-sub">The series lands in the Bay Area. A one-day, in-person hackathon for San Francisco's builders and tech community.</p>
+        <p class="hero-sub">The series lands in Ann Arbor for <a href="https://a2tech360.com" target="_blank" rel="noopener noreferrer" class="text-link">a2Tech360</a>, the region's biggest tech week. Two days to build the future with Jac.</p>
 
         <div class="hero-meta-line">
-          <span>JULY 26, 2026</span>
+          <span>SEP 26–27, 2026</span>
           <span class="meta-dot">·</span>
-          <span>8:00 AM PT</span>
-          <span class="meta-dot">·</span>
-          <span>FOUNDERS, INC. · SAN FRANCISCO</span>
+          <span>ANN ARBOR, MI</span>
         </div>
 
-        <div class="wrap-panel" id="wrap-panel">
-          <span class="wrap-sheen"></span>
-          <div class="wrap-eyebrow">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            THAT'S A WRAP
-            <span class="wrap-eyebrow-sep">·</span>
-            <span class="wrap-eyebrow-alt">JULY 26, 2026</span>
+        <div class="cd-eyebrow">DOORS OPEN IN</div>
+        <div class="countdown" id="countdown">
+          <div class="cd-block">
+            <span class="cd-val" id="cd-days">00</span>
+            <span class="cd-label">DAYS</span>
           </div>
-
-          <div class="wrap-stats">
-            <div class="wrap-stat">
-              <span class="wrap-num" data-count="200" data-suffix="+">200+</span>
-              <span class="wrap-stat-label">BUILDERS</span>
-            </div>
-            <span class="wrap-divider"></span>
-            <div class="wrap-stat">
-              <span class="wrap-num" data-count="77">77</span>
-              <span class="wrap-stat-label">PROJECTS SHIPPED</span>
-            </div>
-            <span class="wrap-divider"></span>
-            <div class="wrap-stat">
-              <span class="wrap-num" data-count="8">8</span>
-              <span class="wrap-stat-label">WINNERS</span>
-            </div>
+          <span class="cd-sep">:</span>
+          <div class="cd-block">
+            <span class="cd-val" id="cd-hours">00</span>
+            <span class="cd-label">HRS</span>
+          </div>
+          <span class="cd-sep">:</span>
+          <div class="cd-block">
+            <span class="cd-val" id="cd-mins">00</span>
+            <span class="cd-label">MIN</span>
+          </div>
+          <span class="cd-sep">:</span>
+          <div class="cd-block">
+            <span class="cd-val" id="cd-secs">00</span>
+            <span class="cd-label">SEC</span>
           </div>
         </div>
 
         <div class="cta-group">
-          <a href="/sf" class="btn-primary btn-register">
+          <a href="https://luma.com/jlpxupsw" target="_blank" rel="noopener noreferrer" class="btn-primary btn-register">
             <span class="cs-dot"></span>
-            SEE THE WINNERS
+            REGISTER NOW
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="https://jachacks-sf.devpost.com/project-gallery" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-            VIEW ALL PROJECTS
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           </a>
           <a href="#editions" class="btn-ghost">
             EXPLORE PAST JACHACKS
@@ -319,6 +333,43 @@ function initials(name: string) {
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </div>
     </section>
+
+    <!-- JACHACKS SF RECAP (was the hero panel before A2Tech took the hero) -->
+    <div class="sf-recap reveal">
+      <div class="wrap-panel" id="wrap-panel">
+        <span class="wrap-sheen"></span>
+        <div class="wrap-eyebrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          THAT'S A WRAP
+        </div>
+
+        <div class="wrap-head">
+          <h2 class="wrap-title">JacHacks <span class="wrap-title-accent">SF</span></h2>
+          <div class="wrap-title-meta">JULY 26, 2026 · FOUNDERS, INC. · SAN FRANCISCO</div>
+        </div>
+
+        <div class="wrap-stats">
+          <div class="wrap-stat">
+            <span class="wrap-num" data-count="200" data-suffix="+">200+</span>
+            <span class="wrap-stat-label">BUILDERS</span>
+          </div>
+          <span class="wrap-divider"></span>
+          <div class="wrap-stat">
+            <span class="wrap-num" data-count="77">77</span>
+            <span class="wrap-stat-label">PROJECTS SHIPPED</span>
+          </div>
+          <span class="wrap-divider"></span>
+          <div class="wrap-stat">
+            <span class="wrap-num" data-count="8">8</span>
+            <span class="wrap-stat-label">WINNERS</span>
+          </div>
+        </div>
+
+        <a href="/sf" class="wrap-cta">EXPLORE JACHACKS SF
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
 
     <!-- PLATINUM SPONSOR -->
     <div class="platinum-sponsor reveal">
@@ -543,6 +594,7 @@ function initials(name: string) {
           <span>Jac<span class="text-accent">Hacks</span></span>
         </div>
         <div class="footer-nav">
+          <a href="/a2tech">JacHacks A2Tech</a>
           <a href="/sf">JacHacks SF</a>
           <a href="/spring">JacHacks Spring</a>
           <a href="/winter">JacHacks Winter</a>
@@ -567,6 +619,125 @@ function initials(name: string) {
         <p>© 2026 JacHacks · Powered by <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer">Jaseci</a> · A global hackathon series</p>
       </div>
     </footer>
+
+  <style is:global>
+    /* the hero Jac mark links out to jaclang.org */
+    .hero-j-logo-link { display: block; line-height: 0; transition: transform .3s ease, filter .3s ease; }
+    .hero-j-logo-link:hover { transform: translateY(-3px); }
+    .hero-j-logo-link:hover .hero-j-logo { filter: drop-shadow(0 0 28px rgba(249,115,22,.8)) drop-shadow(0 0 70px rgba(249,115,22,.3)); }
+    /* the hero header carries a lot now, so the Jac mark sits a touch smaller here */
+    .hero-j-logo { transition: filter .3s ease; width: clamp(2.5rem, 5.6vw, 4.4rem); }
+
+    /* a2Tech360 partner lockup, sits at the very top of the hero */
+    .a2-lockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1.7rem;
+    }
+    /* the badges lead now, so the status pill hands off straight to the lockup */
+    .hero-content .hero-status { margin-bottom: 1.5rem; }
+    .a2-lockup-label {
+      font-family: var(--mono);
+      font-size: .58rem;
+      letter-spacing: .28em;
+      color: rgba(242,234,214,.4);
+    }
+    .a2-lockup-link { display: block; line-height: 0; transition: transform .3s ease, filter .3s ease; }
+    .a2-lockup-link:hover { transform: translateY(-2px); }
+    .a2-lockup-link:hover .a2-lockup-logo { opacity: 1; }
+    .a2-lockup-logo {
+      height: 2.7rem;
+      width: auto;
+      object-fit: contain;
+      opacity: .88;
+      transition: opacity .3s ease;
+    }
+
+    /* full-colour mark on the light theme, white knockout on the dark theme */
+    .a2-logo-light { display: none; }
+    :root[data-theme="light"] .a2-logo-dark { display: none; }
+    :root[data-theme="light"] .a2-logo-light { display: block; }
+    :root[data-theme="light"] .a2-lockup-label { color: rgba(26,24,40,.5); }
+    :root[data-theme="light"] .a2-lockup-logo { opacity: .95; }
+
+    /* countdown to doors opening */
+    .cd-eyebrow {
+      font-family: var(--mono);
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: .28em;
+      color: rgba(242,234,214,.45);
+      margin-bottom: .7rem;
+    }
+    :root[data-theme="light"] .cd-eyebrow { color: rgba(26,24,40,.55); }
+    .hero-content .cta-group { margin-top: 1.1rem; }
+
+    /* the A2Tech nav entry carries a live dot so the upcoming event reads first */
+    .nav-link-live { position: relative; color: var(--primary); }
+    .nav-link-live::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      right: -7px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    /* the SF recap panel moved out of the hero, so it needs its own band */
+    .sf-recap { display: flex; justify-content: center; padding: 5rem 2rem 0; position: relative; z-index: 1; }
+    .sf-recap .wrap-panel { margin-bottom: 0; gap: .95rem; }
+    /* the event name is the point of the panel, so it gets a real title */
+    .wrap-head { display: flex; flex-direction: column; align-items: center; gap: .55rem; }
+    .wrap-title {
+      font-family: var(--serif);
+      font-weight: 800;
+      font-size: clamp(1.9rem, 4.4vw, 2.7rem);
+      line-height: 1;
+      letter-spacing: -.03em;
+      color: #F3EBD7;
+    }
+    .wrap-title-accent { font-style: italic; color: var(--primary); }
+    .wrap-title-meta {
+      font-family: var(--mono);
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      color: rgba(242,234,214,.55);
+      text-align: center;
+    }
+    :root[data-theme="light"] .wrap-title { color: #1a1828; }
+    :root[data-theme="light"] .wrap-title-meta { color: rgba(26,24,40,.6); }
+
+    .wrap-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--mono);
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      color: var(--primary);
+      padding: .5rem 1.2rem;
+      border: 1px solid rgba(249,115,22,.35);
+      border-radius: 100px;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .wrap-cta:hover { background: rgba(249,115,22,.1); border-color: rgba(249,115,22,.6); transform: translateY(-1px); }
+
+    @media (max-width: 560px) {
+      .a2-lockup { gap: .5rem; margin-bottom: 1.1rem; }
+      .a2-lockup-label { font-size: .52rem; letter-spacing: .22em; }
+      .a2-lockup-logo { height: 2.05rem; }
+      .sf-recap { padding: 3.5rem 1.25rem 0; }
+      .wrap-title-meta { font-size: .53rem; letter-spacing: .16em; }
+    }
+  </style>
 
   <script>
     // ===== CANVAS =====
@@ -646,26 +817,56 @@ function initials(name: string) {
     }
     draw();
 
+    // ===== COUNTDOWN (JacHacks A2Tech) =====
+    (function() {
+      // 9:00 AM ET (EDT, UTC-4) on Sat, Sep 26, 2026
+      const target = new Date('2026-09-26T13:00:00Z').getTime();
+      const days = document.getElementById('cd-days');
+      const hours = document.getElementById('cd-hours');
+      const mins = document.getElementById('cd-mins');
+      const secs = document.getElementById('cd-secs');
+      if (!days || !hours || !mins || !secs) return;
+      const pad = (n: number) => String(n).padStart(2, '0');
+      function tick() {
+        const diff = target - Date.now();
+        if (diff <= 0) { days!.textContent = '0'; hours!.textContent = mins!.textContent = secs!.textContent = '00'; return; }
+        days!.textContent  = String(Math.floor(diff / 86400000));
+        hours!.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+        mins!.textContent  = pad(Math.floor((diff % 3600000) / 60000));
+        secs!.textContent  = pad(Math.floor((diff % 60000) / 1000));
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
     // ===== RECAP COUNT-UP (JacHacks SF) =====
     (function() {
+      const panel = document.getElementById('wrap-panel');
       const nums = document.querySelectorAll<HTMLElement>('.wrap-num[data-count]');
-      if (!nums.length) return;
+      if (!panel || !nums.length) return;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      nums.forEach(el => {
-        const end = Number(el.dataset.count || 0);
-        const suffix = el.dataset.suffix || '';
-        const dur = 1400;
-        let start = 0;
-        el.textContent = '0' + suffix;
-        function step(ts: number) {
-          if (!start) start = ts;
-          const p = Math.min((ts - start) / dur, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(end * eased) + suffix;
-          if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      });
+      function run() {
+        nums.forEach(el => {
+          const end = Number(el.dataset.count || 0);
+          const suffix = el.dataset.suffix || '';
+          const dur = 1400;
+          let start = 0;
+          el.textContent = '0' + suffix;
+          function step(ts: number) {
+            if (!start) start = ts;
+            const p = Math.min((ts - start) / dur, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(end * eased) + suffix;
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+      // the panel sits below the fold now, so hold the count-up until it scrolls in
+      const io = new IntersectionObserver(es => {
+        es.forEach(e => { if (e.isIntersecting) { io.disconnect(); run(); } });
+      }, { threshold: .35 });
+      io.observe(panel);
     })();
 
     // ===== TESTIMONIAL WALL (filter · show all · read more) =====
