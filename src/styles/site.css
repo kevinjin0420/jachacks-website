@@ -137,6 +137,32 @@
 
   .hero-title { display:flex; flex-direction:column; align-items:center; gap:.5rem; margin-bottom:1.5rem; }
   .hero-j-logo { width: clamp(3rem, 7vw, 5.5rem); height: auto; object-fit: contain; filter: drop-shadow(0 0 22px rgba(249,115,22,.6)) drop-shadow(0 0 60px rgba(249,115,22,.2)); }
+  /* the hero Jac mark links out to jaclang.org, so it carries a visible "this is clickable" cue */
+  .hero-j-logo-link { display:inline-flex; flex-direction:column; align-items:center; gap:.55rem; line-height:0; cursor:pointer; transition:transform .3s ease; }
+  .hero-j-logo-link:hover { transform:translateY(-3px); }
+  .hero-j-logo-link:hover .hero-j-logo { filter:drop-shadow(0 0 28px rgba(249,115,22,.8)) drop-shadow(0 0 70px rgba(249,115,22,.3)); }
+  .hero-j-logo { transition:filter .3s ease; position:relative; z-index:1; }
+  /* halo that breathes behind the mark, so the eye lands on it */
+  .hero-j-logo-wrap { position:relative; display:inline-flex; }
+  .hero-j-pulse { position:absolute; top:50%; left:50%; width:100%; aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; border:1px solid rgba(249,115,22,.45); animation:jPulse 2.8s ease-out infinite; pointer-events:none; }
+  @keyframes jPulse { 0%{transform:translate(-50%,-50%) scale(.9);opacity:.55} 70%{transform:translate(-50%,-50%) scale(1.5);opacity:0} 100%{transform:translate(-50%,-50%) scale(1.5);opacity:0} }
+  /* the "click me" chip under the mark */
+  .hero-j-hint { display:inline-flex; align-items:center; gap:.35rem; font-family:var(--mono); font-size:.55rem; font-weight:600; letter-spacing:.18em; line-height:1; color:var(--primary); padding:.34rem .62rem; border:1px solid rgba(249,115,22,.4); border-radius:999px; background:rgba(249,115,22,.1); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); white-space:nowrap; transition:background .25s ease, border-color .25s ease, color .25s ease; }
+  /* the chip fades in, holds, fades out and rests, so it reads as an invitation
+     rather than a label that is permanently bolted under the mark */
+  .hero-j-hint { animation:jHintBreathe 5s ease-in-out infinite; }
+  @keyframes jHintBreathe {
+    0%   { opacity:0; transform:translateY(-5px); }
+    10%  { opacity:1; transform:translateY(0); }
+    45%  { opacity:1; transform:translateY(0); }
+    58%  { opacity:0; transform:translateY(-5px); }
+    100% { opacity:0; transform:translateY(-5px); }
+  }
+  /* hovering the mark holds the chip open so it can actually be read and clicked */
+  .hero-j-logo-link:hover .hero-j-hint { animation:none; opacity:1; transform:none; color:#fff; background:rgba(249,115,22,.3); border-color:var(--primary); }
+  :root[data-theme="light"] .hero-j-hint { color:#c2410c; background:rgba(249,115,22,.12); border-color:rgba(249,115,22,.45); }
+  :root[data-theme="light"] .hero-j-logo-link:hover .hero-j-hint { color:#fff; background:var(--primary); }
+  @media (prefers-reduced-motion: reduce) { .hero-j-pulse { animation:none; opacity:.35; } .hero-j-hint { animation:none; opacity:1; transform:none; } }
   .title-main { font-family: var(--serif); font-weight: 800; font-size: clamp(1.9rem, 5.2vw, 4.4rem); color: #F3EBD7; letter-spacing: -.03em; line-height: 1; text-align:center; }
   .title-spring { font-style: italic; color: var(--primary); }
 
@@ -296,6 +322,7 @@
   :root[data-theme="light"] .platinum-logo-light { display: block; }
   :root[data-theme="light"] .platinum-logo { filter: drop-shadow(0 0 24px rgba(249,115,22,.28)); }
   .platinum-desc { font-family: var(--display); font-weight: 500; font-size: 1.15rem; color: var(--light); letter-spacing: 0.05em; opacity: 0.8; max-width: 400px; text-align: center; line-height: 1.4; }
+  .platinum-cta { font-size: .95rem; padding: .8rem 1.75rem; margin-top: .35rem; }
 
   /* ── SPONSOR STRIP ── */
   .sponsor-strip { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 2rem 0; background: rgba(0,0,0,.2); border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); position: relative; z-index: 1; overflow: hidden; }
@@ -307,6 +334,10 @@
   .strip-logo:hover { opacity: .7; }
   .strip-logo img { height: 58px; max-width: 180px; width: auto; object-fit: contain; filter: brightness(.85) grayscale(.2); transition: filter .2s; }
   .strip-logo img.velric-lg { height: 58px; max-width: 180px; }
+  /* logos supplied as a solid-colour square: soften the corners and skip the dimming
+     filter, which buries the darker ones against the strip background */
+  .strip-logo img.logo-tile { height: 66px; border-radius: 8px; filter: none; }
+  .strip-logo:hover img.logo-tile { filter: brightness(1.1); }
   .strip-logo:hover img { filter: brightness(1.1) grayscale(0); }
   @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-33.333%)} }
 
