@@ -1,0 +1,891 @@
+---
+import '../styles/site.css';
+import '../styles/hacker-guide.css';
+---
+
+<html lang="en">
+  <head>
+    <script is:inline>
+      try { var t = localStorage.getItem('theme'); if (t === 'light') document.documentElement.setAttribute('data-theme','light'); } catch(e){}
+    </script>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/jaseci-logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JacHacks A2Tech · Hacker Guide</title>
+    <meta name="description" content="The JacHacks A2Tech hacker guide: schedule, location, tracks, rules, submissions, and everything you need for September 26–27, 2026 at the University of Michigan, Ann Arbor." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://jachacks.org/a2tech-guide" />
+    <meta property="og:title" content="JacHacks A2Tech · Hacker Guide" />
+    <meta property="og:description" content="Everything you need for JacHacks A2Tech in one place: schedule, tracks, rules, and submissions. September 26–27, 2026, Ann Arbor, MI." />
+    <meta property="og:image" content="https://jachacks.org/jaseci-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+
+    <!-- NAV -->
+    <nav id="main-nav">
+      <div class="nav-inner">
+        <a href="/" class="logo">
+          <img src="/jaseci-logo.png" alt="JacHacks" class="logo-img" />
+          <span class="logo-text">Jac<span class="logo-accent">Hacks</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="/a2tech" class="nav-link">// A2TECH</a>
+          <a href="#schedule" class="nav-link">// SCHEDULE</a>
+          <a href="#tracks" class="nav-link">// TRACKS</a>
+          <a href="#local-impact" class="nav-link">// LOCAL IMPACT</a>
+          <a href="#submissions" class="nav-link">// SUBMIT</a>
+          <a href="#rules" class="nav-link">// RULES</a>
+          <a href="#resources" class="nav-link">// RESOURCES</a>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
+          <svg class="tt-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="tt-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://luma.com/jlpxupsw" target="_blank" rel="noopener noreferrer" class="nav-cta">REGISTER NOW</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/">// HOME</a>
+      <a href="/a2tech">// JACHACKS A2TECH</a>
+      <a href="#schedule">// SCHEDULE</a>
+      <a href="#tracks">// TRACKS</a>
+      <a href="#local-impact">// LOCAL IMPACT</a>
+      <a href="#submissions">// SUBMIT</a>
+      <a href="#rules">// RULES</a>
+      <a href="#resources">// RESOURCES</a>
+      <a href="https://luma.com/jlpxupsw" target="_blank" class="mobile-cta">REGISTER NOW</a>
+    </div>
+
+    <!-- GUIDE HERO -->
+    <section class="sfg-hero a2g-hero">
+      <div class="hero-grid-bg"></div>
+      <div class="hero-spotlight"></div>
+      <img class="a2g-hero-lines" src="/a2-lines.png" alt="" aria-hidden="true" />
+      <div class="sfg-hero-content">
+        <div class="a2g-lockup reveal">
+          <span class="a2g-lockup-label">OFFICIAL HACKATHON PARTNER OF</span>
+          <a href="https://a2tech360.com" target="_blank" rel="noopener noreferrer" class="a2g-lockup-link" aria-label="a2Tech360, powered by Ann Arbor SPARK">
+            <img src="/a2tech360-logo-white.webp" alt="a2Tech360, powered by Ann Arbor SPARK" class="a2g-lockup-logo a2g-logo-dark" />
+            <img src="/a2tech360-logo-color.webp" alt="" aria-hidden="true" class="a2g-lockup-logo a2g-logo-light" />
+          </a>
+        </div>
+        <div class="hero-series-badge reveal">
+          <span class="series-dot"></span>
+          <span>JACHACKS A2TECH 2026</span>
+          <span class="series-sep">·</span>
+          <span class="series-event">HACKER GUIDE</span>
+        </div>
+        <h1 class="title-main reveal">Hacker <span class="title-spring">Guide.</span></h1>
+        <p class="hero-sub reveal">Everything you need for the weekend in one place. A two-day AI hackathon hosted by Jaseci Labs. Questions? Drop them in <b>#ask-an-organizer</b> on Discord.</p>
+        <div class="hero-meta-line reveal">
+          <span>SAT–SUN, SEP 26–27</span>
+          <span class="meta-dot">·</span>
+          <span>LEINWEBER BUILDING</span>
+          <span class="meta-dot">·</span>
+          <span>U-M NORTH CAMPUS, ANN ARBOR</span>
+        </div>
+        <div class="cta-group reveal">
+          <a href="#schedule" class="btn-primary">
+            VIEW SCHEDULE
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+          <a href="https://discord.gg/Av2JKhVyA" target="_blank" rel="noopener noreferrer" class="btn-accent">
+            JOIN DISCORD
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+          <a href="https://jachacks-a2tech.devpost.com/" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+            DEVPOST
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK INFO CARDS -->
+    <section class="section sfg-section-tight">
+      <div class="container">
+        <div class="sfg-info-grid reveal">
+          <div class="sfg-info-card">
+            <div class="sfg-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="sfg-info-label">LOCATION</div>
+            <div class="sfg-info-title">Leinweber Building</div>
+            <p class="sfg-info-desc">Leinweber Computer Science and Information Building, 2200 Hayward Street, Ann Arbor, MI 48109. Check-in, hacking, meals, workshops, judging, and closing all happen on-site.</p>
+          </div>
+          <div class="sfg-info-card">
+            <div class="sfg-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+            </div>
+            <div class="sfg-info-label">WIFI</div>
+            <div class="sfg-info-title">eduroam or MGuest</div>
+            <p class="sfg-info-desc">Log into <b>eduroam</b> with your college credentials (email and password). No eduroam? Connect to <b>MGuest</b>.</p>
+          </div>
+          <div class="sfg-info-card">
+            <div class="sfg-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div class="sfg-info-label">DISCORD</div>
+            <div class="sfg-info-title">Main comms channel</div>
+            <p class="sfg-info-desc">Announcements, schedule updates, mentor requests, and team matching. Post questions in <b>#ask-an-organizer</b>. <a class="sfg-link" href="https://discord.gg/Av2JKhVyA" target="_blank" rel="noopener noreferrer">Join before the event →</a></p>
+          </div>
+          <div class="sfg-info-card">
+            <div class="sfg-info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+            </div>
+            <div class="sfg-info-label">FOOD</div>
+            <div class="sfg-info-title">You're covered</div>
+            <p class="sfg-info-desc">Breakfast, lunch, dinner, and snacks all weekend. Dietary restrictions? Flag them on your Luma registration or ping us on Discord.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="section" id="schedule">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// THE SCHEDULE</div>
+          <h2 class="section-title">Two Days. <span class="text-accent">One Long Night.</span></h2>
+          <p class="section-sub">Here's exactly how the weekend runs. Any day-of updates will be posted on Discord.</p>
+        </div>
+
+        <div class="a2g-days reveal">
+          <div>
+            <div class="a2g-day"><span class="a2g-day-num">DAY 1</span><span class="a2g-day-date">SATURDAY, SEP 26</span><span class="a2g-day-rule"></span></div>
+            <div class="sfg-timeline">
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">9:00 – 10:00 AM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Check-In + Networking</div>
+                  <div class="sfg-tl-desc">Grab your badge, meet other builders, and get settled</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">10:00 – 11:00 AM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Opening + Keynote</div>
+                  <div class="sfg-tl-desc">Welcome to JacHacks A2Tech, followed by a keynote from Prof. Jason Mars</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">11:00 – 11:30 AM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Hackathon Briefing</div>
+                  <div class="sfg-tl-desc">Rules, tracks, prizes, sponsor resources, judging criteria, and how to submit</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item sfg-tl-featured">
+                <div class="sfg-tl-time">11:30 AM – 12:30 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Jac Workshop <span class="sfg-tl-tag">DON'T SKIP THIS</span></div>
+                  <div class="sfg-tl-desc">Led by Jayanaka and Nitin. Zero to shipping on Jac, all levels welcome.</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item sfg-tl-milestone sfg-tl-green">
+                <div class="sfg-tl-time">12:30 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">⭐ Hacking Begins</div>
+                  <div class="sfg-tl-desc">Clocks start. Build. Collaborate. Iterate.</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">1:00 – 2:00 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Lunch + Networking</div>
+                  <div class="sfg-tl-desc">Lunch is served. Keep planning while you eat.</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">3:00 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">IBM / Sponsor Workshop</div>
+                  <div class="sfg-tl-desc">Hands-on session from our sponsors</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">3:00 – 5:00 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">First Build Block</div>
+                  <div class="sfg-tl-desc">Finalize teams, lock in ideas, and start building</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">5:00 – 5:30 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Mentor Check-In</div>
+                  <div class="sfg-tl-desc">Mentors circulate for questions, feedback, and technical support</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">5:30 – 7:00 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Second Build Block</div>
+                  <div class="sfg-tl-desc">Mentor office hours and sponsor support continue</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">6:30 – 7:30 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Dinner + Networking</div>
+                  <div class="sfg-tl-desc">Dinner is served alongside continued project work</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">8:00 PM – 12:00 AM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Third Build Block + Snacks</div>
+                  <div class="sfg-tl-desc">Keep building, testing, and preparing your demo</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item sfg-tl-milestone sfg-tl-purple">
+                <div class="sfg-tl-time">12:00 AM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">🌙 Overnight Build Continues</div>
+                  <div class="sfg-tl-desc">Keep building overnight. Final submissions are due the next day at 12:00 PM.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="a2g-day"><span class="a2g-day-num">DAY 2</span><span class="a2g-day-date">SUNDAY, SEP 27</span><span class="a2g-day-rule"></span></div>
+            <div class="sfg-timeline">
+              <div class="sfg-tl-item sfg-tl-milestone sfg-tl-orange">
+                <div class="sfg-tl-time">9:30 AM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">⭐ Partial Submission Checkpoint</div>
+                  <div class="sfg-tl-desc">Submit your draft on Devpost to be considered for judging. You can continue editing afterward.</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">10:00 AM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Brunch + Final Mentor Office Hours</div>
+                  <div class="sfg-tl-desc">Refuel, get last-minute feedback, and make final improvements</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">10:30 – 11:30 AM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Final Build + Demo Preparation</div>
+                  <div class="sfg-tl-desc">Finish your project, test the demo, and prepare your presentation</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item sfg-tl-milestone sfg-tl-red">
+                <div class="sfg-tl-time">12:00 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">🛑 Final Submissions Due <span class="sfg-tl-tag sfg-tag-red">HARD DEADLINE</span></div>
+                  <div class="sfg-tl-desc">Submit your project before noon. Late submissions are not accepted.</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item">
+                <div class="sfg-tl-time">12:30 – 2:00 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Judging</div>
+                  <div class="sfg-tl-desc">Teams present their projects to judges in short demo sessions</div>
+                </div>
+              </div>
+              <div class="sfg-tl-item sfg-tl-milestone sfg-tl-cyan">
+                <div class="sfg-tl-time">2:00 – 3:00 PM</div>
+                <div class="sfg-tl-rail"><span class="sfg-tl-dot"></span></div>
+                <div class="sfg-tl-body">
+                  <div class="sfg-tl-name">Closing Ceremony</div>
+                  <div class="sfg-tl-desc">Winner announcements, prizes, and sponsor and judge recognition</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DEADLINE CALLOUT -->
+            <div class="sfg-deadlines a2g-deadlines">
+              <div class="sfg-deadline-card sfg-dl-orange">
+                <div class="sfg-dl-time">SUN 9:30 AM</div>
+                <div class="sfg-dl-label">PARTIAL SUBMISSION CHECKPOINT</div>
+                <p>Make your first partial submission on Devpost to be considered for judging. You can still edit after.</p>
+              </div>
+              <div class="sfg-deadline-card sfg-dl-red">
+                <div class="sfg-dl-time">SUN 12:00 PM</div>
+                <div class="sfg-dl-label">FINAL SUBMISSIONS · HARD DEADLINE</div>
+                <p>No late submissions will be accepted. Submit early, edit often.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRACKS & AWARDS -->
+    <section class="section" id="tracks">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// TRACKS & AWARDS</div>
+          <h2 class="section-title">Pick Your <span class="text-accent">Tracks.</span></h2>
+          <p class="section-sub">All projects are eligible for every track. When you submit on Devpost, select the tracks you'd like to be considered for. Pick the ones that meaningfully fit your project.</p>
+        </div>
+
+        <div class="sfg-prize-tier reveal">MAIN TRACKS <span class="sfg-tier-hint">· select every track that fits</span></div>
+        <div class="sfg-prize-grid sfg-prize-grid-3 reveal">
+          <div class="sfg-prize-card sfg-prize-featured">
+            <div class="sfg-prize-track">AGENTIC AI</div>
+            <span class="a2g-award-tag">1ST + 2ND PLACE</span>
+            <p class="sfg-prize-note">Best agentic AI project built at JacHacks A2Tech</p>
+          </div>
+          <div class="sfg-prize-card">
+            <div class="sfg-prize-track">DEV TOOLS &amp; INFRA</div>
+            <span class="a2g-award-tag">1ST + 2ND PLACE</span>
+            <p class="sfg-prize-note">Best developer tools, infrastructure, or tooling project</p>
+          </div>
+          <a href="#local-impact" class="sfg-prize-card a2g-prize-local">
+            <div class="sfg-prize-track">LOCAL IMPACT</div>
+            <span class="a2g-award-tag">GRAND PRIZE + COMMUNITY FAVORITE</span>
+            <p class="sfg-prize-note">Best combines local relevance, technical execution, and a plausible path to existing after the weekend. <span class="sfg-link">See the track →</span></p>
+          </a>
+        </div>
+
+        <div class="sfg-prize-tier reveal">JAC AWARDS <span class="sfg-tier-hint">· select separately</span></div>
+        <div class="sfg-prize-grid sfg-prize-grid-3 reveal">
+          <div class="sfg-prize-card sfg-prize-special">
+            <div class="sfg-prize-track">BEST JACHAMMER</div>
+            <span class="a2g-award-tag">SPECIAL AWARD</span>
+            <p class="sfg-prize-note">Use <a class="sfg-link" href="https://jachammer.ai" target="_blank" rel="noopener noreferrer">jachammer.ai</a> to build and ship a working application.</p>
+          </div>
+          <div class="sfg-prize-card sfg-prize-special">
+            <div class="sfg-prize-track">BEST JACLANG</div>
+            <span class="a2g-award-tag">SPECIAL AWARD</span>
+            <p class="sfg-prize-note">The team that hammers hardest on Jac, the most impressive use of the Jac language</p>
+          </div>
+          <div class="sfg-prize-card sfg-prize-special">
+            <div class="sfg-prize-track">BEST MOBILE THROUGH JAC</div>
+            <span class="a2g-award-tag">SPECIAL AWARD</span>
+            <p class="sfg-prize-note">Strong mobile project built with Jac or Jac-compatible mobile tooling</p>
+          </div>
+        </div>
+
+        <div class="sfg-prize-tier reveal">SPONSOR AWARDS <span class="sfg-tier-hint">· select separately</span></div>
+        <div class="sfg-prize-grid reveal">
+          <div class="sfg-prize-card a2g-prize-sponsor">
+            <div class="sfg-prize-track">BEST OF GOOGLE</div>
+            <span class="a2g-award-tag">SELECTED BY GOOGLE</span>
+          </div>
+          <div class="sfg-prize-card a2g-prize-sponsor">
+            <div class="sfg-prize-track">BEST OF IBM</div>
+            <span class="a2g-award-tag">SELECTED BY IBM</span>
+          </div>
+          <div class="sfg-prize-card a2g-prize-sponsor">
+            <div class="sfg-prize-track">BEST OF ELEVENLABS</div>
+            <span class="a2g-award-tag">SPECIAL AWARD</span>
+          </div>
+          <div class="sfg-prize-card a2g-prize-sponsor">
+            <div class="sfg-prize-track">BEST OF BACKBOARD.IO</div>
+            <span class="a2g-award-tag">SPECIAL AWARD</span>
+          </div>
+        </div>
+        <p class="sfg-fineprint reveal">Award details will be shared on Discord.</p>
+      </div>
+    </section>
+
+    <!-- LOCAL IMPACT TRACK -->
+    <section class="section" id="local-impact">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// TRACK · LOCAL IMPACT</div>
+          <h2 class="section-title">Build for <span class="text-accent">Ann Arbor.</span></h2>
+          <p class="section-sub">a2Tech360 spends ten days celebrating what this region invents. This is the part where we invent something.</p>
+        </div>
+
+        <div class="a2g-li reveal">
+          <div class="a2g-li-prompt">
+            <span class="a2g-li-tag">★ THE PROMPT</span>
+            <p class="a2g-li-quote">Build something that makes life <em>measurably better</em> for people in Ann Arbor and Washtenaw County.</p>
+            <p class="a2g-li-body">Every problem worth solving here already belongs to somebody. Riders waiting on a route that doesn't quite work. Small businesses competing against everything online. Nonprofits doing serious work on thin budgets. Students, newcomers, parents, makers, and longtime residents who could help each other if they knew how.</p>
+            <p class="a2g-li-body">Pick one of theirs. Pick something we haven't thought of. The only requirement is that <b>a specific person in this county could use what you build on Monday morning.</b></p>
+            <div class="a2g-li-rule">
+              <span class="a2g-li-rule-tag">ONE RULE</span>
+              <p>Ground it in something real. Talk to someone who has the problem. Judges will ask who you built this for, and &ldquo;everyone&rdquo; is the wrong answer.</p>
+            </div>
+          </div>
+
+          <div class="a2g-li-side">
+            <div class="a2g-li-dirs-label">A few directions, not a menu</div>
+            <div class="a2g-li-dirs">
+              <div class="a2g-li-dir"><span class="a2g-li-dir-icon">🚌</span><b>Getting around</b><p>Transit, parking, biking, and the last mile between where people are and where they need to be.</p></div>
+              <div class="a2g-li-dir"><span class="a2g-li-dir-icon">🏪</span><b>Main Street</b><p>Helping local businesses reach the people already walking past them.</p></div>
+              <div class="a2g-li-dir"><span class="a2g-li-dir-icon">🤝</span><b>Showing up</b><p>Connecting volunteers, mentors, and donors to the organizations that need them.</p></div>
+              <div class="a2g-li-dir"><span class="a2g-li-dir-icon">🏠</span><b>Access</b><p>Food, housing, benefits, childcare, and the gap between a service existing and someone finding it.</p></div>
+              <div class="a2g-li-dir"><span class="a2g-li-dir-icon">🏛️</span><b>Civic clarity</b><p>Making local data, meetings, permits, and decisions legible to normal humans.</p></div>
+              <div class="a2g-li-dir"><span class="a2g-li-dir-icon">🌳</span><b>Belonging</b><p>Helping people find each other and find what's happening.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="a2g-li-foot reveal">
+          <div class="a2g-li-card">
+            <div class="sfg-checklist-title">BUILD REQUIREMENTS</div>
+            <p>Projects build on the <b>Jaseci/Jac stack</b> (per event-wide requirements) and may incorporate <b>Google or IBM tooling</b> alongside it. All teams must run their code through <b>Baz</b> for code review as part of the build process.</p>
+            <p class="a2g-li-note">No prior experience with any of this is required. Workshops and mentors will be on site.</p>
+          </div>
+          <div class="a2g-li-card a2g-li-card-hot">
+            <div class="sfg-checklist-title">HOW IT'S JUDGED</div>
+            <p>The <b>Grand Prize</b> goes to the team whose project best combines local relevance, technical execution, and a plausible path to existing after the weekend.</p>
+            <p class="a2g-li-note">Plus the <b>Community Favorite</b>: every participant votes, and this one belongs to the room.</p>
+          </div>
+        </div>
+        <p class="a2g-li-close reveal">You do not need to be a professional engineer. You do not need a team when you arrive. <b>You do need to care about this place.</b></p>
+      </div>
+    </section>
+
+    <!-- SUBMISSIONS -->
+    <section class="section" id="submissions">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// SUBMISSIONS</div>
+          <h2 class="section-title">Ship It on <span class="text-accent">Devpost.</span></h2>
+          <p class="section-sub">Submissions happen on Devpost. First partial submission by 9:30 AM Sunday, final at 12:00 PM Sunday sharp.</p>
+        </div>
+
+        <div class="sfg-submit-grid reveal">
+          <div class="sfg-checklist">
+            <div class="sfg-checklist-title">SUBMISSION CHECKLIST</div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>Public GitHub repo link <b>(code must be at least 40% Jac)</b></span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>Demo video</span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>Written description of your project, including how you used Jac or any Jaseci Labs products</span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span><b>Track selection:</b> every track and award your project meaningfully fits</span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>Host your project on <b>Jac Hammer</b> so judges can easily view it (use &ldquo;sandbox&rdquo; to host for free)</span>
+            </div>
+            <div class="sfg-check-item">
+              <span class="sfg-check-box"></span>
+              <span>⭐ Star the Jac repo: <a class="sfg-link" href="https://github.com/jaseci-labs/jac" target="_blank" rel="noopener noreferrer">github.com/jaseci-labs/jac</a></span>
+            </div>
+            <a href="https://jachacks-a2tech.devpost.com/" target="_blank" rel="noopener noreferrer" class="btn-primary sfg-submit-btn">
+              OPEN DEVPOST
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <div class="sfg-judging-card">
+            <div class="sfg-checklist-title">HOW JUDGING WORKS</div>
+            <p>Judging happens in person after submissions close, Sunday 12:30 – 2:00 PM. You'll give a short live demo to a panel of judges. The detailed rubric will be shared on Discord, but broadly:</p>
+            <ul class="sfg-judge-list">
+              <li>Working demos beat slide decks</li>
+              <li>Clear problem-solution stories beat feature dumps</li>
+              <li>Hosting on <b>Jac Hammer</b> makes it easy for judges to check out your project</li>
+              <li>Local Impact judges will ask <b>who you built it for</b></li>
+              <li>Make your partial submission by <b>9:30 AM Sunday</b> to be considered for judging</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section class="section" id="rules">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// RULES</div>
+          <h2 class="section-title">The Fine <span class="text-accent">Print.</span></h2>
+          <p class="section-sub">To be eligible for prizes, your team and project must follow all of the below.</p>
+        </div>
+
+        <div class="sfg-rules reveal">
+          <div class="sfg-rule"><span class="sfg-rule-num">01</span><p>All members of your team must have registered and checked in to JacHacks A2Tech.</p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">02</span><p>At least one member of your team must be present to demo your project to judges.</p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">03</span><p>All hacking and building must take place during hacking hours (Saturday 12:30 PM – Sunday 12:00 PM). Brainstorming beforehand is allowed and encouraged, but all coding must happen during the event. <b>We WILL check your GitHub repo.</b></p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">04</span><p>Your team cannot have more than 4 people.</p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">05</span><p>You cannot have more than 1 project.</p></div>
+          <div class="sfg-rule"><span class="sfg-rule-num">06</span><p>Submit your project on Devpost before the deadline. Late submissions are not eligible for prizes.</p></div>
+          <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" class="sfg-rule sfg-rule-hot"><span class="sfg-rule-hot-shine"></span><span class="sfg-rule-num">07</span><div class="sfg-rule-hot-body"><span class="sfg-rule-tag">★ BUILD WITH JAC</span><p>Must build a working software project using <b>Jac</b>, the AI-native programming language from Jaseci Labs. That's the one requirement: your project must meaningfully use Jac, with at least <b>40% of your code in Jac</b>. <span class="sfg-rule-link">Explore Jac at jaclang.org →</span></p></div></a>
+          <a href="https://jachammer.ai" target="_blank" rel="noopener noreferrer" class="sfg-rule sfg-rule-hot"><span class="sfg-rule-hot-shine"></span><span class="sfg-rule-num">08</span><div class="sfg-rule-hot-body"><span class="sfg-rule-tag">★ HIGHLY ENCOURAGED</span><p>Host your web app / product through <b>Jac Hammer</b> so that judges can easily view your submission (use &ldquo;sandbox&rdquo; to host for free). <span class="sfg-rule-link">Host at jachammer.ai &rarr;</span></p></div></a>
+          <div class="sfg-rule"><span class="sfg-rule-num">09</span><p>Be kind, be respectful, and build in good faith. Misrepresenting what your project actually does is grounds for disqualification.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="section" id="resources">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// RESOURCES</div>
+          <h2 class="section-title">Start <span class="text-accent">Here.</span></h2>
+          <p class="section-sub">Everything you need to go from zero to shipping in Jac. Bookmark these before you start building.</p>
+        </div>
+
+        <div class="sfg-res reveal">
+          <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" class="sfg-res-card sfg-res-hero">
+            <span class="sfg-res-tag">★ YOUR FIRST STOP</span>
+            <span class="sfg-res-name">Jac Language</span>
+            <span class="sfg-res-url">jaclang.org</span>
+            <p class="sfg-res-desc">Docs, tutorials, and everything you need to go from zero to shipping in Jac.</p>
+            <span class="sfg-res-go">Open the docs →</span>
+          </a>
+
+          <div class="sfg-res-row">
+            <a href="https://github.com/jaseci-labs/jaseci" target="_blank" rel="noopener noreferrer" class="sfg-res-card">
+              <span class="sfg-res-tag">SOURCE</span>
+              <span class="sfg-res-name">Jaseci on GitHub</span>
+              <span class="sfg-res-url">github.com/jaseci-labs/jaseci</span>
+              <p class="sfg-res-desc">Browse the source. Star the repo.</p>
+            </a>
+            <a href="https://jac-gpt.jaseci.org/" target="_blank" rel="noopener noreferrer" class="sfg-res-card">
+              <span class="sfg-res-tag">AI HELPER</span>
+              <span class="sfg-res-name">Jac-GPT</span>
+              <span class="sfg-res-url">jac-gpt.jaseci.org</span>
+              <p class="sfg-res-desc">An assistant that actually knows Jac.</p>
+            </a>
+            <a href="https://discord.com/invite/6j3QNdtcN6" target="_blank" rel="noopener noreferrer" class="sfg-res-card sfg-res-chat">
+              <span class="sfg-res-tag">JAC Q&amp;A BOT</span>
+              <span class="sfg-res-name">Jaseci World Discord</span>
+              <span class="sfg-res-chan">#ninjaclaw-yap-room</span>
+              <p class="sfg-res-desc">Drop any Jac question in the channel. The bot answers.</p>
+            </a>
+          </div>
+
+          <div class="a2g-credits">
+            <span class="a2g-credits-tag">API CREDITS + PROMOS</span>
+            <p>Some of our sponsors have generously offered credits and access for their platforms. Redemption links will be posted on <a class="sfg-link" href="https://discord.gg/Av2JKhVyA" target="_blank" rel="noopener noreferrer">Discord</a> before hacking begins.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GETTING THERE + PACKING -->
+    <section class="section">
+      <div class="container">
+        <div class="sfg-two-col">
+          <div class="reveal">
+            <div class="section-eyebrow">// GETTING THERE</div>
+            <h2 class="sfg-h3">Leinweber, on North Campus</h2>
+            <p class="sfg-body">JacHacks A2Tech takes place at the Leinweber Computer Science and Information Building, <b>2200 Hayward Street, Ann Arbor, MI 48109</b>, on the University of Michigan's North Campus. Volunteers and organizers will be around all weekend to point you in the right direction. Look for the JacHacks signage when you arrive.</p>
+            <div class="sfg-transit">
+              <div class="sfg-transit-item">
+                <span class="sfg-transit-tag">THERIDE</span>
+                <p>TheRide operates Ann Arbor's local bus network. For North Campus, use the U-M North Campus routes and check current schedules before traveling; routes and arrival times can change.</p>
+              </div>
+              <div class="sfg-transit-item">
+                <span class="sfg-transit-tag">M-BUS</span>
+                <p>Take UMich's M-Bus from Central Campus to North via Commuter North, Bursley-Baits, or Northwood.</p>
+              </div>
+              <div class="sfg-transit-item">
+                <span class="sfg-transit-tag">FROM DTW</span>
+                <p>The Michigan Flyer runs frequent daily service from Detroit Metro Airport to 500 E. Washington Street in Ann Arbor; from there, take an Ann Arbor bus, rideshare, or taxi to Leinweber. Reserve a seat before traveling. By Uber or Lyft, DTW to Leinweber is typically 30–45 minutes.</p>
+              </div>
+              <div class="sfg-transit-item">
+                <span class="sfg-transit-tag">PARKING</span>
+                <p>Visitor parking is in <b>NC48</b> at 2100 Hayward Street, next to Leinweber. Accessible visitor parking is in <b>NC27</b>, entered from Murfin Avenue just south of Hayward. Card-only through AimsMobilePay.com; check posted signs and U-M parking rules.</p>
+              </div>
+              <div class="sfg-transit-item">
+                <span class="sfg-transit-tag">RIDESHARE</span>
+                <p>Drop pin: "Leinweber Computer Science and Information Building, 2200 Hayward Street." Use the Hayward Street entrance and follow event signage.</p>
+              </div>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="section-eyebrow">// PACKING LIST</div>
+            <h2 class="sfg-h3">Pack for a Full Build Weekend.</h2>
+            <div class="sfg-pack-list">
+              <div class="sfg-pack-item sfg-pack-hot">💻 Laptop + charger <span class="sfg-pack-note">(non-negotiable)</span></div>
+              <div class="sfg-pack-item">🔌 Phone charger</div>
+              <div class="sfg-pack-item">🪪 Government-issued ID or student ID for check-in</div>
+              <div class="sfg-pack-item">🧥 Comfortable layers and anything you need for a long weekend of building, overnight included</div>
+              <div class="sfg-pack-item">🚰 Water bottle</div>
+              <div class="sfg-pack-item">🎧 Headphones or AirPods for lock-in mode</div>
+              <div class="sfg-pack-item">🔧 Any hardware you want to hack with (nothing oversized, dangerous, or illegal)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ / WHAT TO EXPECT -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// WHAT TO EXPECT</div>
+          <h2 class="section-title">First Hackathon? <span class="text-accent">Perfect.</span></h2>
+        </div>
+        <div class="sfg-faq-grid reveal">
+          <div class="sfg-faq-card">
+            <div class="sfg-faq-q">What is a hackathon?</div>
+            <p>A short-timeframe building event. To "hack" means to create. Meet fellow builders, learn new tools, and ship a project across two focused days with free food, swag, workshops, mentorship, and prizes along the way.</p>
+          </div>
+          <div class="sfg-faq-card">
+            <div class="sfg-faq-q">I've never been to one and I'm nervous.</div>
+            <p>Excellent! You'll find yourself right at home. Total beginners, students, professionals, and founders are all welcome.</p>
+          </div>
+          <div class="sfg-faq-card">
+            <div class="sfg-faq-q">Do I need to know how to code?</div>
+            <p>No programming experience is necessary. Workshops and mentors will help you throughout the event, including a Jac intro workshop that takes you from zero to shipping.</p>
+          </div>
+          <div class="sfg-faq-card">
+            <div class="sfg-faq-q">Do I need a team?</div>
+            <p>Nope. Come solo and we'll help you find a group. Teams max out at 4 people.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPONSORS -->
+    <section class="section" id="sponsors">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">// SPONSORS · THANK YOU!!</div>
+          <h2 class="section-title">Made Possible <span class="text-accent">By.</span></h2>
+          <p class="section-sub">JacHacks A2Tech is made possible by these sponsors and partners.</p>
+        </div>
+        <div class="a2g-sponsors reveal">
+          <div class="a2g-sponsor"><img src="/sponsors/nvidia_inception.png" alt="" /><span>NVIDIA</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/google.svg" alt="" /><span>Google</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/ibm.svg" alt="" /><span>IBM</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/base44.png" alt="" /><span>Base44</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/NSF_logo.svg.webp" alt="" /><span>NSF</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/mastra.png" alt="" class="a2g-invert" /><span>Mastra</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/elevenlabs.svg" alt="" class="a2g-invert a2g-mark" /><span>ElevenLabs</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/backboard.png" alt="" class="a2g-mark" /><span>Backboard.io</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/monster_mark.png" alt="" class="a2g-mark" /><span>Monster</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/compass_detroit.png" alt="" /><span>Compass Detroit</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/luigi_solutions.png" alt="" class="a2g-tile" /><span>Luigi Solutions</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/baz.png" alt="" /><span>Baz</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/barrett_solutions.png" alt="" class="a2g-tile" /><span>Barrett Solutions</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/gdg_detroit.png" alt="" /><span>GDG Detroit</span></div>
+          <div class="a2g-sponsor"><img src="/sponsors/UofM.png" alt="" class="a2g-tile" /><span>University of Michigan</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section sfg-final">
+      <div class="container">
+        <div class="sfg-final-card reveal">
+          <div class="section-eyebrow">// QUESTIONS?</div>
+          <h2 class="section-title">We've Got <span class="text-accent">You.</span></h2>
+          <p class="section-sub sfg-final-sub">Post in #ask-an-organizer on Discord, or find any organizer on-site. Happy hacking 🧡</p>
+          <div class="cta-group">
+            <a href="https://discord.gg/Av2JKhVyA" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              JOIN THE DISCORD
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="https://luma.com/jlpxupsw" target="_blank" rel="noopener noreferrer" class="btn-accent">
+              REGISTER ON LUMA
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <p class="a2g-about">JacHacks is the hackathon series from <b>Jaseci Labs</b>, the team behind <b>Jac</b>, an AI-native programming language. Learn more at <a class="sfg-link" href="https://jaseci.org" target="_blank" rel="noopener noreferrer">jaseci.org</a> or check out the open-source repo at <a class="sfg-link" href="https://github.com/jaseci-labs/jaseci" target="_blank" rel="noopener noreferrer">github.com/jaseci-labs/jaseci</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-logo">
+          <img src="/jaseci-logo.png" alt="Jaseci" class="logo-img" />
+          <span>Jac<span class="text-accent">Hacks</span></span>
+        </div>
+        <div class="footer-nav">
+          <a href="/a2tech">JacHacks A2Tech</a>
+          <a href="/sf">JacHacks SF</a>
+          <a href="/spring">JacHacks Spring</a>
+          <a href="/winter">JacHacks Winter</a>
+          <a href="/paradise">Popup in Paradise</a>
+          <a href="/ohio">Popup in Ohio</a>
+          <a href="/gallery">Gallery</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://x.com/Jaseci_Org" class="social-btn" aria-label="Twitter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/jaseci.ai/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/jaseci-labs/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 JacHacks · Powered by <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer">Jaseci</a> · A global hackathon series</p>
+      </div>
+    </footer>
+
+    <style is:global>
+      /* ── A2TECH GUIDE ADDITIONS ── */
+      .a2g-hero { padding-bottom:5rem; }
+      .a2g-hero-lines { position:absolute; right:-4%; bottom:-6%; width:min(980px,68vw); opacity:.2; pointer-events:none; z-index:1; -webkit-mask-image:radial-gradient(120% 120% at 100% 100%, #000 30%, transparent 78%); mask-image:radial-gradient(120% 120% at 100% 100%, #000 30%, transparent 78%); }
+      .a2g-lockup { display:flex; flex-direction:column; align-items:center; gap:.65rem; margin-bottom:1.4rem; }
+      .a2g-lockup-label { font-family:var(--mono); font-size:.58rem; letter-spacing:.28em; color:rgba(242,234,214,.4); }
+      .a2g-lockup-link { display:block; line-height:0; transition:transform .3s ease; }
+      .a2g-lockup-link:hover { transform:translateY(-2px); }
+      .a2g-lockup-logo { height:2.5rem; width:auto; object-fit:contain; opacity:.9; }
+      .a2g-logo-light { display:none; }
+      :root[data-theme="light"] .a2g-logo-dark { display:none; }
+      :root[data-theme="light"] .a2g-logo-light { display:block; }
+      :root[data-theme="light"] .a2g-lockup-label { color:rgba(26,24,40,.5); }
+      :root[data-theme="light"] .a2g-hero-lines { opacity:.28; }
+
+      /* two-day schedule */
+      .a2g-days { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+      .a2g-days .sfg-timeline { max-width:none; }
+      .a2g-days .sfg-tl-item { grid-template-columns:128px 30px 1fr; }
+      .a2g-day { display:flex; align-items:center; gap:.7rem; margin-bottom:.6rem; }
+      .a2g-day-num { font-family:var(--mono); font-weight:600; font-size:.62rem; letter-spacing:.2em; color:#000; background:var(--primary); border-radius:6px; padding:.3rem .6rem; box-shadow:0 0 16px rgba(249,115,22,.4); }
+      .a2g-day-date { font-family:var(--mono); font-size:.66rem; letter-spacing:.22em; color:var(--text); }
+      .a2g-day-rule { flex:1; height:1px; background:linear-gradient(90deg, rgba(249,115,22,.35), transparent); }
+      .a2g-deadlines { grid-template-columns:1fr; max-width:none; margin-top:1.8rem; }
+      .sfg-tl-purple .sfg-tl-body { background:rgba(168,85,247,.07); border:1px solid rgba(168,85,247,.3); }
+      .sfg-tl-purple .sfg-tl-dot { border-color:#a855f7; box-shadow:0 0 10px rgba(168,85,247,.55); }
+      .sfg-tl-purple .sfg-tl-name { color:#c79bff; }
+      :root[data-theme="light"] .sfg-tl-purple .sfg-tl-name { color:#7e22ce; }
+      :root[data-theme="light"] .a2g-day-date { color:#3d3c45; }
+
+      /* tracks & awards */
+      .a2g-prize-local { color:inherit; }
+      .a2g-award-tag { align-self:flex-start; font-family:var(--mono); font-size:.58rem; letter-spacing:.16em; color:var(--light); background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:100px; padding:.25rem .65rem; margin:-.35rem 0 1rem; }
+      .a2g-prize-sponsor { border-color:rgba(168,85,247,.35); background:linear-gradient(160deg, rgba(168,85,247,.07), var(--card) 55%); }
+      .a2g-prize-sponsor .sfg-prize-track { color:#c79bff; font-size:.82rem; }
+      .a2g-prize-sponsor .a2g-award-tag { margin-bottom:0; }
+      :root[data-theme="light"] .a2g-award-tag { background:rgba(0,0,0,.03); border-color:rgba(0,0,0,.09); }
+      :root[data-theme="light"] .a2g-prize-sponsor { background:linear-gradient(160deg, rgba(168,85,247,.06), #fff 55%); }
+      :root[data-theme="light"] .a2g-prize-sponsor .sfg-prize-track { color:#7e22ce; }
+
+      /* local impact */
+      .a2g-li { display:grid; grid-template-columns:1.05fr 1fr; gap:1rem; align-items:stretch; }
+      .a2g-li-prompt { display:flex; flex-direction:column; gap:1rem; border:1px solid rgba(249,115,22,.5); border-radius:18px; padding:2.2rem 2rem; background:linear-gradient(155deg, rgba(249,115,22,.12), var(--card) 58%); box-shadow:0 0 36px rgba(249,115,22,.08); }
+      .a2g-li-tag { font-family:var(--mono); font-weight:600; font-size:.62rem; letter-spacing:.22em; color:var(--pl); }
+      .a2g-li-quote { font-family:var(--serif); font-weight:800; font-size:clamp(1.5rem,3vw,2.15rem); line-height:1.2; letter-spacing:-.01em; color:#fff; }
+      .a2g-li-quote em { font-style:italic; font-weight:700; color:var(--primary); }
+      .a2g-li-body { font-size:.92rem; line-height:1.7; color:var(--light); }
+      .a2g-li-body b { color:var(--text); }
+      .a2g-li-rule { margin-top:auto; display:flex; gap:1rem; align-items:flex-start; border-top:1px solid rgba(255,255,255,.07); padding-top:1.1rem; }
+      .a2g-li-rule-tag { font-family:var(--mono); font-size:.6rem; font-weight:600; letter-spacing:.14em; color:#000; background:var(--primary); border-radius:6px; padding:.3rem .55rem; flex-shrink:0; }
+      .a2g-li-rule p { font-size:.9rem; line-height:1.6; color:var(--text); }
+      .a2g-li-side { display:flex; flex-direction:column; gap:.8rem; }
+      .a2g-li-dirs-label { font-family:var(--mono); font-size:.62rem; letter-spacing:.22em; color:var(--light); text-transform:uppercase; }
+      .a2g-li-dirs { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; flex:1; }
+      .a2g-li-dir { display:flex; flex-direction:column; gap:.35rem; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.15rem 1.2rem; transition:border-color .25s, transform .25s, box-shadow .25s; }
+      .a2g-li-dir:hover { border-color:rgba(249,115,22,.45); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.35), 0 0 24px rgba(249,115,22,.08); }
+      .a2g-li-dir-icon { font-size:1.25rem; line-height:1; margin-bottom:.2rem; }
+      .a2g-li-dir b { font-family:var(--display); font-weight:700; font-size:1.05rem; color:#fff; }
+      .a2g-li-dir p { font-size:.8rem; line-height:1.55; color:var(--light); }
+      .a2g-li-foot { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem; }
+      .a2g-li-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.6rem 1.6rem; }
+      .a2g-li-card p { font-size:.88rem; line-height:1.65; color:var(--light); }
+      .a2g-li-card p b { color:var(--text); }
+      .a2g-li-card-hot { border-color:rgba(249,115,22,.45); background:linear-gradient(160deg, rgba(249,115,22,.08), var(--card) 60%); }
+      .a2g-li-note { margin-top:.7rem; font-size:.82rem !important; }
+      .a2g-li-close { text-align:center; margin-top:2rem; font-family:var(--display); font-size:1.15rem; letter-spacing:.01em; color:var(--light); }
+      .a2g-li-close b { color:var(--primary); }
+      :root[data-theme="light"] .a2g-li-prompt { background:linear-gradient(155deg, rgba(249,115,22,.08), #fff 58%); }
+      :root[data-theme="light"] .a2g-li-quote,
+      :root[data-theme="light"] .a2g-li-dir b { color:#1a1828; }
+      :root[data-theme="light"] .a2g-li-rule p { color:#3d3c45; }
+      :root[data-theme="light"] .a2g-li-rule { border-top-color:rgba(0,0,0,.08); }
+      :root[data-theme="light"] .a2g-li-dir,
+      :root[data-theme="light"] .a2g-li-card { background:#fff; border-color:rgba(0,0,0,.09); }
+      :root[data-theme="light"] .a2g-li-card-hot { background:linear-gradient(160deg, rgba(249,115,22,.07), #fff 60%); }
+
+      /* api credits */
+      .a2g-credits { display:flex; gap:1.1rem; align-items:center; flex-wrap:wrap; background:var(--card); border:1px dashed rgba(0,212,255,.35); border-radius:14px; padding:1.1rem 1.4rem; }
+      .a2g-credits-tag { font-family:var(--mono); font-weight:600; font-size:.62rem; letter-spacing:.2em; color:var(--cyan); flex-shrink:0; }
+      .a2g-credits p { font-size:.86rem; line-height:1.6; color:var(--light); flex:1; min-width:240px; }
+      :root[data-theme="light"] .a2g-credits { background:#fff; }
+      :root[data-theme="light"] .a2g-credits-tag { color:#0e7490; }
+
+      /* sponsors */
+      .a2g-sponsors { display:grid; grid-template-columns:repeat(5,1fr); gap:.85rem; }
+      .a2g-sponsor { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.75rem; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1rem 1.1rem; transition:border-color .25s, transform .25s, box-shadow .25s; }
+      .a2g-sponsor:hover { border-color:rgba(249,115,22,.45); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.35), 0 0 24px rgba(249,115,22,.08); }
+      .a2g-sponsor img { height:40px; max-width:150px; width:auto; object-fit:contain; }
+      .a2g-sponsor img.a2g-mark { height:36px; }
+      .a2g-sponsor img.a2g-tile { height:48px; border-radius:8px; }
+      .a2g-sponsor span { font-family:var(--mono); font-size:.58rem; letter-spacing:.14em; color:var(--light); text-transform:uppercase; text-align:center; }
+      .a2g-invert { filter:invert(1) brightness(1.3); }
+      :root[data-theme="light"] .a2g-sponsor { background:#fff; border-color:rgba(0,0,0,.09); }
+      :root[data-theme="light"] .a2g-invert { filter:none; }
+
+      .a2g-about { max-width:62ch; margin:2rem auto 0; font-size:.86rem; line-height:1.7; color:var(--light); }
+      .a2g-about b { color:var(--text); }
+
+      @media (max-width:1000px) {
+        .a2g-days, .a2g-li { grid-template-columns:1fr; }
+        .a2g-sponsors { grid-template-columns:repeat(3,1fr); }
+      }
+      @media (max-width:768px) {
+        .a2g-days .sfg-tl-item { grid-template-columns:auto 1fr; }
+        .a2g-li-foot, .a2g-li-dirs { grid-template-columns:1fr; }
+        .a2g-li-prompt { padding:1.6rem 1.3rem; }
+        .a2g-sponsors { grid-template-columns:1fr 1fr; }
+        .a2g-lockup-logo { height:2rem; }
+      }
+    </style>
+
+    <script>
+      // ===== REVEAL =====
+      const obs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } }); }, { threshold:.08, rootMargin:'0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+      // ===== NAV =====
+      const nav = document.getElementById('main-nav')!;
+      window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+      // ===== HAMBURGER =====
+      const hbg = document.getElementById('hamburger')!, mm = document.getElementById('mobile-menu')!;
+      hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mm.classList.toggle('open'); });
+      mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbg.classList.remove('open'); mm.classList.remove('open'); }));
+
+      // ===== THEME TOGGLE =====
+      const themeBtn = document.getElementById('theme-toggle')!;
+      themeBtn.addEventListener('click', () => {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        if (isLight) {
+          document.documentElement.removeAttribute('data-theme');
+          try { localStorage.setItem('theme','dark'); } catch(e){}
+        } else {
+          document.documentElement.setAttribute('data-theme','light');
+          try { localStorage.setItem('theme','light'); } catch(e){}
+        }
+      });
+    </script>
+  </body>
+</html>
