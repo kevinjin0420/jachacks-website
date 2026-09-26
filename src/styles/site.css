@@ -196,6 +196,10 @@
   @media (prefers-reduced-motion:reduce) { .wrap-sheen { animation:none; opacity:0; } }
 
   /* ── COUNTDOWN (other editions) ── */
+  /* shown in place of the countdown while an event is live */
+  .live-now { display:inline-flex; align-items:center; gap:.75rem; margin-bottom:1.25rem; padding:.85rem 1.7rem; font-family:var(--mono); font-weight:600; font-size:.85rem; letter-spacing:.3em; color:#fff; border:1px solid rgba(239,68,68,.55); border-radius:100px; background:rgba(239,68,68,.1); box-shadow:0 0 30px rgba(239,68,68,.18); }
+  .live-now-dot { width:10px; height:10px; border-radius:50%; background:#ef4444; box-shadow:0 0 12px #ef4444; animation:blink 1.4s ease-in-out infinite; flex-shrink:0; }
+  :root[data-theme="light"] .live-now { color:#b91c1c; background:rgba(239,68,68,.08); }
   .countdown { display:flex; align-items:center; gap:.75rem; margin-bottom:1.25rem; flex-wrap:wrap; justify-content:center; }
   .cd-block { display:flex; flex-direction:column; align-items:center; gap:.2rem; background:linear-gradient(rgba(6,5,13,.72),rgba(6,5,13,.72)), rgba(249,115,22,.08); border:1px solid rgba(249,115,22,.4); border-radius:8px; padding:.6rem 1rem; min-width:62px; backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); box-shadow:0 4px 18px rgba(0,0,0,.45), 0 0 14px rgba(249,115,22,.12), inset 0 1px 0 rgba(255,255,255,.06); }
   .cd-val { font-family:var(--display); font-size:1.7rem; font-weight:700; color:#fff; line-height:1; letter-spacing:.02em; text-shadow:0 0 16px rgba(249,115,22,.45); font-variant-numeric:tabular-nums; }

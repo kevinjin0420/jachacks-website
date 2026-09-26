@@ -300,28 +300,7 @@ function initials(name: string) {
           <span>ANN ARBOR, MI</span>
         </div>
 
-        <div class="cd-eyebrow">DOORS OPEN IN</div>
-        <div class="countdown" id="countdown">
-          <div class="cd-block">
-            <span class="cd-val" id="cd-days">00</span>
-            <span class="cd-label">DAYS</span>
-          </div>
-          <span class="cd-sep">:</span>
-          <div class="cd-block">
-            <span class="cd-val" id="cd-hours">00</span>
-            <span class="cd-label">HRS</span>
-          </div>
-          <span class="cd-sep">:</span>
-          <div class="cd-block">
-            <span class="cd-val" id="cd-mins">00</span>
-            <span class="cd-label">MIN</span>
-          </div>
-          <span class="cd-sep">:</span>
-          <div class="cd-block">
-            <span class="cd-val" id="cd-secs">00</span>
-            <span class="cd-label">SEC</span>
-          </div>
-        </div>
+        <div class="live-now"><span class="live-now-dot"></span>HAPPENING NOW</div>
 
         <div class="cta-group">
           <a href="https://luma.com/jlpxupsw" target="_blank" rel="noopener noreferrer" class="btn-primary btn-register">
@@ -712,16 +691,6 @@ function initials(name: string) {
     :root[data-theme="light"] .a2-lockup-label { color: rgba(26,24,40,.5); }
     :root[data-theme="light"] .a2-lockup-logo { opacity: .95; }
 
-    /* countdown to doors opening */
-    .cd-eyebrow {
-      font-family: var(--mono);
-      font-size: .58rem;
-      font-weight: 600;
-      letter-spacing: .28em;
-      color: rgba(242,234,214,.45);
-      margin-bottom: .7rem;
-    }
-    :root[data-theme="light"] .cd-eyebrow { color: rgba(26,24,40,.55); }
     .hero-content .cta-group { margin-top: 1.1rem; }
 
     /* the A2Tech nav entry carries a live dot so the upcoming event reads first */
@@ -866,28 +835,6 @@ function initials(name: string) {
       requestAnimationFrame(draw);
     }
     draw();
-
-    // ===== COUNTDOWN (JacHacks A2Tech) =====
-    (function() {
-      // 9:00 AM ET (EDT, UTC-4) on Sat, Sep 26, 2026
-      const target = new Date('2026-09-26T13:00:00Z').getTime();
-      const days = document.getElementById('cd-days');
-      const hours = document.getElementById('cd-hours');
-      const mins = document.getElementById('cd-mins');
-      const secs = document.getElementById('cd-secs');
-      if (!days || !hours || !mins || !secs) return;
-      const pad = (n: number) => String(n).padStart(2, '0');
-      function tick() {
-        const diff = target - Date.now();
-        if (diff <= 0) { days!.textContent = '0'; hours!.textContent = mins!.textContent = secs!.textContent = '00'; return; }
-        days!.textContent  = String(Math.floor(diff / 86400000));
-        hours!.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-        mins!.textContent  = pad(Math.floor((diff % 3600000) / 60000));
-        secs!.textContent  = pad(Math.floor((diff % 60000) / 1000));
-      }
-      tick();
-      setInterval(tick, 1000);
-    })();
 
     // ===== RECAP COUNT-UP (JacHacks SF) =====
     (function() {
