@@ -29,7 +29,7 @@ import '../styles/site.css';
     <div class="orb orb-4"></div>
 
     <!-- NAV -->
-    <nav id="main-nav">
+    <nav id="main-nav" class="scrolled">
       <div class="nav-inner">
         <a href="/" class="logo">
           <img src="/jaseci-logo.png" alt="JacHacks" class="logo-img" />
@@ -41,7 +41,7 @@ import '../styles/site.css';
           <a href="/sf" class="nav-link">// SF</a>
           <a href="/spring" class="nav-link">// SPRING</a>
           <a href="/winter" class="nav-link">// WINTER</a>
-          <a href="#past" class="nav-link">// PAST EVENTS</a>
+          <a href="/ohio" class="nav-link">// ROCKETHACKS</a>
           <a href="/gallery" class="nav-link">// GALLERY</a>
         </div>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
@@ -59,126 +59,44 @@ import '../styles/site.css';
       <a href="/">// HOME</a>
       <a href="#winners">// A2 TECH TREK</a>
       <a href="/sf">// JACHACKS SF</a>
-      <a href="/spring">// SPRING</a>
-      <a href="/winter">// WINTER</a>
-      <a href="#past">// PAST EVENTS</a>
+      <a href="/spring">// JACHACKS SPRING</a>
+      <a href="/winter">// JACHACKS WINTER</a>
+      <a href="/paradise">// VELRIC</a>
+      <a href="/ohio">// ROCKETHACKS</a>
       <a href="/gallery">// GALLERY</a>
       <a href="https://github.com/jaseci-labs/jaseci" target="_blank" class="mobile-cta">STAR ON GITHUB</a>
     </div>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-grid-bg"></div>
-      <canvas id="bg-canvas"></canvas>
-
-      <div class="hud-tl">
-        <span class="hud-label">SYS://ANN_ARBOR</span>
+    <main class="edition-main">
+    <!-- JACHACKS A2TECH BANNER -->
+    <div class="v1-banner v1-banner-a2" id="a2tech">
+      <div class="v1-banner-bg">
+        <img src="/photos/a2tech_26/a2_01.webp" alt="JacHacks A2Tech" />
+        <div class="v1-banner-overlay"></div>
       </div>
-      <div class="hud-tr">
-        <span class="hud-label hud-label-white">EVENT://SEP_26_2026</span>
-      </div>
-      <div class="hud-bl">
-        <span class="hud-label">DURATION: <span class="hud-count">02DAY</span></span>
-      </div>
-      <div class="hud-br">
-        <span class="hud-label hud-label-accent">REGION://MICHIGAN</span>
-      </div>
-
-      <div class="float-el fe-hex-1">
-        <svg viewBox="0 0 60 69" width="60" height="69" fill="none">
-          <polygon points="30,3 57,18 57,51 30,66 3,51 3,18" stroke="rgba(249,115,22,0.3)" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <div class="float-el fe-hex-2">
-        <svg viewBox="0 0 40 46" width="40" height="46" fill="none">
-          <polygon points="20,2 38,12 38,34 20,44 2,34 2,12" stroke="rgba(0,212,255,0.25)" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <div class="float-el fe-hex-3">
-        <svg viewBox="0 0 90 104" width="90" height="104" fill="none">
-          <polygon points="45,4 86,27 86,77 45,100 4,77 4,27" stroke="rgba(249,115,22,0.1)" stroke-width="1"/>
-        </svg>
-      </div>
-      <div class="float-el fe-plus-1">+</div>
-      <div class="float-el fe-plus-2">+</div>
-      <div class="float-el fe-plus-3">×</div>
-      <div class="float-el fe-ring-1"></div>
-      <div class="float-el fe-ring-2"></div>
-      <div class="float-el fe-ring-3"></div>
-
-      <div class="hero-spotlight"></div>
-
-      <!-- Downtown Ann Arbor line-art backdrop -->
-      <img class="hero-bridge hero-bridge-a2" src="/a2-lines.png" alt="" aria-hidden="true" style="opacity:.58;" />
-      <div class="hero-scrim"></div>
-
-      <div class="hero-content">
-        <div class="a2-lockup">
-          <span class="a2-lockup-label">OFFICIAL HACKATHON PARTNER OF</span>
-          <a href="https://a2tech360.com" target="_blank" rel="noopener noreferrer" class="a2-lockup-link" aria-label="a2Tech360, powered by Ann Arbor SPARK">
-            <img src="/a2tech360-logo-white.webp" alt="a2Tech360, powered by Ann Arbor SPARK" class="a2-lockup-logo a2-logo-dark" />
-            <img src="/a2tech360-logo-color.webp" alt="" aria-hidden="true" class="a2-lockup-logo a2-logo-light" />
-          </a>
-        </div>
-
-        <div class="hero-series-badge">
-          <span class="series-dot"></span>
-          <span>JACHACKS SERIES</span>
-          <span class="series-sep">·</span>
-          <span class="series-event">ANN ARBOR</span>
-        </div>
-
-        <div class="hero-status">
-          <span class="hero-status-done">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            WINNERS ANNOUNCED
-          </span>
-          <span class="hero-status-sep"></span>
-          <span class="hero-status-next">
-            <span class="next-dot"></span>
-            SEP 26–27 · ANN ARBOR
-          </span>
-        </div>
-
-        <div class="hero-title">
-          <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" class="hero-j-logo-link" aria-label="Learn about Jac, the language behind JacHacks">
-            <span class="hero-j-logo-wrap">
-              <span class="hero-j-pulse" aria-hidden="true"></span>
-              <img src="/jaseci-logo.png" alt="" class="hero-j-logo" />
-            </span>
-            <span class="hero-j-hint">
-              WHAT IS JAC?
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
-            </span>
-          </a>
-          <h1 class="title-main">JacHacks <span class="title-spring">A2Tech</span></h1>
-        </div>
-
-        <p class="hero-sub">The series landed in Ann Arbor for <a href="https://a2tech360.com" target="_blank" rel="noopener noreferrer" class="text-link">a2Tech360</a>, the region's biggest tech week. Two days building the future with Jac.</p>
-
-        <div class="hero-meta-line">
-          <span>SEP 26–27, 2026</span>
-          <span class="meta-dot">·</span>
-          <span>ANN ARBOR, MI</span>
-        </div>
-
-        <div class="cta-group">
-          <a href="#winners" class="btn-primary">
-            SEE THE WINNERS
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-          </a>
-          <a href="#past" class="btn-ghost">
-            EXPLORE PAST JACHACKS
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-          </a>
+      <div class="v1-banner-content">
+        <div class="v1-banner-tag">LATEST EDITION</div>
+        <div class="v1-banner-eyebrow">// SEPTEMBER 26–27, 2026 · UNIVERSITY OF MICHIGAN · ANN ARBOR</div>
+        <div class="v1-banner-title">JacHacks <span class="v1-banner-accent">A2Tech</span></div>
+        <div class="v1-banner-sub">Where the series came home for a2Tech360.</div>
+        <div class="v1-stats-row">
+          <div class="v1-stat">
+            <span class="v1-stat-val">27</span>
+            <span class="v1-stat-key">PROJECTS</span>
+          </div>
+          <div class="v1-stat-sep">//</div>
+          <div class="v1-stat">
+            <span class="v1-stat-val">2</span>
+            <span class="v1-stat-key">DAYS</span>
+          </div>
+          <div class="v1-stat-sep">//</div>
+          <div class="v1-stat">
+            <span class="v1-stat-val">9</span>
+            <span class="v1-stat-key">WINNERS</span>
+          </div>
         </div>
       </div>
-
-      <div class="scroll-down">
-        <span>SCROLL</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </div>
-    </section>
+    </div>
 
     <!-- JACHACKS A2TECH WINNERS -->
     <section class="section section-dark" id="winners">
@@ -469,197 +387,6 @@ import '../styles/site.css';
       </div>
     </section>
 
-    <!-- ABOUT a2Tech360 -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-header reveal" style="text-align:center; display:flex; flex-direction:column; align-items:center;">
-          <div class="section-eyebrow">// OFFICIAL HACKATHON PARTNER</div>
-          <h2 class="section-title">Ann Arbor's tech week, <span class="text-accent">hacked</span></h2>
-          <p class="section-sub" style="margin:0 auto;">Jaseci is the official hackathon partner of a2Tech360, Ann Arbor's premier technology festival, a week of experiences, conversations, and connections across the region's innovation ecosystem. JacHacks A2Tech is that hackathon: two days of building with Jac and agentic AI, September 26–27.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- POWERED BY JASECI -->
-    <section class="section jaseci-section" id="jaseci">
-      <div class="container">
-        <div class="jaseci-card reveal">
-          <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" class="jaseci-card-mark" aria-label="Jaseci">
-            <img src="/sponsors/jaseci_with_name_transparent.png" alt="Jaseci" class="jaseci-mark jaseci-mark-dark" />
-            <img src="/sponsors/jaseci_with_name_transparent_light.png" alt="Jaseci" class="jaseci-mark jaseci-mark-light" />
-          </a>
-          <div class="jaseci-card-body">
-            <div class="section-eyebrow">// POWERED BY</div>
-            <h2 class="jaseci-card-title">The team behind <span class="text-accent">Jac</span></h2>
-            <p class="jaseci-card-sub">Jaseci builds Jac, the open-source language and runtime for agentic AI, and runs the JacHacks series. It is what every project at JacHacks A2Tech is built on.</p>
-            <a href="https://jaclang.org/" target="_blank" rel="noopener noreferrer" class="btn-accent jaseci-card-cta">
-              LEARN MORE
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAST JACHACKS -->
-    <section class="section section-dark" id="past">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-eyebrow">// THE SERIES SO FAR</div>
-          <h2 class="section-title">Past <span class="text-accent">JacHacks</span></h2>
-          <p class="section-sub">Step into the projects, winners, and moments from every JacHacks so far.</p>
-        </div>
-
-        <div class="editions-grid reveal">
-          <a href="/sf" class="edition-card edition-card-featured">
-            <div class="edition-card-bg" style="background-image:url(/photos/sf_26/sf_01.webp)"></div>
-            <div class="edition-card-inner">
-              <div class="edition-card-tag">LATEST · SAN FRANCISCO</div>
-              <h3 class="edition-card-title">JacHacks <span>SF</span></h3>
-              <div class="edition-card-meta">JULY 26, 2026 · FOUNDERS, INC.</div>
-              <div class="edition-card-stats">
-                <span><b>200+</b> builders</span>
-                <span><b>77</b> projects</span>
-                <span><b>8</b> winners</span>
-              </div>
-              <span class="edition-card-cta">SEE THE WINNERS &amp; PHOTOS
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </span>
-            </div>
-          </a>
-
-          <a href="/spring" class="edition-card edition-card-spring">
-            <div class="edition-card-bg"></div>
-            <div class="edition-card-inner">
-              <div class="edition-card-tag">GLOBAL · ONLINE</div>
-              <h3 class="edition-card-title">JacHacks <span>Spring</span></h3>
-              <div class="edition-card-meta">MAY 2026</div>
-              <div class="edition-card-stats">
-                <span><b>300+</b> builders</span>
-                <span><b>81</b> projects</span>
-                <span><b>13</b> winners</span>
-              </div>
-              <span class="edition-card-cta">EXPLORE SPRING
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </span>
-            </div>
-          </a>
-
-          <a href="/winter" class="edition-card edition-card-winter">
-            <div class="edition-card-bg" style="background-image:url(/photos/DSC06792.webp)"></div>
-            <div class="edition-card-inner">
-              <div class="edition-card-tag">ANN ARBOR, MI</div>
-              <h3 class="edition-card-title">JacHacks <span>Winter</span></h3>
-              <div class="edition-card-meta">APRIL 2026</div>
-              <div class="edition-card-stats">
-                <span><b>170+</b> hackers</span>
-                <span><b>70</b> projects</span>
-                <span><b>$5K</b> prizes</span>
-              </div>
-              <span class="edition-card-cta">EXPLORE WINTER
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </span>
-            </div>
-          </a>
-        </div>
-
-        <div class="editions-grid reveal" style="margin-top:1.5rem;">
-          <a href="/paradise" class="edition-card edition-card-paradise">
-            <div class="edition-card-bg"></div>
-            <div class="edition-card-inner">
-              <div class="edition-card-tag">MIAMI BEACH, FL</div>
-              <h3 class="edition-card-title">Velric × <span>The Foundry</span></h3>
-              <div class="edition-card-meta">MIAMI HACKATHON · VENTURE WEEK 2026</div>
-              <div class="edition-card-stats">
-                <span><b>Host</b> AI track</span>
-                <span><b>Keynote</b> Jason Mars</span>
-                <span><b>Judge</b> demos</span>
-              </div>
-              <span class="edition-card-cta">EXPLORE EVENT
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </span>
-            </div>
-          </a>
-
-          <a href="/ohio" class="edition-card edition-card-ohio">
-            <div class="edition-card-bg"></div>
-            <div class="edition-card-inner">
-              <div class="edition-card-tag">TOLEDO, OH</div>
-              <h3 class="edition-card-title">Rocket<span>Hacks</span></h3>
-              <div class="edition-card-meta">MAR 14–15, 2026 · UTOLEDO</div>
-              <div class="edition-card-stats">
-                <span><b>Keynote</b> Jason Mars</span>
-                <span><b>Prize</b> agentic AI</span>
-                <span><b>Sponsor</b> Jaseci</span>
-              </div>
-              <span class="edition-card-cta">EXPLORE EVENT
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </span>
-            </div>
-          </a>
-        </div>
-
-        <a href="/gallery" class="editions-gallery reveal" style="margin-top:1.5rem;">
-          <div class="editions-gallery-photos">
-            <img src="/photos/sf_26/sf_01.webp" alt="" loading="lazy" />
-            <img src="/photos/DSC06776.webp" alt="" loading="lazy" />
-            <img src="/photos/DSC06646.webp" alt="" loading="lazy" />
-            <img src="/photos/DSC06563.webp" alt="" loading="lazy" />
-          </div>
-          <div class="editions-gallery-content">
-            <div class="edition-card-tag">PHOTOS</div>
-            <h3 class="editions-gallery-title">Explore the <span class="text-accent">Gallery</span></h3>
-            <p class="editions-gallery-sub">Albums from San Francisco, Ann Arbor, Miami, and Toledo.</p>
-            <span class="edition-card-cta">OPEN GALLERY
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- SPONSOR STRIP -->
-    <div class="sponsor-strip">
-      <span class="strip-label">SPONSORS AND PARTNERS</span>
-      <div class="strip-marquee">
-        <div class="strip-track">
-          <a class="strip-logo" href="https://www.nvidia.com" target="_blank" rel="noopener noreferrer"><img src="/sponsors/nvidia_inception.png" alt="NVIDIA Inception Program" /></a>
-          <a class="strip-logo" href="https://about.google" target="_blank" rel="noopener noreferrer"><img src="/sponsors/google.svg" alt="Google" /></a>
-          <a class="strip-logo" href="https://www.ibm.com" target="_blank" rel="noopener noreferrer"><img src="/sponsors/ibm.svg" alt="IBM" /></a>
-          <a class="strip-logo" href="https://umich.edu" target="_blank" rel="noopener noreferrer"><img src="/sponsors/UofM.png" alt="University of Michigan" /></a>
-          <a class="strip-logo" href="https://www.nsf.gov" target="_blank" rel="noopener noreferrer"><img src="/sponsors/NSF_logo.svg.webp" alt="NSF" /></a>
-          <a class="strip-logo" href="https://gdg.community.dev/gdg-detroit/" target="_blank" rel="noopener noreferrer"><img src="/sponsors/gdg_detroit.png" alt="GDG Detroit" /></a>
-          <a class="strip-logo" href="https://base44.com" target="_blank" rel="noopener noreferrer"><img src="/sponsors/base44.png" alt="Base44" /></a>
-          <span class="strip-logo"><img src="/sponsors/compass_detroit.png" alt="Compass Detroit" /></span>
-          <span class="strip-logo"><img src="/sponsors/baz.png" alt="Baz" /></span>
-          <span class="strip-logo"><img src="/sponsors/barrett_solutions.png" alt="Barrett Solutions LLC" class="logo-tile" /></span>
-          <span class="strip-logo"><img src="/sponsors/luigi_solutions.png" alt="Luigi Solutions" class="logo-tile" /></span>
-          <a class="strip-logo" href="https://www.nvidia.com" target="_blank" rel="noopener noreferrer"><img src="/sponsors/nvidia_inception.png" alt="NVIDIA Inception Program" /></a>
-          <a class="strip-logo" href="https://about.google" target="_blank" rel="noopener noreferrer"><img src="/sponsors/google.svg" alt="Google" /></a>
-          <a class="strip-logo" href="https://www.ibm.com" target="_blank" rel="noopener noreferrer"><img src="/sponsors/ibm.svg" alt="IBM" /></a>
-          <a class="strip-logo" href="https://umich.edu" target="_blank" rel="noopener noreferrer"><img src="/sponsors/UofM.png" alt="University of Michigan" /></a>
-          <a class="strip-logo" href="https://www.nsf.gov" target="_blank" rel="noopener noreferrer"><img src="/sponsors/NSF_logo.svg.webp" alt="NSF" /></a>
-          <a class="strip-logo" href="https://gdg.community.dev/gdg-detroit/" target="_blank" rel="noopener noreferrer"><img src="/sponsors/gdg_detroit.png" alt="GDG Detroit" /></a>
-          <a class="strip-logo" href="https://base44.com" target="_blank" rel="noopener noreferrer"><img src="/sponsors/base44.png" alt="Base44" /></a>
-          <span class="strip-logo"><img src="/sponsors/compass_detroit.png" alt="Compass Detroit" /></span>
-          <span class="strip-logo"><img src="/sponsors/baz.png" alt="Baz" /></span>
-          <span class="strip-logo"><img src="/sponsors/barrett_solutions.png" alt="Barrett Solutions LLC" class="logo-tile" /></span>
-          <span class="strip-logo"><img src="/sponsors/luigi_solutions.png" alt="Luigi Solutions" class="logo-tile" /></span>
-          <a class="strip-logo" href="https://www.nvidia.com" target="_blank" rel="noopener noreferrer"><img src="/sponsors/nvidia_inception.png" alt="NVIDIA Inception Program" /></a>
-          <a class="strip-logo" href="https://about.google" target="_blank" rel="noopener noreferrer"><img src="/sponsors/google.svg" alt="Google" /></a>
-          <a class="strip-logo" href="https://www.ibm.com" target="_blank" rel="noopener noreferrer"><img src="/sponsors/ibm.svg" alt="IBM" /></a>
-          <a class="strip-logo" href="https://umich.edu" target="_blank" rel="noopener noreferrer"><img src="/sponsors/UofM.png" alt="University of Michigan" /></a>
-          <a class="strip-logo" href="https://www.nsf.gov" target="_blank" rel="noopener noreferrer"><img src="/sponsors/NSF_logo.svg.webp" alt="NSF" /></a>
-          <a class="strip-logo" href="https://gdg.community.dev/gdg-detroit/" target="_blank" rel="noopener noreferrer"><img src="/sponsors/gdg_detroit.png" alt="GDG Detroit" /></a>
-          <a class="strip-logo" href="https://base44.com" target="_blank" rel="noopener noreferrer"><img src="/sponsors/base44.png" alt="Base44" /></a>
-          <span class="strip-logo"><img src="/sponsors/compass_detroit.png" alt="Compass Detroit" /></span>
-          <span class="strip-logo"><img src="/sponsors/baz.png" alt="Baz" /></span>
-          <span class="strip-logo"><img src="/sponsors/barrett_solutions.png" alt="Barrett Solutions LLC" class="logo-tile" /></span>
-          <span class="strip-logo"><img src="/sponsors/luigi_solutions.png" alt="Luigi Solutions" class="logo-tile" /></span>
-        </div>
-      </div>
-    </div>
-
     <!-- VIDEO MODAL -->
     <div class="vm-backdrop" id="vm-backdrop"></div>
     <div class="vm" id="vm">
@@ -674,6 +401,8 @@ import '../styles/site.css';
       </div>
     </div>
 
+    </main>
+
     <!-- FOOTER -->
     <footer>
       <div class="footer-top">
@@ -682,11 +411,14 @@ import '../styles/site.css';
           <span>Jac<span class="text-accent">Hacks</span></span>
         </div>
         <div class="footer-nav">
-          <a href="/">JacHacks SF</a>
+          <a href="/a2tech">JacHacks A2Tech</a>
           <a href="/sf">JacHacks SF</a>
           <a href="/spring">JacHacks Spring</a>
           <a href="/winter">JacHacks Winter</a>
+          <a href="/paradise">Popup in Paradise</a>
+          <a href="/ohio">Popup in Ohio</a>
           <a href="/gallery">Gallery</a>
+          <a href="/#voices">Testimonials</a>
         </div>
         <div class="footer-socials">
           <a href="https://x.com/Jaseci_Org" class="social-btn" aria-label="Twitter">
@@ -705,202 +437,7 @@ import '../styles/site.css';
       </div>
     </footer>
 
-  <style is:global>
-    /* the note between the countdown and the buttons is gone, so restore that breathing room */
-    .hero-content .cta-group { margin-top: 2rem; }
-
-    /* a2Tech360 partner lockup, sits at the very top of the hero */
-    .a2-lockup {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .7rem;
-      margin-bottom: 1.6rem;
-    }
-    .a2-lockup-label {
-      font-family: var(--mono);
-      font-size: .58rem;
-      letter-spacing: .28em;
-      color: rgba(242,234,214,.4);
-    }
-    .a2-lockup-link { display: block; line-height: 0; transition: transform .3s ease, filter .3s ease; }
-    .a2-lockup-link:hover { transform: translateY(-2px); }
-    .a2-lockup-link:hover .a2-lockup-logo { opacity: 1; }
-    .a2-lockup-logo {
-      height: 2.7rem;
-      width: auto;
-      object-fit: contain;
-      opacity: .88;
-      transition: opacity .3s ease;
-    }
-
-    /* full-colour mark on the light theme, white knockout on the dark theme */
-    .a2-logo-light { display: none; }
-    :root[data-theme="light"] .a2-logo-dark { display: none; }
-    :root[data-theme="light"] .a2-logo-light { display: block; }
-    :root[data-theme="light"] .a2-lockup-label { color: rgba(26,24,40,.5); }
-    :root[data-theme="light"] .a2-lockup-logo { opacity: .95; }
-
-    /* Jaseci "powered by" card, sits right under the a2Tech360 intro */
-    .jaseci-section { padding-top: 0; }
-    .jaseci-card {
-      display: grid;
-      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-      align-items: center;
-      gap: 2.75rem;
-      padding: 2.75rem 3rem;
-      border: 1px solid rgba(249,115,22,.2);
-      border-radius: 16px;
-      background:
-        radial-gradient(circle at 20% 50%, rgba(249,115,22,.13), transparent 58%),
-        linear-gradient(135deg, rgba(249,115,22,.05), rgba(13,12,24,.55));
-    }
-    .jaseci-card-mark {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 0;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1), filter .3s ease;
-    }
-    .jaseci-card-mark:hover { transform: scale(1.05); }
-    .jaseci-card-mark:hover .jaseci-mark { filter: drop-shadow(0 0 42px rgba(249,115,22,.5)); }
-    .jaseci-mark {
-      width: 100%;
-      max-width: 270px;
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 0 26px rgba(249,115,22,.3));
-      transition: filter .3s ease;
-    }
-    .jaseci-mark-light { display: none; }
-    :root[data-theme="light"] .jaseci-mark-dark { display: none; }
-    :root[data-theme="light"] .jaseci-mark-light { display: block; }
-
-    .jaseci-card-body .section-eyebrow { margin-bottom: .6rem; }
-    .jaseci-card-title {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: clamp(1.5rem, 3vw, 2.1rem);
-      letter-spacing: -.01em;
-      color: #fff;
-      margin-bottom: .7rem;
-    }
-    .jaseci-card-sub {
-      color: var(--light);
-      font-size: .95rem;
-      line-height: 1.7;
-      max-width: 46ch;
-      margin-bottom: 1.6rem;
-    }
-    .jaseci-card-cta { font-size: .95rem; padding: .8rem 1.75rem; }
-
-    :root[data-theme="light"] .jaseci-card {
-      border-color: rgba(249,115,22,.28);
-      background:
-        radial-gradient(circle at 20% 50%, rgba(249,115,22,.12), transparent 58%),
-        linear-gradient(135deg, rgba(249,115,22,.06), rgba(255,255,255,.72));
-    }
-    :root[data-theme="light"] .jaseci-card-title { color: #1a1828; }
-    :root[data-theme="light"] .jaseci-card-sub { color: #3d3c45; }
-    :root[data-theme="light"] .jaseci-mark { filter: drop-shadow(0 0 22px rgba(249,115,22,.24)); }
-
-    @media (max-width: 780px) {
-      .jaseci-card {
-        grid-template-columns: 1fr;
-        gap: 1.9rem;
-        padding: 2.25rem 1.5rem;
-        text-align: center;
-      }
-      .jaseci-card-body { display: flex; flex-direction: column; align-items: center; }
-      .jaseci-card-sub { margin-left: auto; margin-right: auto; }
-      .jaseci-mark { max-width: 220px; }
-    }
-
-    @media (max-width: 560px) {
-      .a2-lockup { gap: .5rem; margin-bottom: 1.1rem; }
-      .a2-lockup-label { font-size: .52rem; letter-spacing: .22em; }
-      .a2-lockup-logo { height: 2.05rem; }
-    }
-  </style>
-
   <script>
-    // ===== CANVAS =====
-    const canvas = document.getElementById('bg-canvas') as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d')!;
-    const OR = 'rgba(249,115,22,';
-    const CY = 'rgba(0,212,255,';
-
-    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
-    resize();
-    window.addEventListener('resize', resize);
-
-    const N = 35;
-    interface GNode { x:number;y:number;vx:number;vy:number;r:number;cyan:boolean; }
-    interface Walker { fi:number;ti:number;t:number;sp:number; }
-    interface Particle { x:number;y:number;vx:number;vy:number;a:number;sz:number;life:number;ml:number; }
-
-    const nodes: GNode[] = Array.from({length:N}, () => ({
-      x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-      vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3,
-      r: Math.random()*2+1.5, cyan: Math.random()<.22
-    }));
-    const walkers: Walker[] = Array.from({length:6}, () => ({
-      fi: Math.floor(Math.random()*N), ti: Math.floor(Math.random()*N), t:0, sp:.005+Math.random()*.004
-    }));
-    const parts: Particle[] = [];
-    function sp(): Particle {
-      return {x:Math.random()*canvas.width,y:canvas.height+10,vx:(Math.random()-.5)*.4,vy:-(0.3+Math.random()*.5),a:.4+Math.random()*.4,sz:Math.random()*1.5+.5,life:0,ml:200+Math.random()*200};
-    }
-    for(let i=0;i<60;i++){const p=sp();p.y=Math.random()*canvas.height;p.life=Math.random()*p.ml;parts.push(p);}
-
-    const ED=220;
-    function draw(){
-      const W=canvas.width,H=canvas.height;
-      ctx.clearRect(0,0,W,H);
-      for(const n of nodes){n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;}
-      for(let i=0;i<nodes.length;i++){
-        for(let j=i+1;j<nodes.length;j++){
-          const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
-          if(d<ED){
-            const a=(1-d/ED)*.15;
-            const c=nodes[i].cyan&&nodes[j].cyan?CY:OR;
-            ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);
-            ctx.strokeStyle=`${c}${a})`;ctx.lineWidth=.8;ctx.stroke();
-          }
-        }
-      }
-      for(const n of nodes){
-        ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
-        ctx.fillStyle=n.cyan?`${CY}.45)`:`${OR}.4)`;ctx.fill();
-      }
-      for(const w of walkers){
-        w.t+=w.sp;
-        if(w.t>=1){
-          w.fi=w.ti;
-          const from=nodes[w.fi];let best=-1,bd=Infinity;
-          for(let i=0;i<N;i++){if(i===w.fi)continue;const dx=from.x-nodes[i].x,dy=from.y-nodes[i].y,d=Math.sqrt(dx*dx+dy*dy);if(d<ED&&d<bd){bd=d;best=i;}}
-          w.ti=best===-1?Math.floor(Math.random()*N):best;w.t=0;
-        }
-        const f=nodes[w.fi],t=nodes[w.ti];
-        const wx=f.x+(t.x-f.x)*w.t,wy=f.y+(t.y-f.y)*w.t;
-        const c=nodes[w.fi].cyan?CY:OR;
-        const g=ctx.createRadialGradient(wx,wy,0,wx,wy,12);
-        g.addColorStop(0,`${c}.85)`);g.addColorStop(1,`${c}0)`);
-        ctx.beginPath();ctx.arc(wx,wy,12,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
-        ctx.beginPath();ctx.arc(wx,wy,2.5,0,Math.PI*2);ctx.fillStyle=`${c}1)`;ctx.fill();
-      }
-      if(Math.random()<.3)parts.push(sp());
-      for(let i=parts.length-1;i>=0;i--){
-        const p=parts[i];p.x+=p.vx;p.y+=p.vy;p.life++;
-        const fade=Math.min(p.life/30,1)*Math.max(1-p.life/p.ml,0);
-        ctx.beginPath();ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);
-        ctx.fillStyle=`${OR}${p.a*fade})`;ctx.fill();
-        if(p.life>=p.ml)parts.splice(i,1);
-      }
-      requestAnimationFrame(draw);
-    }
-    draw();
-
     // ===== REVEAL =====
     const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');obs.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
@@ -956,11 +493,18 @@ import '../styles/site.css';
     const vmIframe = document.getElementById('vm-iframe') as HTMLIFrameElement;
     const vmClose = document.getElementById('vm-close')!;
 
-    function openVideo(youtubeId: string) {
-      vmIframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+    function openEmbed(src: string) {
+      vmIframe.src = src;
       vm.classList.add('open');
       vmBackdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
+    }
+    function openVideo(youtubeId: string, startSeconds?: string) {
+      const start = startSeconds && startSeconds.length > 0 ? `&start=${startSeconds}` : '';
+      openEmbed(`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0${start}`);
+    }
+    function openLoom(loomId: string) {
+      openEmbed(`https://www.loom.com/embed/${loomId}?autoplay=1&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true`);
     }
     function closeVideo() {
       vm.classList.remove('open');
@@ -969,13 +513,24 @@ import '../styles/site.css';
       document.body.style.overflow = '';
     }
 
+    function handleProjectClick(card: HTMLElement) {
+      const videoId = card.dataset.video;
+      const loomId = card.dataset.loom;
+      const videoStart = card.dataset.videoStart;
+      const devpost = card.dataset.devpost;
+      if (videoId && videoId.length > 0) {
+        openVideo(videoId, videoStart);
+      } else if (loomId && loomId.length > 0) {
+        openLoom(loomId);
+      } else if (devpost) {
+        window.open(devpost, '_blank', 'noopener,noreferrer');
+      }
+    }
+
     document.querySelectorAll<HTMLElement>('.pcard-thumb').forEach(thumb => {
       thumb.addEventListener('click', () => {
         const card = thumb.closest<HTMLElement>('[data-devpost]');
-        if (!card) return;
-        const videoId = card.dataset.video;
-        if (videoId && videoId.length > 0) openVideo(videoId);
-        else if (card.dataset.devpost) window.open(card.dataset.devpost, '_blank', 'noopener,noreferrer');
+        if (card) handleProjectClick(card);
       });
     });
 
