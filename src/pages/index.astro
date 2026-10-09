@@ -317,43 +317,6 @@ function initials(name: string) {
       </div>
     </section>
 
-    <!-- JACHACKS SF RECAP (was the hero panel before A2Tech took the hero) -->
-    <div class="sf-recap reveal">
-      <div class="wrap-panel" id="wrap-panel">
-        <span class="wrap-sheen"></span>
-        <div class="wrap-eyebrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          THAT'S A WRAP
-        </div>
-
-        <div class="wrap-head">
-          <h2 class="wrap-title">JacHacks <span class="wrap-title-accent">SF</span></h2>
-          <div class="wrap-title-meta">JULY 26, 2026 · FOUNDERS, INC. · SAN FRANCISCO</div>
-        </div>
-
-        <div class="wrap-stats">
-          <div class="wrap-stat">
-            <span class="wrap-num" data-count="200" data-suffix="+">200+</span>
-            <span class="wrap-stat-label">BUILDERS</span>
-          </div>
-          <span class="wrap-divider"></span>
-          <div class="wrap-stat">
-            <span class="wrap-num" data-count="77">77</span>
-            <span class="wrap-stat-label">PROJECTS SHIPPED</span>
-          </div>
-          <span class="wrap-divider"></span>
-          <div class="wrap-stat">
-            <span class="wrap-num" data-count="8">8</span>
-            <span class="wrap-stat-label">WINNERS</span>
-          </div>
-        </div>
-
-        <a href="/sf" class="wrap-cta">EXPLORE JACHACKS SF
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-
     <!-- PLATINUM SPONSOR -->
     <div class="platinum-sponsor reveal">
       <span class="platinum-label">POWERED BY</span>
@@ -665,53 +628,10 @@ function initials(name: string) {
     /* the A2Tech nav entry is highlighted so the latest event reads first */
     .nav-link-live { color: var(--primary); }
 
-    /* the SF recap panel moved out of the hero, so it needs its own band */
-    .sf-recap { display: flex; justify-content: center; padding: 5rem 2rem 0; position: relative; z-index: 1; }
-    .sf-recap .wrap-panel { margin-bottom: 0; gap: .95rem; }
-    /* the event name is the point of the panel, so it gets a real title */
-    .wrap-head { display: flex; flex-direction: column; align-items: center; gap: .55rem; }
-    .wrap-title {
-      font-family: var(--serif);
-      font-weight: 800;
-      font-size: clamp(1.9rem, 4.4vw, 2.7rem);
-      line-height: 1;
-      letter-spacing: -.03em;
-      color: #F3EBD7;
-    }
-    .wrap-title-accent { font-style: italic; color: var(--primary); }
-    .wrap-title-meta {
-      font-family: var(--mono);
-      font-size: .6rem;
-      font-weight: 500;
-      letter-spacing: .22em;
-      color: rgba(242,234,214,.55);
-      text-align: center;
-    }
-    :root[data-theme="light"] .wrap-title { color: #1a1828; }
-    :root[data-theme="light"] .wrap-title-meta { color: rgba(26,24,40,.6); }
-
-    .wrap-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      font-family: var(--mono);
-      font-size: .62rem;
-      font-weight: 600;
-      letter-spacing: .2em;
-      color: var(--primary);
-      padding: .5rem 1.2rem;
-      border: 1px solid rgba(249,115,22,.35);
-      border-radius: 100px;
-      transition: background .2s, border-color .2s, transform .2s;
-    }
-    .wrap-cta:hover { background: rgba(249,115,22,.1); border-color: rgba(249,115,22,.6); transform: translateY(-1px); }
-
     @media (max-width: 560px) {
       .a2-lockup { gap: .5rem; margin-bottom: 1.1rem; }
       .a2-lockup-label { font-size: .52rem; letter-spacing: .22em; }
       .a2-lockup-logo { height: 2.05rem; }
-      .sf-recap { padding: 3.5rem 1.25rem 0; }
-      .wrap-title-meta { font-size: .53rem; letter-spacing: .16em; }
     }
   </style>
 
@@ -792,36 +712,6 @@ function initials(name: string) {
       requestAnimationFrame(draw);
     }
     draw();
-
-    // ===== RECAP COUNT-UP (JacHacks SF) =====
-    (function() {
-      const panel = document.getElementById('wrap-panel');
-      const nums = document.querySelectorAll<HTMLElement>('.wrap-num[data-count]');
-      if (!panel || !nums.length) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      function run() {
-        nums.forEach(el => {
-          const end = Number(el.dataset.count || 0);
-          const suffix = el.dataset.suffix || '';
-          const dur = 1400;
-          let start = 0;
-          el.textContent = '0' + suffix;
-          function step(ts: number) {
-            if (!start) start = ts;
-            const p = Math.min((ts - start) / dur, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = Math.round(end * eased) + suffix;
-            if (p < 1) requestAnimationFrame(step);
-          }
-          requestAnimationFrame(step);
-        });
-      }
-      // the panel sits below the fold now, so hold the count-up until it scrolls in
-      const io = new IntersectionObserver(es => {
-        es.forEach(e => { if (e.isIntersecting) { io.disconnect(); run(); } });
-      }, { threshold: .35 });
-      io.observe(panel);
-    })();
 
     // ===== TESTIMONIAL WALL (filter · show all · read more) =====
     (function() {
